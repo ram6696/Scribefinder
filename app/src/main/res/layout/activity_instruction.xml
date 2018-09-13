@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.ourapps.scribefinder.Instruction">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/toolbarColor">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:src="@drawable/ic_action_arrow_left"
+            android:contentDescription="@string/image_not_available"
+            android:onClick="goBackToPreviousActivity"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Instructions"
+            android:layout_marginStart="40dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instructions for the Volunteers"
+            android:textStyle="bold"
+            android:layout_marginTop="0dp"
+            android:textAlignment="center"
+            android:textSize="27sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1.This app is to make the job of visually impaired students easy in finding the volunteer to write exams for them"
+            android:textSize="20sp"
+            android:textAlignment="textStart" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2.They are competing with all the students in their academics.So lets help them by being a volunteer"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3.Please be fruitful to the visually impaired students who call you for writing exams"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="4.If you are unable to go , Please refer someone to go for writing exams to them"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="5. You can also upload any study material you have ,so that it will be helpful for the students"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

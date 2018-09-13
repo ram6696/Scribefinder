@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ourapps.scribefinder">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE" />
+
+    <application
+        android:icon="@drawable/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/app_logo"
+        android:supportsRtl="true">
+        <activity
+            android:name=".LogoSplashScreen"
+            android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Intro"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ResetPassword"
+            android:parentActivityName=".Login"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".TypeOfUser"
+            android:parentActivityName=".Login"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".NeedyRegister"
+            android:parentActivityName=".Login"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".VolunteerRegister"
+            android:parentActivityName=".TypeOfUser"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VolunteerMainPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NeedyPasswordChange"
+            android:launchMode="singleTask"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".ScribeSearchPage"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".RegisterSuccessfulMessage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DisplaySearchedVolunteers"
+            android:parentActivityName=".ScribeSearchPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".DisplaySingleScribeDetails"
+            android:parentActivityName=".DisplaySearchedVolunteers"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".NeedyProfileEdit"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VolunteerProfileEdit"
+            android:parentActivityName=".VolunteerMainPage"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VolunteerPasswordChange"
+            android:launchMode="singleTask"
+            android:parentActivityName=".VolunteerMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".StudyMaterial"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".Notes.NotesBA"
+            android:parentActivityName=".StudyMaterial"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".Notes.BA1stSem"
+            android:parentActivityName=".Notes.NotesBA"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".UploadNotes"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".ViewUploadsActivity"
+            android:parentActivityName=".NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".ContactUs"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Instruction"
+            android:theme="@style/AppTheme.NoActionBar"/>
+    </application>
+
+</manifest>

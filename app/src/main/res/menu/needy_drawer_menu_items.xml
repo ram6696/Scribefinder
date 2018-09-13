@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/needyeditProfile"
+            android:title="@string/edit_profile"/>
+        <item
+            android:id="@+id/needychangePassword"
+            android:title="@string/change_password"/>
+
+        <item
+            android:id="@+id/needylogout"
+            android:title="@string/logout" />
+
+        <item
+            android:id="@+id/needydeleteAccount"
+            android:title="@string/delete_account"/>
+    </group>
+
+</menu>

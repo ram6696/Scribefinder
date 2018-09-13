@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="com.ourapps.scribefinder.TypeOfUser">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/VolunteersSearchToolbar"
+        android:background="@color/toolbarColor">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_action_arrow_left"
+            android:contentDescription="@string/image_not_available"
+            android:onClick="goBackToPreviousActivity"/>
+
+        <TextView
+            android:id="@+id/toolbarScribeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/type_of_user"
+            android:layout_marginStart="40dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:maxWidth="200dp"
+            android:layout_marginTop="70dp"
+            android:scaleType="centerInside"
+            android:id="@+id/ed12"
+            android:src="@drawable/logo_png"
+            android:contentDescription="@string/image_not_available" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/appThemeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
+        android:gravity="end"
+        android:text="@string/appThemeText"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <Button
+            android:id="@+id/btnNeedy"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttonshape"
+            android:layout_marginBottom="10dp"
+            android:onClick="needy"
+            android:text="@string/i_am_needy" />
+
+        <Button
+            android:id="@+id/btnVolunteer"
+            android:layout_marginTop="30dp"
+            android:text="@string/i_am_volunteer"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttonshape"
+            android:layout_marginBottom="10dp"
+            android:onClick="volunteer"/>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_type_of_users">
+        </com.google.android.gms.ads.AdView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

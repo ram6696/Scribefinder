@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "751750672179",
+    "firebase_url": "https://scribesearchapp.firebaseio.com",
+    "project_id": "scribesearchapp",
+    "storage_bucket": "scribesearchapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751750672179:android:e8f68fd99c410b21",
+        "android_client_info": {
+          "package_name": "com.ourapps.scribefinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751750672179-6l630k021n6368qn74dpmjmc8a53vqj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp4W1tDJA0j8GpTIhbsAP3bwA_gGhAsPA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

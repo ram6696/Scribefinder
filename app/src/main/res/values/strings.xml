@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">Eye-Droid</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="email">Email Address</string>
+    <string name="email_hint">  Email</string>
+    <string name="password">Password</string>
+    <string name="password_hint">  Password</string>
+    <string name="forget_password">Forgot Password</string>
+    <string name="new_user_register">New User? Register Here.</string>
+    <string name="login">Login</string>
+    <string name="i_am_needy">I am Needy</string>
+    <string name="i_am_volunteer">I am Volunteer</string>
+    <string name="appThemeText">They have the WILL, will you help them pave the WAY?</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="name">Name</string>
+    <string name="mobileNumber">Mobile Number</string>
+    <string name="register">Register</string>
+    <string name="if_already_registered_sign_in">If already Registered, Sign In</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="languages_known_to_write">Languages known to write</string>
+    <string name="english">English</string>
+    <string name="telugu">Telugu</string>
+    <string name="kannada">Kannada</string>
+    <string name="hindi">Hindi</string>
+    <string name="tamil">Tamil</string>
+    <string name="select_state">Select State</string>
+    <string name="select_dist">Select District</string>
+    <string name="select_cit">Select City</string>
+    <string name="title_activity_needy_main_page">NeedyMainPage</string>
+
+
+    <string-array name="india_states">
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <string name="action_settings">Settings</string>
+    <string name="address">Address</string>
+    <string name="pincode">Pincode</string>
+    <string name="city">City</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="logout">Logout</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Re-type New Password</string>
+    <string name="change">Change</string>
+    <string name="search">Search</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="date_of_birth">Date of Birth(DD/MM/YYYY)</string>
+    <string name="dob">DOB</string>
+    <string name="we_just_emailed_you_a_link">We Just emailed you a link</string>
+    <string name="please_check_your_email_and_click_the_secure_link">Please check your email and click the secure link.</string>
+    <string name="cancel">Cancel</string>
+    <string name="resend_link">Resend Link</string>
+    <string name="if_you_don_t_see_our_email_check_your_spam_folder">If you don\'t see our email, check your spam folder.</string>
+    <string name="preferred_language">Preferred Language</string>
+    <string name="password_change_note">Once the password is successfully changed, you will need to login again</string>
+    <string name="district">District</string>
+    <string name="state">State</string>
+    <string name="asterisk_symbol">*</string>
+    <string name="image_not_available">Image Not Available..!</string>
+    <string name="request">Request</string>
+    <string name="volunteers_found">Volunteers Found</string>
+    <string name="search_for_scribe">Search for Scribe</string>
+    <string name="forgot_password_message">Enter your Email Address which is registered with us and we will send your credentials to your Email Address.</string>
+    <string name="send_email">Send Email</string>
+    <string name="type_of_user">Type of User</string>
+    <string name="update">Update</string>
+    <string name="you_cannot_edit_email_address">You cannot Edit Email Address..!</string>
+    <string name="select_city">Select City</string>
+    <string name="volunteer">Volunteer</string>
+    <string name="new_user">New User</string>
+    <string name="ba_1st_sem">BA 1st Sem</string>
+    <string name="ba_1st_sem_economics">BA 1st Sem Economics</string>
+    <string name="ba_2nd_sem">BA 2nd Sem</string>
+    <string name="ba_3rd_sem">BA 3rd Sem</string>
+    <string name="ba_4th_sem">BA 4th Sem</string>
+    <string name="ba_5th_sem">BA 5th Sem</string>
+    <string name="ba_6th_sem">BA 6th Sem</string>
+    <string name="study_material">Study Material</string>
+    <string name="ba_notes">BA Notes</string>
+    <string name="upload_notes">Upload Notes</string>
+    <string name="view_uploads">View Uploads</string>
+    <string name="upload">Upload</string>
+    <string name="notes">Notes</string>
+    <string name="view">View</string>
+    <string name="uploads">Uploads</string>
+    <string name="needy">Needy</string>
+    <string name="uploaded_notes">Uploaded Notes</string>
+    <string name="choose_file">Choose File</string>
+    <string name="menu_refresh">Menu Refresh</string>
+    <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name</string>
+
+    <!-- for intro slider -->
+    <string name="Intro">Intro</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Volunteer</string>
+    <string name="slide_1_desc">Volunteers are the one who is interested in writing exams for the Visually impaired students</string>
+
+    <string name="slide_2_title">Needy</string>
+    <string name="slide_2_desc"> NEEDY is the one who are searching for volunteers</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="title_activity_instructions">Instructions</string>
+
+    <!-- For Ads -->
+
+    <string name="admob_app_id">ca-app-pub-2428009821972719~1906239502</string>
+    <string name="banner_type_of_users">ca-app-pub-2428009821972719/4975255971</string>
+    <string name="test_banner_ad">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
+
+

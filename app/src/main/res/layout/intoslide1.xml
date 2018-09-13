@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_screen3">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/volunteer"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="71dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="VOLUNTEER"
+        android:textColor="@color/white"
+        android:textStyle="italic"
+        android:textSize="30sp"
+        android:layout_gravity="center"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="Register as a volunteer for helping visually impaired students to write thier exams"/>
+</LinearLayout>
