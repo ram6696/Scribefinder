@@ -39,6 +39,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -185,7 +186,15 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     });
             AlertDialog alert11 = builder1.create();
             alert11.show();
-        } else if(id == R.id.needydeleteAccount) {
+        }else if (id == R.id.like_us_on_facebook) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/EyeDroid-The-Scribe-Finder-1074854976011093/about/?entry_point=page_edit_dialog&tab=page_info"));
+            startActivity(intent);
+        }
+        else if (id == R.id.about_us) {
+            Intent volunteerPasswordChange= new Intent(NeedyMainPage.this, ContactUs.class);
+            startActivity(volunteerPasswordChange);
+        }
+        else if(id == R.id.needydeleteAccount){
             AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(this);
             deleteBuilder.setMessage("Are you sure you want to DELETE your Account?. Once you delete you cannot undo..!");
             deleteBuilder.setCancelable(false);
@@ -194,41 +203,73 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = user.getUid();
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                            final Query data = reference.child("Needy").child(uid);
+                            final Query users = reference.child("Users").child(uid);
+                            assert user != null;
 
                             user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        SharedPreferences prefs = getSharedPreferences("Login", MODE_PRIVATE);
-                                        SharedPreferences.Editor editor = prefs.edit();
-                                        editor.remove("uid");
-                                        editor.remove("email");
-                                        editor.remove("password");
-                                        editor.remove("accType");
-                                        editor.putBoolean("logStatus", false);
-                                        editor.apply();
-                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyMainPage.this);
-                                        builder1.setMessage("Account has been successfully Deleted.");
-                                        builder1.setCancelable(false);
-                                        builder1.setPositiveButton(
-                                                "Okay",
-                                                new DialogInterface.OnClickListener() {
-                                                    public void onClick(DialogInterface dialog, int id) {
-                                                        finish();
-                                                        startActivity(new Intent(NeedyMainPage.this, Login.class));
-                                                    }
-                                                });
-                                        AlertDialog alert11 = builder1.create();
-                                        alert11.show();
+                                        data.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                                                    dataSnapshot1.getRef().removeValue();
+                                                    SharedPreferences prefs = getSharedPreferences("Login", MODE_PRIVATE);
+                                                    SharedPreferences.Editor editor = prefs.edit();
+                                                    editor.remove("uid");
+                                                    editor.remove("email");
+                                                    editor.remove("password");
+                                                    //editor.remove("accType");
+                                                    editor.putBoolean("logStatus", false);
+                                                    editor.apply();
+                                                    AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyMainPage.this);
+                                                    builder1.setMessage("Account has been successfully Deleted.");
+                                                    builder1.setCancelable(false);
+                                                    builder1.setPositiveButton(
+                                                            "Okay",
+                                                            new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int id) {
+                                                                    finish();
+                                                                    startActivity(new Intent(NeedyMainPage.this, Login.class));
+                                                                }
+                                                            });
+                                                    AlertDialog alert11 = builder1.create();
+                                                    alert11.show();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+                                        users.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
+                                                    userSnapshot.getRef().removeValue();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
                                     }else{
                                         Toast.makeText(getApplicationContext(), "Account could not be Deleted.", Toast.LENGTH_LONG).show();
                                     }
                                 }
-                                });
-
+                            });
                         }
                     });
+
             deleteBuilder.setNegativeButton(
                     "No",
                     new DialogInterface.OnClickListener() {
@@ -238,6 +279,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                             dialog.cancel();
                         }
                     });
+
             AlertDialog deleteAlert = deleteBuilder.create();
             deleteAlert.show();
         }

@@ -131,7 +131,7 @@
     <string name="uploaded_notes">Uploaded Notes</string>
     <string name="choose_file">Choose File</string>
     <string name="menu_refresh">Menu Refresh</string>
-    <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name</string>
+    <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name </string>
 
     <!-- for intro slider -->
     <string name="Intro">Intro</string>

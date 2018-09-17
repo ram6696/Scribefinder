@@ -42,6 +42,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -305,13 +306,18 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = user.getUid();
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                            final Query data = reference.child("Volunteer").child(uid);
+                            final Query users = reference.child("Users").child(uid);
                             assert user != null;
 
                             user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
+
                                         SharedPreferences prefs = getSharedPreferences("Login", MODE_PRIVATE);
                                         SharedPreferences.Editor editor = prefs.edit();
                                         editor.remove("uid");
@@ -333,6 +339,33 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                                                 });
                                         AlertDialog alert11 = builder1.create();
                                         alert11.show();
+                                        data.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+                                        users.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
+                                                    userSnapshot.getRef().removeValue();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+
+                                            }
+                                        });
+
                                     }else{
                                         Toast.makeText(getApplicationContext(), "Account could not be Deleted.", Toast.LENGTH_LONG).show();
                                     }
@@ -358,6 +391,13 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             startActivity(volunteerProfileEditPageIntent);
         } else if (id == R.id.volunteerchangePassword) {
             Intent volunteerPasswordChange= new Intent(VolunteerMainPage.this, VolunteerPasswordChange.class);
+            startActivity(volunteerPasswordChange);
+        }else if (id == R.id.like_us_on_facebook) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/EyeDroid-The-Scribe-Finder-1074854976011093/about/?entry_point=page_edit_dialog&tab=page_info"));
+            startActivity(intent);
+        }
+        else if (id == R.id.about_us) {
+            Intent volunteerPasswordChange= new Intent(VolunteerMainPage.this, ContactUs.class);
             startActivity(volunteerPasswordChange);
         }
 

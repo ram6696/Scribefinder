@@ -26,7 +26,7 @@ tools:context="com.ourapps.scribefinder.ContactUs">
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/contactUs"
+        android:text="About us"
         android:layout_marginStart="40dp"/>
 
 </android.support.v7.widget.Toolbar>
@@ -34,16 +34,342 @@ tools:context="com.ourapps.scribefinder.ContactUs">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sriram C"
-        android:textSize="40sp"
+        android:text="About us"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="7411421737"
-        android:textSize="40sp"
+        android:text="we are the gropu of volunteers initiated ourself to help visually impaired students to get volunteers for writing exams"
+        android:textSize="20sp"
+         android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Developers"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:onClick="ramlinkedIn"
+        tools:ignore="UselessParent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Srirampic"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:src="@drawable/sriram"
+            android:layout_gravity="center_horizontal"
+            tools:targetApi="donut"
+            android:contentDescription="@string/image_not_available" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/sriramName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:text="Sriram"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/SriramCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:text="Bangalore"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/linkedin"
+            android:layout_gravity="center"
+            android:layout_marginRight="40dp"/>
+
+
+        </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:onClick="srikanthLinkedin"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/srikanthPic"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:src="@drawable/srikanth"
+            android:layout_gravity="center_horizontal"
+            tools:targetApi="donut"
+            android:contentDescription="@string/image_not_available" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/srikanthName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:text="Srikanth"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/srikanthCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:text="Bangalore"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/linkedin"
+            android:layout_gravity="center"
+            android:layout_marginRight="40dp"/>
+
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Team"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/roshanPic"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:src="@drawable/roshan"
+            android:layout_gravity="center_horizontal"
+            tools:targetApi="donut"
+            android:contentDescription="@string/image_not_available" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/roshanName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:text="Roshan"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/roshanCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:text="Bangalore"
+                tools:ignore="RtlHardcoded" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/background_dark"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/pravathPic"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:src="@drawable/pravath"
+            android:layout_gravity="center_horizontal"
+            tools:targetApi="donut"
+            android:contentDescription="@string/image_not_available" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/pravathName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:text="Pravath"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/pravathCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:text="Bangalore"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/srinivasPic"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_account_circle"
+            android:layout_gravity="center_horizontal"
+            tools:targetApi="donut"
+            android:contentDescription="@string/image_not_available" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/srinivasName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp"
+                android:text="Srinivas"
+                android:layout_marginLeft="5dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/srinivasCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:text="Bangalore"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/background_dark"/>
+
 </LinearLayout>

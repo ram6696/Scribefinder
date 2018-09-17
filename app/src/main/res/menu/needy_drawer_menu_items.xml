@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/upmenu">
 
         <item
             android:id="@+id/needyeditProfile"
@@ -13,12 +14,33 @@
             android:title="@string/change_password"/>
 
         <item
-            android:id="@+id/needylogout"
-            android:title="@string/logout" />
-
-        <item
             android:id="@+id/needydeleteAccount"
             android:title="@string/delete_account"/>
+
+
+
+
+
+
+
+    </group>
+    <group android:checkableBehavior="none"
+        android:id="@+id/bottomMenu">
+
+
+        <item
+            android:id="@+id/like_us_on_facebook"
+
+            android:title="Like us on facebook" />
+
+        <item
+            android:id="@+id/about_us"
+
+            android:title="About us" />
+
+        <item
+            android:id="@+id/needylogout"
+            android:title="@string/logout" />
     </group>
 
 </menu>

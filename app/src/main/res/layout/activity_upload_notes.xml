@@ -31,14 +31,40 @@
 
     </android.support.v7.widget.Toolbar>
 
+
+
     <TextView
-        android:layout_width="335dp"
-        android:layout_height="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/upload_notes_warning_message"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="22sp"
-       android:layout_marginTop="40dp"
-        android:layout_marginStart="20dp"/>
+       android:layout_marginTop="10dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(OR)"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:layout_marginTop="5dp"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make zip file file of all the notes and send it to Scribefinder.info.com"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_marginTop="10dp"
+         />
+
+
+
 
     <EditText
         android:id="@+id/etChoose"
@@ -47,7 +73,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:onClick="up"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:hint="@string/choose_file" />
 
     <Button
@@ -79,6 +105,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:textColor="@color/black"
             android:text="No file selected"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
