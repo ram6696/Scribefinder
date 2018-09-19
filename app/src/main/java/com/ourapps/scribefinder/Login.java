@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,12 +24,16 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ourapps.scribefinder.CheckConnection;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
@@ -42,11 +47,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private AdView adView;
 
     private TextInputLayout etEmailLayout, etPasswordLayout;
+    private static final String TAG = "Login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -162,31 +169,32 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                              @Override
                              public void onDataChange(DataSnapshot dataSnapshot) {
                                  if (dataSnapshot.exists()){
-                                     Users currUser = dataSnapshot.getValue(Users.class);
-                                     Intent destPage = null;
-                                     assert currUser != null;
-                                     switch (currUser.getAccountType()){
-                                         case "Needy":
-                                             destPage = new Intent(Login.this, NeedyMainPage.class);
-                                             break;
-                                         case "Volunteer":
-                                             destPage = new Intent(Login.this, VolunteerMainPage.class);
-                                             break;
-                                     }
-                                     SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
-                                     SharedPreferences.Editor Ed= sp.edit();
-                                     Ed.putBoolean("logStatus", true);
-                                     Ed.putString("uid", id);
-                                     Ed.putString("email",currUser.getEmail());
-                                     Ed.putString("password",currUser.getPassword());
-                                     Ed.putString("accType", currUser.getAccountType());
-                                     Ed.putString("name", currUser.getName());
-                                     Ed.putString("mobileNumber", currUser.getMobileNumber());
-                                     Ed.apply();
-                                     progressDialog.dismiss();
-                                     startActivity(destPage);
-                                     finish();
+                                            Users currUser = dataSnapshot.getValue(Users.class);
+                                            Intent destPage = null;
+                                            assert currUser != null;
+                                            switch (currUser.getAccountType()){
+                                                case "Needy":
+                                                destPage = new Intent(Login.this, NeedyMainPage.class);
+                                                break;
+                                                case "Volunteer":
+                                                destPage = new Intent(Login.this, VolunteerMainPage.class);
+                                                break;
+                                            }
+                                            SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+                                            SharedPreferences.Editor Ed= sp.edit();
+                                            Ed.putBoolean("logStatus", true);
+                                            Ed.putString("uid", id);
+                                            Ed.putString("email",currUser.getEmail());
+                                            Ed.putString("password",currUser.getPassword());
+                                            Ed.putString("accType", currUser.getAccountType());
+                                            Ed.putString("name", currUser.getName());
+                                            Ed.putString("mobileNumber", currUser.getMobileNumber());
+                                            Ed.apply();
+                                            progressDialog.dismiss();
+                                            startActivity(destPage);
+                                            finish();
                                  }
+
                              }
 
                              @Override
@@ -195,11 +203,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                          });
                      }
                  }else {
-                     progressDialog.dismiss();
-                     etPasswordLayout.setErrorEnabled(true);
-                     etPasswordLayout.setError("Invalid Credentials...!");
-                     requestFocus(etPassword);
-                     Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
+                     try {
+                         throw task.getException();
+                     } catch(FirebaseAuthInvalidCredentialsException e) {
+                         progressDialog.dismiss();
+                         etPassword.setError(getString(R.string.error_invalid_email));
+                         etPasswordLayout.requestFocus();
+                         Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
+                     } catch(FirebaseAuthInvalidUserException e) {
+                         progressDialog.dismiss();
+                         etEmailLayout.setError(getString(R.string.error_user_does_not_exists));
+                         etEmailLayout.requestFocus();
+                         Toast.makeText(Login.this, "User does not exists...!", Toast.LENGTH_LONG).show();
+                     } catch(Exception e) {
+                         Log.e(TAG, e.getMessage());
+                     }
+//                     progressDialog.dismiss();
+//                     etPasswordLayout.setErrorEnabled(true);
+//                     etPasswordLayout.setError("User does not exists!");
+//                     requestFocus(etPassword);
+//                     Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
              }
              }
          });

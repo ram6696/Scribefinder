@@ -2,9 +2,11 @@ package com.ourapps.scribefinder;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -2157,10 +2159,10 @@ case "Wayanad":
                     progressDialog.dismiss();
 
                     finish();
-                    startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
+                    //startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
 
 
-                   /* AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerRegister.this);
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerRegister.this);
                     builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
                     builder1.setCancelable(true);
 
@@ -2173,7 +2175,7 @@ case "Wayanad":
                                 }
                             });
                     AlertDialog alert11 = builder1.create();
-                    alert11.show();*/
+                    alert11.show();
                 }
                 }
             });

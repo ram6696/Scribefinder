@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -106,12 +107,17 @@ public class ResetPassword extends AppCompatActivity {
                         }else {
                             progressDialog.dismiss();
                             System.out.println("No data found");
+                            etEmailLayout.setErrorEnabled(true);
+                            etEmailLayout.setError("Email does not exists!");
+                            requestFocus(etEmail);
+                            Toast.makeText(ResetPassword.this, "Email does not exists", Toast.LENGTH_LONG).show();
                         }
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         System.out.println(databaseError);
+
                     }
                 };
 

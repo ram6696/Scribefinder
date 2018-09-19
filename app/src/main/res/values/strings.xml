@@ -132,6 +132,8 @@
     <string name="choose_file">Choose File</string>
     <string name="menu_refresh">Menu Refresh</string>
     <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name </string>
+    <string name="error_invalid_email">Invalid credentials</string>
+    <string name="error_user_does_not_exists">User does not Exists</string>
 
     <!-- for intro slider -->
     <string name="Intro">Intro</string>
