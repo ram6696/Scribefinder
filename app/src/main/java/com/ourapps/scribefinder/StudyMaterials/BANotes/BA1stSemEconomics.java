@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder;
+package com.ourapps.scribefinder.StudyMaterials;
 
 import android.content.Intent;
 import android.net.Uri;
