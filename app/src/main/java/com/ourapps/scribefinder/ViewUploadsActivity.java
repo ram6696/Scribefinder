@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,7 +56,7 @@ public class ViewUploadsActivity extends AppCompatActivity {
 
         //getting the database reference
         mDatabaseReference = FirebaseDatabase.getInstance().getReference(UploadConstant.DATABASE_PATH_UPLOADS);
-
+          String currentUser = FirebaseAuth.getInstance().getUid();
         //retrieving upload data from firebase database
         mDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override

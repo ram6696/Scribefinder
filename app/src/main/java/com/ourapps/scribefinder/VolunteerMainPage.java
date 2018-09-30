@@ -135,6 +135,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
         final SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserName = sp.getString("name", "");
+        System.out.println(currentUserName);
         currentUserEmail = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
 
@@ -204,7 +205,6 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
     }
 
 
-
     private void setDefaultValues() {
 
         progressDialog.setMessage("Please Wait....");
@@ -220,7 +220,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                 volunteerEmail = findViewById(R.id.volunteerEmail);
                 String picture = dataSnapshot.child("photoUrl").getValue().toString();
                 if(!(picture.isEmpty()))
-                    Picasso.get().load(picture).noFade().into(volunteerProfilePic);
+                    Picasso.get().load(picture).into(volunteerProfilePic);
                 volunteerName.setText(currentUserName);
                 volunteerEmail.setText(currentUserEmail);
                 progressDialog.dismiss();

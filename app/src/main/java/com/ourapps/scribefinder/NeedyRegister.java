@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -59,6 +60,8 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
         etNewPasswordLayout = findViewById(R.id.etNewPasswordLayout);
         etConfirmPasswordLayout = findViewById(R.id.etConfirmPasswordLayout);
 
+
+        etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
         btnRegister = findViewById(R.id.btnRegiser);
         btnRegister.setOnClickListener(this);
     }

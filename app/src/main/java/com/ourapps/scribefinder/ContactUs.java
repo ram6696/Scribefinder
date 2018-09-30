@@ -24,8 +24,8 @@ public class ContactUs extends AppCompatActivity {
     }
 
     public void srikanthLinkedin(View view) {
-        //TODO : Srikanths linked in link
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/sriram-c-a62686146/"));
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/srikanth-v-mass-326804b9/"));
         startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder.Notes;
+package com.ourapps.scribefinder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.ourapps.scribefinder.R;
 
 public class BA1stSem extends AppCompatActivity {
 

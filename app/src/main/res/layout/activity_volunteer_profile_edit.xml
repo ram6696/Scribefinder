@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".VolunteerProfileEdit">
@@ -160,6 +160,7 @@
                     android:layout_height="40dp"
                     android:background="@color/button_background_color"
                     android:text="@string/dob"
+
                     android:textSize="18sp"
                     android:layout_gravity="center_vertical"/>
 
@@ -174,7 +175,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/date_of_birth"
-                        android:inputType="date" />
+                        android:inputType="date"
+                        />
 
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>

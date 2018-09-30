@@ -100,7 +100,7 @@
     <string name="district">District</string>
     <string name="state">State</string>
     <string name="asterisk_symbol">*</string>
-    <string name="image_not_available">Image Not Available..!</string>
+    <string name="image_not_available">Back Button</string>
     <string name="request">Request</string>
     <string name="volunteers_found">Volunteers Found</string>
     <string name="search_for_scribe">Search for Scribe</string>
@@ -134,7 +134,7 @@
     <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name </string>
     <string name="error_invalid_email">Invalid credentials</string>
     <string name="error_user_does_not_exists">User does not Exists</string>
-
+    <string name="file_not_selected">No File Selected</string>
     <!-- for intro slider -->
     <string name="Intro">Intro</string>
     <string name="next">NEXT</string>

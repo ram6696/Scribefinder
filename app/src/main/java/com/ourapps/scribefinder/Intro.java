@@ -21,8 +21,7 @@ public class Intro extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
-    private LinearLayout dotsLayout;
-    private TextView[] dots;
+
     private int[] layouts;
     private Button btnSkip, btnNext;
     private PreferenceManager prefManager;
@@ -46,8 +45,7 @@ public class Intro extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
+         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
 
 
@@ -62,7 +60,7 @@ public class Intro extends AppCompatActivity {
                 };
 
         // adding bottom dots
-        addBottomDots(0);
+
 
         // making notification bar transparent
         changeStatusBarColor();
@@ -94,24 +92,6 @@ public class Intro extends AppCompatActivity {
         });
     }
 
-    private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
-
-        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
-        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
-        }
-
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
-    }
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
@@ -128,7 +108,7 @@ public class Intro extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            addBottomDots(position);
+
 
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {

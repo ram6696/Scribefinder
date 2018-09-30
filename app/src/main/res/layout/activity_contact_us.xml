@@ -121,7 +121,8 @@ tools:context="com.ourapps.scribefinder.ContactUs">
             android:layout_marginRight="40dp"/>
 
 
-        </LinearLayout>
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

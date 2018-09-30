@@ -121,7 +121,7 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     }
 
     public void uploadFile() {
-        if (!selectedFile.equals(null)) {
+        if (selectedFile!= null) {
             progressBar.setVisibility(View.VISIBLE);
             StorageReference sRef = mStorageReference.child(UploadConstant .STORAGE_PATH_UPLOADS + etChoose.getText());
             sRef.putFile(selectedFile)
@@ -129,11 +129,11 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
                         @SuppressWarnings("VisibleForTests")
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressBar.setVisibility(View.GONE);
-                        textViewStatus.setText("File Uploaded Successfully");
+                            progressBar.setVisibility(View.GONE);
+                            textViewStatus.setText("File Uploaded Successfully");
 
-                        UploadData upload = new UploadData (etChoose.getText().toString(), taskSnapshot.getDownloadUrl().toString());
-                        mDatabaseReference.child(currentUserId).setValue(upload);
+                            UploadData upload = new UploadData (etChoose.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                            mDatabaseReference.push().setValue(upload);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -141,15 +141,20 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
                         public void onFailure(@NonNull Exception exception) {
                             Toast.makeText(getApplicationContext(), exception.getMessage(), Toast.LENGTH_LONG).show();
                         }
-                }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @SuppressWarnings("VisibleForTests")
-                    @Override
-                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                        textViewStatus.setText((int) progress + "% Uploading...");
-                    }
-                }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                 @SuppressWarnings("VisibleForTests")
+                                                 @Override
+                                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                                     double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                                                     textViewStatus.setText((int) progress + "% Uploading...");
+                                                 }
+                                             }
             );
+        }else{
+            etChoose.setError(getString(R.string.file_not_selected));
+            etChoose.requestFocus();
+            Toast.makeText(UploadNotes.this, "No File Selected", Toast.LENGTH_LONG).show();
+
         }
     }
 

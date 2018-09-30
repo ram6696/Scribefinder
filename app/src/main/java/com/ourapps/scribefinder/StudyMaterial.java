@@ -8,8 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ourapps.scribefinder.Notes.NotesBA;
-
 public class StudyMaterial extends AppCompatActivity {
 
     String item[] = new String[]{"B.A", "B.Com"};

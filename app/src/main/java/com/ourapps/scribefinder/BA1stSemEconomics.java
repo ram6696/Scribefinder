@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder.Notes;
+package com.ourapps.scribefinder;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -30,7 +30,7 @@ public class BA1stSemEconomics extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEconomics%2Fchapter%201.docx?alt=media&token=e0f81bb4-5cd4-4d07-88e3-a925d5348ff1"));
+                        intent[0].setData(Uri.parse("https://drive.google.com/uc?export=download&id=1VNQwCWTgOSqN0qS8MY5ZoeEtnh73AJoy"));
                         startActivity(intent[0]);
                         break;
                     case 1:

@@ -78,8 +78,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etMobileNumber = findViewById(R.id.etMobileNumber);
         etNewPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        etdob = findViewById(R.id.etDOB);
-        etAddress = findViewById(R.id.etAddress);
+
         etPincode = findViewById(R.id.etPincode);
 
         etNameLayout = findViewById(R.id.etNameLayout);
@@ -92,6 +91,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etPincodeLayout = findViewById(R.id.etPincodeLayout);
 
         etPincode.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
+        etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         genderGroup = findViewById(R.id.genderGroup);
 
@@ -135,7 +135,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         });
     }
 
-    private void setValuesForCity(String district) {
+    public void setValuesForCity(String district) {
         switch (district) {
             case "Nicobar":
                 citySpinnerItems = new String[]{"Nicobar"};
@@ -474,7 +474,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 citySpinnerItems = new String[]{" Godhra","Halol "," Kalol", "Kalol Ina "," Lunawada", "Santrampur" };
                 break;
 
-            case "Patan":
+            case "Pataan":
                 citySpinnerItems = new String[]{"Chanasma ","Harij "," Patan", " Rahanpur"," Sidhpur"};
                 break;
 
@@ -1009,41 +1009,6 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
 
 
 
-//Districts and cities of Nagaland
-
-
-
-            case "Dimapur":
-                citySpinnerItems = new String[]{"Chumukedima","Dimapur"};
-                break;
-
-            case "Kohima":
-                citySpinnerItems = new String[]{"Kohima","Peren"};
-                break;
-
-            case "Mokochung":
-                citySpinnerItems = new String[]{"Mokochung"};
-                break;
-
-            case "Mon":
-                citySpinnerItems = new String[]{"Mon"};
-                break;
-
-            case "Phek":
-                citySpinnerItems = new String[]{"Phek"};
-                break;
-
-            case "Tuensang":
-                citySpinnerItems = new String[]{"Tuensang"};
-                break;
-
-            case "Wokha":
-                citySpinnerItems = new String[]{"Wokha"};
-                break;
-
-            case "Zunheboto":
-                citySpinnerItems = new String[]{"Zunheboto"};
-                break;
 
 
 
@@ -1138,7 +1103,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
             case "Arwal":
                 citySpinnerItems = new String[]{"Arwal","Kurtha"};
                 break;
-            case "Aurangabad":
+            case "Arangabad":
                 citySpinnerItems = new String[]{"Aurangabad","Deb","Goh","Nabinagar","Ovra","Rafiganj"};
                 break;
             case "Banka":
@@ -1836,17 +1801,1250 @@ case "Wayanad":
             citySpinnerItems = new String[] {"Kalpetta","North Wynad","Sultan's Battery"};
             break;
 
-//Districts of
+//Districts of Madhya pradesh
+
+            case "Badwani":
+                citySpinnerItems = new String[] {"Anjad","Barwani","Rajpur","Sendhwa"};
+                break;
+
+            case "Balaghat":
+                citySpinnerItems = new String[] {"Baihar","Balaghat","Katngi","Khairlanjee","Kirnapur","Lanji","Paraswada","Wara Seoni"};
+                break;
+
+            case "Betul":
+                citySpinnerItems = new String[] {"Amla","Betul","Bhainsdehi","Ghora Dongri","Masod","Multai"};
+                break;
+
+            case "Bhind":
+                citySpinnerItems = new String[] {"Attair","Bhind","Gohad","Lahar","Mehgaon","Ron"};
+                break;
+
+            case "Bhopal":
+                citySpinnerItems = new String[] {"Berasia","Bhopal North","Bhopal South","Govindpura"};
+                break;
+
+            case "Chhatapur":
+                citySpinnerItems = new String[] {"Bijawar","Chandla","Chhattapur","Maharjpur","Malehra"};
+                break;
+
+            case "Chhindwara":
+                citySpinnerItems = new String[] {"Amarwara","Chaurai","Chhindwara","Damua","Jamai","Pandhurna","Parasia","Sausar"};
+                break;
+
+            case "Damoh":
+                citySpinnerItems = new String[] {"Damoh","Hatta","Nohata","Patheria"};
+                break;
+
+            case "Datia":
+                citySpinnerItems = new String[] {"Bhander","Datia","Seondha"};
+                break;
+
+            case "Dewas":
+                citySpinnerItems = new String[] {"Bagli","Dewas","Hatpiplya","Khategaon","Sonkatch"};
+                break;
+
+            case "Dhar":
+                citySpinnerItems = new String[] {"Badnawar","Dhar","Dharampuri","Kukshi","Manawar","Sardarpur"};
+                break;
+
+            case "Dindori":
+                citySpinnerItems = new String[] {"Bajag","Dindori","Shahpura"};
+                break;
+
+            case "Guna":
+                citySpinnerItems = new String[] {"Ashoknagar","Chachaura","Guna","Mungaoli","Raghogarh","Shahdora"};
+                break;
+
+            case "Gwalior":
+                citySpinnerItems = new String[] {"Dabra","Gird","Gwalior","Lashkar East","Lashkar West","Morar"};
+                break;
+
+            case "Harda":
+                citySpinnerItems = new String[] {"Harda","Timarni"};
+                break;
+
+            case "Hoshangabad":
+                citySpinnerItems = new String[] {"Hoshangabad","Itarsi","Piparia","Seoni-malwa"};
+                break;
+
+            case "Indore":
+                citySpinnerItems = new String[] {"Depalpur","Indore","Mhow","Sawer"};
+                break;
+
+            case "Jabalpur":
+                citySpinnerItems = new String[] {"Bargi","Jab. Cantonment","Jab. Central","Jab. East","Jab. West","Majholi","Panagar","Patan","Sihora"};
+                break;
+
+            case "Jhabua":
+                citySpinnerItems = new String[] {"Alirajpur","Jhabua","Jobat","Petalwad","Thandla"};
+                break;
+
+            case "Katni":
+                citySpinnerItems = new String[] {"Badwara","Bahoriband","Murwara","Vijairaghogarh"};
+                break;
+
+            case "Khandwa":
+                citySpinnerItems = new String[] {"Burhanpur","Harsud","Khandwa","Nepanagar","Nimarkhedi","Pandhana","shahpur"};
+                break;
+
+            case "Khargone":
+                citySpinnerItems = new String[] {"Barwaha","Bhikangaon","Dhulkot","Kasrawad","Khargone","Maheshwar"};
+                break;
+
+            case "Mandla":
+                citySpinnerItems = new String[] {"Bichhia","Mandla","Nainpur","Niwas"};
+                break;
+
+            case "Mandsaur":
+                citySpinnerItems = new String[] {"Garoth","Mandsaur","Sitamau","Suwasara"};
+                break;
+
+            case "Morena":
+                citySpinnerItems = new String[] {"Ambah","Dimni","Joura","Morena","Sabalgarh","Sumawali"};
+                break;
+
+            case "Narsimhpur":
+                citySpinnerItems = new String[] {"Bohani","Gadarwara","Gotegaon","Narsimhapur","Neemuch"};
+                break;
+
+            case "Neemuch":
+                citySpinnerItems = new String[] {"Jawad","Manasa","Panna"};
+                break;
+
+            case "Panna":
+                citySpinnerItems = new String[] {"Amanganj","Powai"};
+                break;
+
+            case "Raisen":
+                citySpinnerItems = new String[] {"Bareli","Bhojpur","Sanchi","Udaipura"};
+                break;
+
+            case "Rajgarh":
+                citySpinnerItems = new String[] {"Biaora","Khilchipur","Narsingarh","Rajgarh","Sarangpur"};
+                break;
+
+            case "Ratlam":
+                citySpinnerItems = new String[] {"A Lot","Jaora","Ratlam Rural","Ratlam Town","Sailana"};
+                break;
+
+            case "Rewa":
+                citySpinnerItems = new String[] {"Deotalab","Gurh","Mangawan","Mouganj","Rewa","Sirmour","Teonthar"};
+                break;
+
+            case "Sagar":
+                citySpinnerItems = new String[] {"Bandha","Bina","Deori","Khurai","Naryaoli","Rehli","Sagar","Surkhi"};
+                break;
+
+            case "Satna":
+                citySpinnerItems = new String[] {"Amarpatan","Chitrkoot","Maihar","Nagod","Raigaon","Rampur Baghelan","Satna"};
+                break;
+
+            case "Sehore":
+                citySpinnerItems = new String[] {"Ashta","Budhni","Ichhawar","Sehore"};
+                break;
+
+            case "Seoni":
+                citySpinnerItems = new String[] {"Barghat","Ghansor","Keolari","Lakhanadon","Seoni"};
+                break;
+
+            case "Shahdol":
+                citySpinnerItems = new String[] {"Annupur","Beohari","Jai Singh Nagar","Kotma","Pushprajgarh","Suhagpur"};
+                break;
+
+            case "Shajapur":
+                citySpinnerItems = new String[] {"Agar","Gulana","Shajapur","Shujalpur","Susner"};
+                break;
+
+            case "Sheopur":
+                citySpinnerItems = new String[] {"Bijeypur","Sheopur"};
+                break;
+
+            case "Shivpuri":
+                citySpinnerItems = new String[] {"Karera","Kolaras","Pichhore","Pohri","Shivpuri"};
+                break;
+
+            case "Sidhi":
+                citySpinnerItems = new String[] {"Beosar","Dhauhani","Gopadbanas","Hurahat","Sidhi","Singrauli"};
+                break;
+
+            case "Tikamgarh":
+                citySpinnerItems = new String[] {"Jatara","Khargapur","Niwari","Tikamgarh"};
+                break;
+
+            case "Ujjain":
+                citySpinnerItems = new String[] {"Badnagar","Ghatiya","Khachrod","Mahidpur","Tarana","Ujjain North","Ujjain South"};
+                break;
+
+            case "Umaria":
+                citySpinnerItems = new String[] {"Nowrozavad","Umaria"};
+                break;
+
+            case "Vidisha":
+                citySpinnerItems = new String[] {"Basoda","Kurwai","Shanshbad","Sironj","Vidisha"};
+                break;
+
+
+//Districts of Maharahtra
+            case "Adyar":
+                citySpinnerItems = new String[] {"Adyar"};
+                break;
+
+            case "Ahemadnagar":
+                citySpinnerItems = new String[] {"Ahemadnagar","Karjat","Kopargaon","Nagar Akola","Parner","Pathardi","Rahuri","Sangamner","Sheogaon","Shirdi","Shrigonda","Shrirampur"};
+                break;
+
+            case "Ahmedpur":
+                citySpinnerItems = new String[] {"Ahmedpur"};
+                break;
+
+            case "Akkalkot":
+                citySpinnerItems = new String[] {"Akkalkot"};
+                break;
+
+            case "Akola":
+                citySpinnerItems = new String[] {"Akola","Akot","Balapur","Borgaon Manju","Karanja","Mangrulpir","Medshi","Murtizapur","Patur","Washim"};
+                break;
+
+            case "Ambad":
+                citySpinnerItems = new String[] {"Ambad"};
+                break;
+
+            case "Ambegaon":
+                citySpinnerItems = new String[] {"Ambegaon"};
+                break;
+
+            case "Amgaon":
+                citySpinnerItems = new String[] {"Amgaon"};
+                break;
+
+            case "Amravati":
+                citySpinnerItems = new String[] {"Achalpur","Amravathi","Badnera","Chandur","Daryapur","Melghat","Morshi","Teosa","Walgaon"};
+                break;
+
+            case "Armori":
+                citySpinnerItems = new String[] {"Armori"};
+                break;
+
+            case "Ashthi":
+                citySpinnerItems = new String[] {"Ashthi"};
+                break;
+
+            case "Aurangabad":
+                citySpinnerItems = new String[] {"Aurangabad","Gangapur","Kannad","Paithan","Sillod","Vaijapur"};
+                break;
+
+            case "Ausa":
+                citySpinnerItems = new String[] {"Ausa"};
+                break;
+
+            case "Badnapur":
+                citySpinnerItems = new String[] {"Badnapur"};
+                break;
+
+            case "Baramati":
+                citySpinnerItems = new String[] {"Baramati"};
+                break;
+
+            case "Barshi":
+                citySpinnerItems = new String[] {"Barshi"};
+                break;
+
+            case "Basmath":
+                citySpinnerItems = new String[] {"Basmath"};
+                break;
+
+            case "Beed":
+                citySpinnerItems = new String[] {"Ashthi","Beed","Chausala","Georai","Kaij","Manjlegaon","Renapur"};
+                break;
+
+            case "Bhadravati":
+                citySpinnerItems = new String[] {"Bhadravati"};
+                break;
+
+            case "Bhandara":
+                citySpinnerItems = new String[] {"Adyar","Bhandara","Lakhandur","Sakoli","Tumsar"};
+                break;
+
+            case "Bhavani Peth":
+                citySpinnerItems = new String[] {"Bhavani Peth"};
+                break;
+
+            case "Bhilwadi Wangi":
+                citySpinnerItems = new String[] {"Bhilwadi Wangi"};
+                break;
+
+            case "Bhokar":
+                citySpinnerItems = new String[] {"Bhokar"};
+                break;
+
+            case "Bhokardan":
+                citySpinnerItems = new String[] {"Bhokardan"};
+                break;
+
+            case "Bhor":
+                citySpinnerItems = new String[] {"Bhor"};
+                break;
+
+            case "Biloli":
+                citySpinnerItems = new String[] {"Bilolo"};
+                break;
+
+            case "Bopodi":
+                citySpinnerItems = new String[] {"Bopodi"};
+                break;
+
+            case "Buldhana":
+                citySpinnerItems = new String[] {"Buldhana","Chikhali","Jalamb","Khamgaon","Malkapur","Mehkar","Sindkhed Raja"};
+                break;
+
+            case "Chandgad":
+                citySpinnerItems = new String[] {"Chandgad"};
+                break;
+
+            case "Chandrapur":
+                citySpinnerItems = new String[] {"Bhadravati","Chandrapur","Chimur","Rajura","Saoli"};
+                break;
+
+            case "Chausala":
+                citySpinnerItems = new String[] {"Chausala"};
+                break;
+
+            case "Chimur":
+                citySpinnerItems = new String[] {"Chimur"};
+                break;
+
+            case "Darwha":
+                citySpinnerItems = new String[] {"Darwha"};
+                break;
+
+            case "Daund":
+                citySpinnerItems = new String[] {"Daund"};
+                break;
+
+            case "Dchiroli":
+                citySpinnerItems = new String[] {"Dchiroli"};
+                break;
+
+            case "Dhule":
+                citySpinnerItems = new String[] {"Dhule","Kusumba","Sakri","Shirpur","Sindkheda"};
+                break;
+
+            case "Digras":
+                citySpinnerItems = new String[] {"Digras"};
+                break;
+
+            case "Gadhchiroli":
+                citySpinnerItems = new String[] {"Armori","Dchiroli","Sironcha"};
+                break;
+
+            case "Gadhinglaj":
+                citySpinnerItems = new String[] {"Gadhinglaj"};
+                break;
+
+            case "Gangakhed":
+                citySpinnerItems = new String[] {"Gangakhed"};
+                break;
+
+            case "Gangapur":
+                citySpinnerItems = new String[] {"Gangapur"};
+                break;
+
+            case "Gaon":
+                citySpinnerItems = new String[] {"Gaon"};
+                break;
+
+            case "Georai":
+                citySpinnerItems = new String[] {"Georai"};
+                break;
+
+            case "Gondiya":
+                citySpinnerItems = new String[] {"Amagaon","Gondiya","Goregaon","Tirora"};
+                break;
+
+            case "Goregaon":
+                citySpinnerItems = new String[] {"Goregaon"};
+                break;
+
+            case "Hadgaon":
+                citySpinnerItems = new String[] {"Hadgaon"};
+                break;
+
+            case "Haveli":
+                citySpinnerItems = new String[] {"Haveli"};
+                break;
+
+            case "Her":
+                citySpinnerItems = new String[] {"Her"};
+                break;
+
+            case "Hingoli":
+                citySpinnerItems = new String[] {"Basmath","Hingoli","Kalamnuri"};
+                break;
+
+            case "Ichalkaranji":
+                citySpinnerItems = new String[] {"Ichalkaranji"};
+                break;
+
+            case "Indapur":
+                citySpinnerItems = new String[] {"Indapur"};
+                break;
+
+            case "Jalgaon":
+                citySpinnerItems = new String[] {"Amalner","Bhusaval","Chalisgaon","Chopda","Edlabad","Erandol","Jalgaon","Jamner","Pachora","Parola","Raver","Yaval"};
+                break;
+
+            case "Jalna":
+                citySpinnerItems = new String[] {"Jalna"};
+                break;
+
+            case "Jaoli":
+                citySpinnerItems = new String[] {"Jaoli"};
+                break;
+
+            case "Jat":
+                citySpinnerItems = new String[] {"Jat"};
+                break;
+
+            case "Jintoor":
+                citySpinnerItems = new String[] {"Jintoor"};
+                break;
+
+            case "Junnar":
+                citySpinnerItems = new String[] {"Junnar"};
+                break;
+
+            case "Kagal":
+                citySpinnerItems = new String[] {"Kagal"};
+                break;
+
+            case "Kaij":
+                citySpinnerItems = new String[] {"Kaij"};
+                break;
+
+            case "kalamb":
+                citySpinnerItems = new String[] {"Kalamb"};
+                break;
+
+            case "Kalmnuri":
+                citySpinnerItems = new String[] {"Kalamnuri"};
+                break;
+
+            case "Kandhar":
+                citySpinnerItems = new String[] {"Kandhar"};
+                break;
+
+            case "Kannad":
+                citySpinnerItems = new String[] {"Kannad"};
+                break;
+
+            case "Karad":
+                citySpinnerItems = new String[] {"Karad"};
+                break;
+
+            case "Karjat":
+                citySpinnerItems = new String[] {"Karjat"};
+                break;
+
+            case "Karmala":
+                citySpinnerItems = new String[] {"Karmala"};
+                break;
+
+            case "Karvir":
+                citySpinnerItems = new String[] {"Karvir"};
+                break;
+
+            case "Kasba Peth":
+                citySpinnerItems = new String[] {"Kasba Peth"};
+                break;
+
+            case "Kavathe Mahankal":
+                citySpinnerItems = new String[] {"Kavathe Mahankal"};
+                break;
+
+            case "Kelapur":
+                citySpinnerItems = new String[] {"Kelapur"};
+                break;
+
+            case "Khanapur Atpadi":
+                citySpinnerItems = new String[] {"Khanapur Atpadi"};
+                break;
+
+            case "Khatav":
+                citySpinnerItems = new String[] {"Khatav"};
+                break;
+
+            case "Khed Alandi":
+                citySpinnerItems = new String[] {"Khed Alandi"};
+                break;
+
+            case "Kinwat":
+                citySpinnerItems = new String[] {"Kinwat"};
+                break;
+
+            case "Kolhapur":
+                citySpinnerItems = new String[] {"Chandgad","Gandhinglaj","Ichalkaranji","Kagal","Karvir","Kolhapur","Panhale","Radhanagari","Sangrul","Shahuwadi","Shirol","Vadgaon"};
+                break;
+
+            case "Kopargaon":
+                citySpinnerItems = new String[] {"Kopargaon"};
+                break;
+
+            case "Koregaon":
+                citySpinnerItems = new String[] {"Koregaon"};
+                break;
+
+            case "Lakhandur":
+                citySpinnerItems = new String[] {"Lakhandur"};
+                break;
+
+            case "Latur":
+                citySpinnerItems = new String[] {"Ahmedpur","Ausa","Her","Latur","Nilanga","Udgir"};
+                break;
+
+            case "Madha":
+                citySpinnerItems = new String[] {"Madha"};
+                break;
+
+            case "Malsiras":
+                citySpinnerItems = new String[] {"Malsiras"};
+                break;
+
+            case "Man":
+                citySpinnerItems = new String[] {"Man"};
+                break;
+
+            case "Mangalwedha":
+                citySpinnerItems = new String[] {"Mangalwedha"};
+                break;
+
+            case "Manjlegaon":
+                citySpinnerItems = new String[] {"Manjlegaon"};
+                break;
+
+            case "Maval":
+                citySpinnerItems = new String[] {"Maval"};
+                break;
+
+            case "Miraj":
+                citySpinnerItems = new String[] {"Miraj"};
+                break;
+
+            case "Mohol":
+                citySpinnerItems = new String[] {"Mohol"};
+                break;
+
+            case "Mudkhed":
+                citySpinnerItems = new String[] {"Mudkhed"};
+                break;
+
+            case "Mukhed":
+                citySpinnerItems = new String[] {"Mukhed"};
+                break;
+
+            case "Mulshi":
+                citySpinnerItems = new String[] {"Mulshi"};
+                break;
+
+            case "Mumbai City":
+                citySpinnerItems = new String[] {"Mumbai"};
+                break;
+
+            case "Mumbai Suburban":
+                citySpinnerItems = new String[] {"Amboli","Andheri","Bhandup","Borivali","Chembur","Ghatkopar","Goregaon","Kandivali","Kherwadi","Kurla","Malad","Mulund","Nehrunagar","Santacruz","Trombay","Vandre","Vile Parle"};
+                break;
+
+            case "Nagar Akola":
+                citySpinnerItems = new String[] {"Nagar Akola"};
+                break;
+
+            case "Nagpur":
+                citySpinnerItems = new String[] {"Kamthi","Katol","Nagpur","Ramtek","Savner","Umred"};
+                break;
+
+            case "Nanded":
+                citySpinnerItems = new String[] {"Bhokar","Biloli","Hadgaon","Kandhar","Kinwat","Mudkhed","Nanded"};
+                break;
+
+            case "Nandurbar":
+                citySpinnerItems = new String[] {"Akrani","Nandurbar","Navapur","Shahade","Talode"};
+                break;
+
+            case "Nashik":
+                citySpinnerItems = new String[] {"Balgan","Chandwad","Dabhadi","Devlali","Dindori","Igatpuri","Kalyan","Malegaon","Nandgaon","Nashik","Niphad","Sinnar","Surgana","Yewla"};
+                break;
+
+            case "Nilanga":
+                citySpinnerItems = new String[] {"Nilanga"};
+                break;
+
+            case "North Solapur":
+                citySpinnerItems = new String[] {"North Solapur"};
+                break;
+
+            case "Omerga":
+                citySpinnerItems = new String[] {"Omerga"};
+                break;
+
+            case "Osmanabad":
+                citySpinnerItems = new String[] {"Kalamb","Omerga","Osmanabad","Paranda","Tuljapur"};
+                break;
+
+            case "Paithan":
+                citySpinnerItems = new String[] {"Paithan"};
+                break;
+
+            case "Pandharpur":
+                citySpinnerItems = new String[] {"Pandharpur"};
+                break;
+
+            case "Panhale":
+                citySpinnerItems = new String[] {"Panhale"};
+                break;
+
+            case "Paranda":
+                citySpinnerItems = new String[] {"Paranda"};
+                break;
+
+            case "Parbhani":
+                citySpinnerItems = new String[] {"Gangakhed","Jintoor","Parbhani","Pathri","Singnapur"};
+                break;
+
+            case "Parner":
+                citySpinnerItems = new String[] {"Parner"};
+                break;
+
+            case "Partur":
+                citySpinnerItems = new String[] {"Partur"};
+                break;
+
+            case "Parvati":
+                citySpinnerItems = new String[] {"Parvati"};
+                break;
+
+            case "Patan":
+                citySpinnerItems = new String[] {"Patan"};
+                break;
+
+            case "Pathardi":
+                citySpinnerItems = new String[] {"Pathardi"};
+                break;
+
+            case "Pathri":
+                citySpinnerItems = new String[] {"Pathri"};
+                break;
+
+            case "Phaltan":
+                citySpinnerItems = new String[] {"Phaltan"};
+                break;
+
+            case "Pune":
+                citySpinnerItems = new String[] {"Ambegaon","Aundh","B S Dhole Patil Path","Balewadi","Baner","Baramati","Bhavani Peth","Bhor","Bopodi","Cavthan","Chakan","Dange Chawk","Daund","Dhankawadi","Dhanori","Erandwana","Fatima Nagar","Ganesh Peth","Gokhale Nagar","Gultekdi","Guru Nanak Nagar","Hadapsar","Haveli","Hinjewadi","Indapur","Junnar","Kalewadi","Kasba Peth","Khed Alandi","Kondhwa","Kothrud","Maval","Mulshi","Nana Peth","Narayan Peth","Pimple","PimpriChinchwad","Pune Cantonment","Purandhar","Shastri Nagar","Shivajinagar","Sinhagad Road","Wakad","Wanowrie"};
+                break;
+
+            case "Purandhar":
+                citySpinnerItems = new String[] {"Purandhar"};
+                break;
+
+            case "Pusad":
+                citySpinnerItems = new String[] {"Pusad"};
+                break;
+
+            case "Radhanagari":
+                citySpinnerItems = new String[] {"Radhanagari"};
+                break;
+
+            case "Rahuri":
+                citySpinnerItems = new String[] {"Rahuri"};
+                break;
+
+            case "Raigad":
+                citySpinnerItems = new String[] {"Alibag","Khalapur","Mahad","Mangaon","Panvel","Pen","Shrivardhan","Uran"};
+                break;
+
+            case "Rajura":
+                citySpinnerItems = new String[] {"Rajura"};
+                break;
+
+            case "Ratnagiri":
+                citySpinnerItems = new String[] {"Chiplun","Dapoli","Guhagar","Khed","Lanja","Mandangad","Rajapur","Ratnagiri","Sangameshwar"};
+                break;
+
+            case "Renapur":
+                citySpinnerItems = new String[] {"Renapur"};
+                break;
+
+            case "Sakoli":
+                citySpinnerItems = new String[] {"Sakoli"};
+                break;
+
+            case "Sangamner":
+                citySpinnerItems = new String[] {"Sangamner"};
+                break;
+
+            case "Sangli":
+                citySpinnerItems = new String[] {"Bhilwadi Wangi","Jat","Kavathe Mahankal","Khanapur Atpadi","Miraj","Sangli","Shirala","Tasgaon","Walwa"};
+                break;
+
+            case "Sangole":
+                citySpinnerItems = new String[] {"Sangole"};
+                break;
+
+            case "Sangrul":
+                citySpinnerItems = new String[] {"Sangrul"};
+                break;
+
+            case "Saoli":
+                citySpinnerItems = new String[] {"Saoli"};
+                break;
+
+            case "Satara":
+                citySpinnerItems = new String[] {"Jaoli","Karad","Khatav","Koregaon","Man","Patan","Phaltan","Satara","Wai"};
+                break;
+
+            case "Shahuwadi":
+                citySpinnerItems = new String[] {"Shahuwadi"};
+                break;
+
+            case "Sheogaon":
+                citySpinnerItems = new String[] {"Sheogaon"};
+                break;
+
+            case "Shirala":
+                citySpinnerItems = new String[] {"Shirala"};
+                break;
+
+            case "Shirdi":
+                citySpinnerItems = new String[] {"Shirdi"};
+                break;
+
+            case "Shirol":
+                citySpinnerItems = new String[] {"Shirol"};
+                break;
+
+            case "Shirur":
+                citySpinnerItems = new String[] {"Shirur"};
+                break;
+
+            case "Shivajinagar":
+                citySpinnerItems = new String[] {"Shivajinagar"};
+                break;
+
+            case "Shrigonda":
+                citySpinnerItems = new String[] {"Shrigonda"};
+                break;
+
+            case "Shrirampur":
+                citySpinnerItems = new String[] {"Shrirampur"};
+                break;
+
+            case "Sillod":
+                citySpinnerItems = new String[] {"Sillod"};
+                break;
+
+            case "Sindhudurg":
+                citySpinnerItems = new String[] {"Chiplun","Dapoli","Devgad","Guhagar","Khed","Malvan","Rajapur","Ratnagiri","Sangameshwar","Sawantwadi","Vengurla"};
+                break;
+
+            case "Singnapur":
+                citySpinnerItems = new String[] {"Singnapur"};
+                break;
+
+            case "Sironcha":
+                citySpinnerItems = new String[] {"Sironcha"};
+                break;
+
+            case "Solapur":
+                citySpinnerItems = new String[] {"Akkalkot","Barshi","Karmala","Madha","Malsiras","Mangalwedha","Mohol","Pandharpur","Sangole","Solapur"};
+                break;
+
+            case "Tasgaon":
+                citySpinnerItems = new String[] {"Tasgaon"};
+                break;
+
+            case "Thane":
+                citySpinnerItems = new String[] {"Ambarnath","Belapur","Bhayandar","Bhivandi","Dahanu","Jawhar","Kalyan","Murbad","Navi Mumbai","Palghar","Shahapur","Thane","Ulhasnagar","Vasai","Wada"};
+                break;
+
+            case "Tirora":
+                citySpinnerItems = new String[] {"Tirora"};
+                break;
+
+            case "Tuljapur":
+                citySpinnerItems = new String[] {"Tuljapur"};
+                break;
+
+            case "Tumsar":
+                citySpinnerItems = new String[] {"Tumsar"};
+                break;
+
+            case "Udgir":
+                citySpinnerItems = new String[] {"Udgir"};
+                break;
+
+            case "Umarkhed":
+                citySpinnerItems = new String[] {"Umarkhed"};
+                break;
+
+            case "Vadgaon":
+                citySpinnerItems = new String[] {"Vadgaon"};
+                break;
+
+            case "Vaijapur":
+                citySpinnerItems = new String[] {"Vaijapur"};
+                break;
+
+            case "Wai":
+                citySpinnerItems = new String[] {"Wai"};
+                break;
+
+            case "Walwa":
+                citySpinnerItems = new String[] {"Walwa"};
+                break;
+
+            case "Wani":
+                citySpinnerItems = new String[] {"Wani"};
+                break;
+
+            case "Wardha":
+                citySpinnerItems = new String[] {"Arvi","Hinganghat","Pulgaon","Wardha"};
+                break;
+
+            case "Yavatmal":
+                citySpinnerItems = new String[] {"Darwha","Digras","Gaon","Kelapur","Pusad","Umarkhed","Wani","Yavatmal"};
+                break;
+
+//Meghalaya
+            case "East Garo Hills":
+                citySpinnerItems = new String[] {"Ampatigiri","Bajengdoba","Dalamgiri","Kharkutta","Mahendraganj","Mendipathar","Rangsakona","Resubelpara","Rongjeng","Rongrenggiri","Salmanpara","Songsak"};
+                break;
+
+            case "East Kasi Hills":
+                citySpinnerItems = new String[] {"Dienglieng","Langkyrdem","Mawkyrwat","Mawsynram","Nongkrem","Nonshken","Pariong","Shella","Sohra"};
+                break;
+
+            case "Jaintia Hills":
+                citySpinnerItems = new String[] {"Jirang","Jowai","Mairang","Mawhati","Nartiang","Nongbah-wahiajer","Nongph","Nongspung","Raliang","Ribhoi","Rymbai","Sohiong","Sutnga-shangpung","Umroi","War Jaintiai"};
+                break;
+
+            case "South Garo Hills":
+                citySpinnerItems = new String[] {"Dalu"};
+                break;
+
+            case "Upper Shillong":
+                citySpinnerItems = new String[] {"Jaiaw","Laban","Laitumkhrah","Malki-nongthymmai","Mawkhar","Mawlai","Mawprem Rilbong","Mylliem","Pynthorumkhrah Polo Hills","Sohryngkham"};
+                break;
+
+            case "West Garo Hills":
+                citySpinnerItems = new String[] {"Bagmara","Ckhopot","Dadenggiri","Kherapara","Phulbari","Rajabala","Rongchugiri","Rongram","Selsalla","Tikrikilla","Tura"};
+                break;
+
+            case "West Kasi Hills":
+                citySpinnerItems = new String[] {"Langrin","Mawthengkut","Nongstoin"};
+                break;
 
 
 
+//Chandigarh
+            case "Chandigarh":
+                citySpinnerItems = new String[] {"Chandigarh"};
+                break;
 
 
+//Delhi
+            case "Central Delhi":
+                citySpinnerItems = new String[] {"Karol Bagh","Matia Mahal","Pahar Ganj","Ram Nagar"};
+                break;
+
+            case "East Delhi":
+                citySpinnerItems = new String[] {"Gandhi Nagar","Geeta colony","Krishna Nagar","Mandawali","Patpar Ganj","Shahdara","Trilok Puri","Vishwash Nagar"};
+                break;
+
+            case "New Delhi":
+                citySpinnerItems = new String[] {"Gole Market","Minto Road","Sarojini Nagar"};
+                break;
+
+            case "North Delhi":
+                citySpinnerItems = new String[] {"Baljit Nagar","Balli Maran","Chandni Chowk","Kamla Nagar","Sadar Bazar","Timapur"};
+                break;
+
+            case "North East Delhi":
+                citySpinnerItems = new String[] {"Babarpur","Ghonda","Nand Nagari","Qarawal Nagar","Rohtas Nagar","Seelampur","Seemapuri","Yamuna Vihar"};
+                break;
+
+            case "North West Delhi":
+                citySpinnerItems = new String[] {"Adarsh Nagar","Badli","Bawana","Bhalswa Jahangirpur","Mangolpuri","Model Town","Narela","Sahibabad Daulatpur","Shakurbasti","Shalimar Bagh","Tri Nagar","Wazirpur"};
+                break;
+
+            case "South Delhi":
+                citySpinnerItems = new String[] {"Badarpur","Dr.ambedkar Nagar","Hauz Khas","Jangpura","Kalkaji","Kasturba Nagar","Malviya Nagar","Mehrauli","Okhla","Saket","Tughlakabad"};
+                break;
+
+            case "South West Delhi":
+                citySpinnerItems = new String[] {"Delhi Cantonment","Dwarka","Mahipalpur","Najafgarh","Nasipur","Palam","R.K.puram","Rajinder Nagar"};
+                break;
+
+            case "West Delhi":
+                citySpinnerItems = new String[] {"Hari Nagar","Hastsal","Janak Puri","Madipur","Moti Nagar","Nangloi Jat","Patel Nagar","Rajouri Garden","Sultanpur Majra","Tilak Nagar","Vishnu Garden"};
+                break;
 
 
+//Uttarpradesh
+            case "Agra":
+                citySpinnerItems = new String[] {"Achhnera","Agra","Azizpur","Bah","Dayalbagh","Dhanuali","Etmadpur","Fatehabad","Fatehpur Sikri","Jagner","Kheragarh","Kiraoli","Nainana Jat","Pinahat","Shamsabad","Swamibagh"};
+                break;
+
+            case "Aligarh":
+                citySpinnerItems = new String[] {"Aligarh","Atrauli","Beswan","Chhara Rafatpur","Harruagunj","Iglas","Jalali","Jatari","Kauriganj","Khair","Pilkhana","Qasimpur Power House","Vijaigarh"};
+                break;
+
+            case "Allahabad":
+                citySpinnerItems = new String[] {"Allahabad","Bharatganj","Chak Imam Ali","Handia","Jhusi","Jushi Kohna","Karoan","Lal Gopalgunj Nindaura","Mau Aima","Phulpur","Shankargarh","Sirsa"};
+                break;
+
+            case "Ambedkar Nagar":
+                citySpinnerItems = new String[] {"Ambedkar Nagar"};
+                break;
+
+            case "Auraiya":
+                citySpinnerItems = new String[] {"Achhalda","Atasu","Auraiya","Baburpur Ajitmal","Bidhuna","Dibiyapur","Phaphund"};
+                break;
+
+            case "Azamgarh":
+                citySpinnerItems = new String[] {"Amilo","Atraulia","Azamgarh","Azmatgarh","Bilariaganj","Hafizpur","Ibrahimpur","Jiyanpur","Katgarh Lalganj","Mahrajganj","Mehnagar","Mubarakpur","Nizamabad","Phulpur","Sarai Mir"};
+                break;
+
+            case "Baduan":
+                citySpinnerItems = new String[] {"Allapur","Babrala","Bilsi","Bisauli","Budaun","Datagunj","Faizganj","Gawan","Gulariya","Gunnapur","Islamnagar","Kachala","Kakrala","Kunwargaon","Mundai","Rudayan","Sahaswan","Saidpur","Sakhanu","Ujhani","Usawan","Usehat","Wazirganj"};
+                break;
+
+            case "Bagpat":
+                citySpinnerItems = new String[] {"Bagpat"};
+                break;
+
+            case "Bahraich":
+                citySpinnerItems = new String[] {"Bahraich","Jarwal","Nanpara","Risia Bazar"};
+                break;
+
+            case "Ballia":
+                citySpinnerItems = new String[] {"Ballia","Bansidh","Belthara Road","Chitbara Gaon","Maniyar","Rasra","Reoti","Sahatwar","Sikanderpur"};
+                break;
+
+            case "Balrampur":
+                citySpinnerItems = new String[] {"Balrampur","Pachperwa","Tulsipur","Utraula"};
+                break;
+
+            case "Banda":
+                citySpinnerItems = new String[] {"Attara","Baberu","Banda","Bisanda Buzurg","Mataundh","Nariani","Oran","Tindwari"};
+                break;
+
+            case "Barabanki":
+                citySpinnerItems = new String[] {"Banki","Dariyabad","Dewa","Fatehpur","Haidergarh","Nawabganj","Ramnagar","Rampur Bhawanipur","Satrikh","Siddhaur","Tikait Nagar","Zaidpur"};
+                break;
+
+            case "Bareilly":
+                citySpinnerItems = new String[] {"Aonla","Baheri","Bareilly","Bisharatganj","Deoranian","Dhaura Tanda","Faridpur","Fateh Purvi","Fatehganj Pashchimi","Kakgaina","Mirganj","Nawabganj","Pipalsana Chaudhari","Richha","Rithora","Sainthal","Shahi","Shergarh","Shishgarh","Siruali","Thiriya Nizamat Khan"};
+                break;
+
+            case "Basti":
+                citySpinnerItems = new String[] {"Basti","Harraiyi"};
+                break;
+
+            case "Bijnor":
+                citySpinnerItems = new String[] {"Afzalgarh","Bijnor","Chandpur","Dhampur","Haldaur","Jalalabad","Jhalu","Kiratpur","Mandawar","Mukrampur Khema","Nagina","Najibabad","Nehtapur","Noorpur","Rashidpur Garih","Sahanpur","Sahaspur","Seohara","Sherkot","Tatarpur Lallu","Warhapur"};
+                break;
+
+            case "Bulandshahr":
+                citySpinnerItems = new String[] {"Anupshahr","Aurangabad","Bhawan Bahadur Nagar","Bugrasi","Bulandshahr","Chhatri","Dibai","Guloathi","Jahangirabad","Khanpur","Khurja","Naruara","Pahasu","Shikarpur","Siana","Sikandrabad"};
+                break;
+
+            case "Chandauli":
+                citySpinnerItems = new String[] {"Chakai","Chandauli","Dulhipur","Mughalsarai","Saiyad Raja"};
+                break;
+
+            case "Chitrakoot":
+                citySpinnerItems = new String[] {"Chitrakoot"};
+                break;
+
+            case "Deoria":
+                citySpinnerItems = new String[] {"Deoria"};
+                break;
+
+            case "Etah":
+                citySpinnerItems = new String[] {"Etah"};
+                break;
+
+            case "Etewah":
+                citySpinnerItems = new String[] {"Etewah"};
+                break;
+
+            case "Faizabad":
+                citySpinnerItems = new String[] {"Faizabad"};
+                break;
+
+            case "Farrukhabad":
+                citySpinnerItems = new String[] {"Farrukhabad"};
+                break;
+
+            case "Fatehpur":
+                citySpinnerItems = new String[] {"Fatehpur"};
+                break;
+
+            case "Firozabad":
+                citySpinnerItems = new String[] {"Firozabad"};
+                break;
+
+            case "Ghaziabad":
+                citySpinnerItems = new String[] {"Ghaziabad"};
+                break;
+
+            case "Ghazipur":
+                citySpinnerItems = new String[] {"Ghazipur"};
+                break;
+
+            case "Gonda":
+                citySpinnerItems = new String[] {"Gonda"};
+                break;
+            case "Gorakhpur":
+                citySpinnerItems = new String[] {"Gorakhpur"};
+                break;
+
+            case "Hamerpur":
+                citySpinnerItems = new String[] {"Hamirpur"};
+                break;
+
+            case "Hardoi":
+                citySpinnerItems = new String[] {"Hardoi"};
+                break;
+
+            case "Hathras":
+                citySpinnerItems = new String[] {"Hathras"};
+                break;
+
+            case "Jalaun":
+                citySpinnerItems = new String[] {"Jalaun"};
+                break;
+
+            case "Jaunapur":
+                citySpinnerItems = new String[] {"Jaunapur"};
+                break;
+
+            case "Jhansi":
+                citySpinnerItems = new String[] {"Jhansi"};
+                break;
+
+            case "Jyotiba Phule Nagar":
+                citySpinnerItems = new String[] {"Jyotiba Phule Nagar"};
+                break;
+
+            case "Kannauj":
+                citySpinnerItems = new String[] {"Kannauj"};
+                break;
+
+            case "Kanpur Dehat":
+                citySpinnerItems = new String[] {"Kanpur Dehat"};
+                break;
+
+            case "Kanpur Nagar":
+                citySpinnerItems = new String[] {"Kanpur Nagar"};
+                break;
+
+            case "Kaushambi":
+                citySpinnerItems = new String[] {"Kaushambi"};
+                break;
+
+            case "Kushinagar":
+                citySpinnerItems = new String[] {"Kushinagar"};
+                break;
+
+            case "Lakhimpur Kheri":
+                citySpinnerItems = new String[] {"Kheri"};
+                break;
+
+            case "Lalitpur":
+                citySpinnerItems = new String[] {"Lalitpur"};
+                break;
+
+            case "Lucknow":
+                citySpinnerItems = new String[] {"Lucknow"};
+                break;
+
+            case "Maharajgunj":
+                citySpinnerItems = new String[] {"Maharajgunj"};
+                break;
+
+            case "Mahoba":
+                citySpinnerItems = new String[] {"Mahoba"};
+                break;
+
+            case "Mainpuri":
+                citySpinnerItems = new String[] {"Mainpur"};
+                break;
+
+            case "Mathura":
+                citySpinnerItems = new String[] {"Mathura"};
+                break;
+
+            case "Mau":
+                citySpinnerItems = new String[] {"Mau"};
+                break;
+
+            case "Meerut":
+                citySpinnerItems = new String[] {"Meerut"};
+                break;
+
+            case "Mirzapur":
+                citySpinnerItems = new String[] {"Mirzapur"};
+                break;
+
+            case "Moradabad":
+                citySpinnerItems = new String[] {"Moradabad"};
+                break;
+
+            case "Muzaffarnagar":
+                citySpinnerItems = new String[] {"Muzaffarnagar"};
+                break;
+
+            case "Noida":
+                citySpinnerItems = new String[] {"Noida"};
+                break;
+
+            case "Pilibhit":
+                citySpinnerItems = new String[] {"Pilibhit"};
+                break;
+
+            case "Pratapghar":
+                citySpinnerItems = new String[] {"Pratapghar"};
+                break;
+
+            case "Raebareli":
+                citySpinnerItems = new String[] {"Raebareli"};
+                break;
+
+            case "Rampur":
+                citySpinnerItems = new String[] {"Rampur"};
+                break;
+
+            case "Saharanpur":
+                citySpinnerItems = new String[] {"Saharanpur"};
+                break;
+
+            case "Sant Kabir Nagar":
+                citySpinnerItems = new String[] {"Sant Kabir Nagar"};
+                break;
+
+            case "Sant Ravidas Nagar":
+                citySpinnerItems = new String[] {"Sant Ravidas Nagar"};
+                break;
+
+            case "Shahjahanpur":
+                citySpinnerItems = new String[] {"Shahjahanpur"};
+                break;
+
+            case "Shrawasti":
+                citySpinnerItems = new String[] {"Shrawasti"};
+                break;
+
+            case "Siddhartnagar":
+                citySpinnerItems = new String[] {"Siddhartnagar"};
+                break;
+
+            case "Sitapur":
+                citySpinnerItems = new String[] {"Sitapur"};
+                break;
+
+            case "Sonbhadra":
+                citySpinnerItems = new String[] {"Sonbhadra"};
+                break;
+
+            case "Sultanpur":
+                citySpinnerItems = new String[] {"Sultanpur"};
+                break;
+
+            case "unnao":
+                citySpinnerItems = new String[] {"Unnao"};
+                break;
+
+            case "Varanasi":
+                citySpinnerItems = new String[] {"Varanasi"};
+                break;
 
 
+//West Bengal
+            case "Bankura":
+                citySpinnerItems = new String[] {"Bankura","Barjora","Chhatna","Gangajalghati","Indas","Indpur","Kotulpur","Onda","Raipur","Ranibandh","Sonamukhi","Taldangra","Vishnupur"};
+                break;
 
+            case "Birbhum":
+                citySpinnerItems = new String[] {"Bolpur","Dubrajpur","Hansan","Labhpur","Mahammad Bazar","Mayureswar","Murarai","Nalhati","Nanur","Rajnagar","Rampurhat","Suri"};
+                break;
+
+            case "Burdwan":
+                citySpinnerItems = new String[] {"Asansol","Ausgram","Barabani","Bhatar","Burdwan","Durgapur","Galsi","Hirapur","Jamalpur","Jamuria","Kalna","Kanksa","Katwa","Ketugram","Khandaghosh","Kulti","Mangalkot","Manteswar","Memari","Nadanghat","Raina","Raniganj","Ukhra"};
+                break;
+
+            case "Coochbehar":
+                citySpinnerItems = new String[] {"Cooch Behar","Dinhata","Mekliganj","Natabari","Sitai","Sitalkuchi","Tufanganj"};
+                break;
+
+            case "Dakshin Dinajpur":
+                citySpinnerItems = new String[] {"Balurghat","Gangarampur","Kumarganj","Kushmandi","Tapan"};
+                break;
+
+            case "Darjeeling":
+                citySpinnerItems = new String[] {"Darjeeling","Kalimpong","Kurseong","Phansidewa","Siliguri"};
+                break;
+
+            case "Hooghly":
+                citySpinnerItems = new String[] {"Arambagh","Balagarh","Bansberia","Champdani","Chandernagore","Chanditala","Chinsurah","Dhaniakhali","Goghat","Haripal","Jangipara","Khanakul","Pandua","Polba","Pursurah","Serampore","Singur","Tarakeswar","Uttarpara"};
+                break;
+
+            case "Howrah":
+                citySpinnerItems = new String[] {"Amta","Bagnan","Bally","Domjur","Howrah","Jagatballavpur","Kalyanpur","Panchla","Sankrail","Shibpur","Shyampur","Udaynarayanpur","Uluberia"};
+                break;
+
+            case "Jalpaiguri":
+                citySpinnerItems = new String[] {"Alipurduars","Falakata","Jalpaiguri","Kalchini","Kranti","Kumargram","Madarihat","Mal","Rajganj"};
+                break;
+
+            case "Kolkatta":
+                citySpinnerItems = new String[] {"Alipore","Ballygunge","Bara Bazar","Belgachia West","Beliaghata","Bow Bazar","Burtola","Chowringhee","Cossipur","Dhakuria","Entally","Jorabagan","Jorasanko","Kabitirtha","Manicktola","Rashbehari Avenue","Sealdah","Shyampukur","Taltola","Tollygunge","Vidyasagar"};
+                break;
+
+            case "Malda":
+                citySpinnerItems = new String[] {"Araidanga","Englishbazar","Gajol","Habibpur","Harishchandrapur","Kaliachak","Kharba","Malda","Manichak","Ratua","Suzapur"};
+                break;
+
+            case "Murshidabad":
+                citySpinnerItems = new String[] {"Aurangabad","Barwan","Beldanga","Berhampore","Bhagabangola","Domkal","Farakka","Hariharpara","Jalangi","Jangipur","Kandi","Khargram","Lalgola","Naoda","Sagardighi","suti"};
+                break;
+
+            case "Nadia":
+                citySpinnerItems = new String[] {"Chakdaha","Chapra","Hanskhali","Haringhata","Kaliganj","Karimpur","Krishnaganj","Krishnagar","Nabadwip","Nakashipara","Palashipara","Ranaghat","Santipur"};
+                break;
+
+            case "North 24-Parganas":
+                citySpinnerItems = new String[] {"Amdanga","Ashokenagar","Baduria","Bagdaha","Baranagar","Barasat","Basirhat","Belgachia East","Bhatpara","Bijpur","Bongaon","Deganga","Dum Dum","Gaighata","Habra","Haroa","Hasnabad","Hingalganj","Jagatdal","Kamarhati","Khardah","Naihati","Noapara","Panihati","Rajarhat","Sandeshkhali","Swarupnagar","Titagarh"};
+                break;
+
+            case "Pashchim Medinipu":
+                citySpinnerItems = new String[] {"Chandrakona","Daspur","Ghatal","Nandanpur","Sabang"};
+                break;
+
+            case "Purbo Medinpur":
+                citySpinnerItems = new String[] {"Bhagabanpur","Binpur","Contai","Debra","Egra","Garhbeta","Gopiballavpur","Jhargram","Keshiari","Keshpur","Khajuri","Kharagpur","Mahishadal","Midnapore","Moyna","Mugberia","Nandigram","Narayangarh","Narghat","Panskura","Pataspur","Pingla","Salbani","Sutahata","Tamluk"};
+                break;
+
+            case "Purulia":
+                citySpinnerItems = new String[] {"Arsa","Banduan","Hura","Jaipur","Jhalda","Kashipur","Manbazar","Para","Purulia","Raghunathpur"};
+                break;
+
+            case "South 24-Parganas":
+                citySpinnerItems = new String[] {"Baruipur","Basanti","Behala East","Behala West","Bhangar","Bishnupur","Budge Budge","Canning","Diamond Harbour","Falta","Garden Reach","Gosaba","Jadavpur","Joynagar","Kakdwip","Kulpi","Kultali","Magrahat","Maheshtala","Mandirbazar","Mathurapur","Patharpratima","Sagar","Satgachia","Sonarpur"};
+                break;
+
+            case "Uttar Dinajpur":
+                citySpinnerItems = new String[] {"Chopra","Dalkhola","Goalpokhar","Islampur","Itahar","Kaliaganj","Karandighi","Raiganj"};
+                break;
 
 
         }

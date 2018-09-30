@@ -31,10 +31,15 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is the list of notes uploaded by all the users"/>
+
     <ListView
         android:id="@+id/listView20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        />
 
 </LinearLayout>

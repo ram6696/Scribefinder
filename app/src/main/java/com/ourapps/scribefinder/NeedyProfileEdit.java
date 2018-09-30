@@ -9,6 +9,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -53,6 +54,9 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
 
         etNameLayout = findViewById(R.id.etNameLayout);
         etMobileNumberLayout = findViewById(R.id.etMobileNumberLayout);
+
+
+        etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
         btnEdit = findViewById(R.id.btnEdit);
         btnEdit.setOnClickListener(this);

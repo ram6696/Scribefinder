@@ -102,13 +102,18 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Notes.NotesBA"
+            android:name=".NotesBA"
             android:parentActivityName=".StudyMaterial"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Notes.BA1stSem"
-            android:parentActivityName=".Notes.NotesBA"
+            android:name=".BA1stSem"
+            android:parentActivityName=".NotesBA"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
+        <activity
+            android:name=".BA1stSemEconomics"
+            android:parentActivityName=".BA1stSem"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity

@@ -10,11 +10,6 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-
-import com.ourapps.scribefinder.NeedyRegister;
-import com.ourapps.scribefinder.R;
-import com.ourapps.scribefinder.VolunteerRegister;
-
 public class TypeOfUser extends AppCompatActivity {
     private AdView adView;
     private AdRequest adRequest;
