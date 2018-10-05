@@ -18,6 +18,17 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true">
+
+        <receiver
+            android:name="com.ourapps.scribefinder.NetworkChangeReceiver"
+            android:enabled="true"
+            android:label="NetworkChangeReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
         <activity
             android:name=".LogoSplashScreen"
             android:theme="@style/SplashScreenTheme">
@@ -97,23 +108,23 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterial"
+            android:name=".StudyMaterials.NotesBA$StudyMaterial"
             android:parentActivityName=".NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".NotesBA"
-            android:parentActivityName=".StudyMaterial"
+            android:name=".StudyMaterials.NotesBA"
+            android:parentActivityName=".StudyMaterials.NotesBA$StudyMaterial"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".BA1stSem"
-            android:parentActivityName=".NotesBA"
+            android:name=".StudyMaterials.BANotes.BA1stSem"
+            android:parentActivityName=".StudyMaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".BA1stSemEconomics"
-            android:parentActivityName=".BA1stSem"
+            android:name=".StudyMaterials.BANotes.BA1stSemEconomics"
+            android:parentActivityName=".StudyMaterials.BANotes.BA1stSem"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity

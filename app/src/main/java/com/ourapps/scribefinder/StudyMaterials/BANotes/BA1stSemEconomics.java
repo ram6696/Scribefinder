@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder.StudyMaterials;
+package com.ourapps.scribefinder.StudyMaterials.BANotes;
 
 import android.content.Intent;
 import android.net.Uri;

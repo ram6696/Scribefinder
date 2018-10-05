@@ -63,6 +63,8 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
     private DatabaseReference mDatabase;
     private StorageReference mStorageRef;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     private String currentUserId;
     private String currentUserName;
@@ -85,11 +87,14 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
         Vcount = (TextView)findViewById(R.id.Vcount);
         Ncount = (TextView)findViewById(R.id.Ncount);
+        volunteerName =(TextView)findViewById(R.id.txvolunteerName);
 
         //Getting the count
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         databaseReference. child("Volunteer").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,6 +109,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
             }
         } );
+
         databaseReference. child("Needy").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -138,6 +144,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         System.out.println(currentUserName);
         currentUserEmail = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
+        setDefaultValues();
 
         adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -199,13 +206,14 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
 
 
-    setDefaultValues();
+
 
 
     }
 
 
     private void setDefaultValues() {
+        System.out.print("INside the set default Value>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.");
 
         progressDialog.setMessage("Please Wait....");
         progressDialog.show();
@@ -228,7 +236,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println(databaseError.getMessage());
+                System.out.println("Error lodaing the database...................................."+ databaseError.getMessage());
                 System.out.println(databaseError.toException().getStackTrace());
             }
         });

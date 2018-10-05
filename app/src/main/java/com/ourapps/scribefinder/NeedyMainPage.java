@@ -44,6 +44,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ourapps.scribefinder.StudyMaterials.NotesBA;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -70,6 +71,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NetworkUtil.getConnectivityStatus(NeedyMainPage.this);
         setContentView(R.layout.activity_needy_main_page);
         Toolbar toolbar = findViewById(R.id.needyToolbar);
         setSupportActionBar(toolbar);
@@ -95,6 +97,18 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
         setDefaultValues();
     }
+
+
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(NeedyMainPage.this);
+
+        super.onResume();
+
+
+    }
+
+
 
     private void setDefaultValues() {
 
@@ -428,7 +442,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     }
 
     public void StudyMaterial(View view) {
-        startActivity(new Intent(NeedyMainPage.this, StudyMaterial.class));
+        startActivity(new Intent(NeedyMainPage.this, NotesBA.StudyMaterial.class));
         finish();
     }
 

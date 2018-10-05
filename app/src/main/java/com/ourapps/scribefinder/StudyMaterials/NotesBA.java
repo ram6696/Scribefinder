@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder;
+package com.ourapps.scribefinder.StudyMaterials;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.ourapps.scribefinder.R;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA1stSem;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA2ndSem;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA3rdSem;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA4thSem;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA5thSem;
+import com.ourapps.scribefinder.StudyMaterials.BANotes.BA6thSem;
 
 public class NotesBA extends AppCompatActivity {
 
@@ -48,5 +56,44 @@ public class NotesBA extends AppCompatActivity {
 
     public void goBackToPreviousActivity(View view) {
         finish();
+    }
+
+    public static class StudyMaterial extends AppCompatActivity {
+
+        String item[] = new String[]{"B.A", "B.Com"};
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_study_material);
+
+            ListView COURSE = findViewById(R.id.ListView);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item);
+            COURSE.setAdapter(adapter);
+            COURSE.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    Intent v = new Intent(StudyMaterial.this,NotesBA.class);
+                    startActivity(v);
+                }else if (position == 1) {
+                    //B.Com....
+    //                Intent v = new Intent(com.ourapps.scribefinder.StudyMaterials.NotesBA.StudyMaterial.this,NotesBA.class);
+    //                startActivity(v);
+                }
+                }
+            });
+        }
+
+        public void goBackToPreviousActivity(View view) {
+            finish();
+            //startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+        }
+
+        @Override
+        public void onBackPressed() {
+            finish();
+            //startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+        }
     }
 }

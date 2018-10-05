@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context="com.ourapps.scribefinder.BA5thSem">
+    tools:context="com.ourapps.scribefinder.StudyMaterials.BANotes.BA5thSem">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
