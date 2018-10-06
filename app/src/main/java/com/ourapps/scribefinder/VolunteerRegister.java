@@ -78,13 +78,13 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etMobileNumber = findViewById(R.id.etMobileNumber);
         etNewPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-<<<<<<< HEAD
+
         etAddress = findViewById(R.id.etAddress);
-=======
+
         etdob = findViewById(R.id.etDOBVR);
         etAddress = findViewById(R.id.etAddress);
 
->>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
+
         etPincode = findViewById(R.id.etPincode);
 
         etNameLayout = findViewById(R.id.etNameLayout);

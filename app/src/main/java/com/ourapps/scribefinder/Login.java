@@ -240,10 +240,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     "Open Email",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Intent openEmail = new Intent(android.content.Intent.CATEGORY_APP_EMAIL);
-                            startActivity(openEmail);
+                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                            intent.addCategory(Intent.CATEGORY_APP_EMAIL); ;
+                           startActivity(intent);
                             progressDialog.dismiss();
-                            finish();
+
 
                         }
                     });
