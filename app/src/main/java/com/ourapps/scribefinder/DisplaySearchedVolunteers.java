@@ -300,6 +300,11 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
     @Override
     public void onResume(){
+
+            NetworkUtil.getConnectivityStatusString(DisplaySearchedVolunteers.this);
+
+
+
         super.onResume();
     }
 

@@ -13,7 +13,13 @@ public class ContactUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
     }
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(ContactUs.this);
 
+        super.onResume();
+
+
+    }
     public void goBackToPreviousActivity(View view) {
         finish();
     }

@@ -400,10 +400,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="40dp"
-                android:background="@color/button_background_color"
+
+                android:background="@drawable/buttonshape"
                 android:text="@string/register"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
 

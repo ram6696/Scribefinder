@@ -51,7 +51,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private ImageView needyProfilePic;
     private TextView needyName, needyEmail;
@@ -84,6 +84,12 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+        needyProfilePic =  headerView.findViewById(R.id.needyProfilePic);
+
+        needyProfilePic.setOnClickListener(NeedyMainPage.this);
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -238,7 +244,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                                     editor.remove("uid");
                                                     editor.remove("email");
                                                     editor.remove("password");
-                                                    //editor.remove("accType");
+                                                   // editor.remove("accType");
                                                     editor.putBoolean("logStatus", false);
                                                     editor.apply();
                                                     AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyMainPage.this);
@@ -478,5 +484,10 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 }
             }, 2000);
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        onDPClickNeedy(v);
     }
 }

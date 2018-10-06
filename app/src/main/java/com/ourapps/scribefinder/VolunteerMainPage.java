@@ -25,6 +25,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,9 +54,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class VolunteerMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import de.hdodenhof.circleimageview.CircleImageView;
 
-    private ImageView volunteerProfilePic;
+public class VolunteerMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
+    private CircleImageView volunteerProfilePic;
     private TextView volunteerName, volunteerEmail;
     private ProgressDialog progressDialog;
 
@@ -131,8 +134,14 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+        volunteerProfilePic =  headerView.findViewById(R.id.volunteerProfilePic);
+
+        volunteerProfilePic.setOnClickListener(VolunteerMainPage.this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -144,73 +153,23 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         System.out.println(currentUserName);
         currentUserEmail = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
+        System.out.println(currentUserId);
+
         setDefaultValues();
 
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
 
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-            }
-
-            @Override
-            public void onAdClosed() {
-                Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-        });
-
-        adView.loadAd(adRequest);
     }
 
-    @Override
-    public void onPause() {
-        if (adView != null) {
-            adView.pause();
-        }
-        super.onPause();
-    }
+
 
     @Override
     public void onResume() {
+        NetworkUtil.getConnectivityStatusString(VolunteerMainPage.this);
+
         super.onResume();
-        if (adView != null) {
-            adView.resume();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }
-        super.onDestroy();
-
-
-
-
-
-
 
 
     }
-
 
     private void setDefaultValues() {
         System.out.print("INside the set default Value>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.");
@@ -223,6 +182,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println(dataSnapshot);
                 volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
                 volunteerName = findViewById(R.id.txvolunteerName);
                 volunteerEmail = findViewById(R.id.volunteerEmail);
@@ -331,7 +291,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                                         editor.remove("uid");
                                         editor.remove("email");
                                         editor.remove("password");
-                                        editor.remove("accType");
+                                       // editor.remove("accType");
                                         editor.putBoolean("logStatus", false);
                                         editor.apply();
                                         AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerMainPage.this);
@@ -586,5 +546,12 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
     public void Instructions(View view) {
         Intent i = new Intent(VolunteerMainPage.this,Instruction.class);
         startActivity(i);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == volunteerProfilePic){
+            onDPClickVolunteer(v);
+        }
     }
 }

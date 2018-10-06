@@ -1,7 +1,11 @@
 package com.ourapps.scribefinder;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.widget.Toast;
 
 public class NetworkUtil {
@@ -12,12 +16,25 @@ public class NetworkUtil {
     public static final int NETWORK_STATUS_WIFI = 1;
     public static final int NETWORK_STATUS_MOBILE = 2;
 
-    public static int getConnectivityStatus(Context context) {
+    public static int getConnectivityStatus(final Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (null == activeNetwork) {
-            Toast.makeText(context, "No Internet", Toast.LENGTH_LONG).show();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setTitle("No Internet Connection");
+            builder1.setMessage("Please Connect to the Internet");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                           getConnectivityStatus(context);
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
 
         }
 

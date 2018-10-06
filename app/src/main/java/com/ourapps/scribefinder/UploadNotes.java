@@ -66,6 +66,14 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserId = sp.getString("uid", "");
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(UploadNotes.this);
+
+        super.onResume();
+
+
+    }
 
     //this function will get the pdf from the storage
     private void getPDF() {

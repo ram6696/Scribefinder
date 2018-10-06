@@ -68,6 +68,13 @@ private FirebaseUser user;
             }
         });
     }
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(DisplaySingleScribeDetails.this);
+
+        super.onResume();
+
+
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

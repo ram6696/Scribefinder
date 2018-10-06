@@ -64,6 +64,13 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
 
         progressDialog =new ProgressDialog(this);
     }
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(NeedyPasswordChange.this);
+
+        super.onResume();
+
+
+    }
 
     @Override
     public void onClick(View view) {

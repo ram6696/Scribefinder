@@ -92,6 +92,15 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
         btnSearch.setOnClickListener(this);
         btnNearMe.setOnClickListener(this);
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(ScribeSearchPage.this);
+
+        super.onResume();
+
+
+    }
+
 
     private void setValuesForCity(String district) {
         switch (district) {
@@ -327,6 +336,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                 }
 
                 if(locName == null){
+                    //searchAndSetValue(locType, locName);
                     Toast.makeText(getApplicationContext(), "Unable to get location. Please turn off and turn on the GPS Manually and try again.", Toast.LENGTH_LONG).show();
                 }else{
                     searchAndSetValue(locType, locName);

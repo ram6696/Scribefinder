@@ -1,6 +1,8 @@
 package com.ourapps.scribefinder;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -64,6 +66,14 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
         etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
         btnRegister = findViewById(R.id.btnRegiser);
         btnRegister.setOnClickListener(this);
+    }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(NeedyRegister.this);
+
+        super.onResume();
+
+
     }
 
     @Override
@@ -131,9 +141,20 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                     NeedyData needyData = new NeedyData(id, name, email, mobileNumber, password, "Needy","");
                     databaseNeedy.child("Needy").child(id).setValue(needyData);
                     progressDialog.dismiss();
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyRegister.this);
+                    builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
+                    builder1.setCancelable(true);
 
-                    finish();
-                    startActivity(new Intent(NeedyRegister.this, RegisterSuccessfulMessage.class));
+                    builder1.setPositiveButton(
+                            "Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                    startActivity(new Intent(NeedyRegister.this, Login.class));
+                                }
+                            });
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             }
         });

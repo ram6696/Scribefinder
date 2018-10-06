@@ -18,6 +18,13 @@ public class Instruction extends AppCompatActivity {
 
 
     }
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(Instruction.this);
+
+        super.onResume();
+
+
+    }
     public void goBackToPreviousActivity(View view) {
         finish();
     }

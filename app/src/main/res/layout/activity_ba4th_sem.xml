@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="@color/white"
     tools:context="com.ourapps.scribefinder.StudyMaterials.BANotes.BA4thSem">
 
     <android.support.v7.widget.Toolbar

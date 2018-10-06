@@ -1,6 +1,8 @@
 package com.ourapps.scribefinder;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,14 +28,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.ourapps.scribefinder.CheckConnection;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
@@ -76,62 +76,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         }
 
-//         Code for Ads
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
+//
 
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-            }
 
-            @Override
-            public void onAdClosed() {
-                Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-        });
-
-        adView.loadAd(adRequest);
     }
 
-    @Override
-    public void onPause() {
-        if (adView != null) {
-            adView.pause();
-        }
-        super.onPause();
-    }
-
-    @Override
     public void onResume() {
-        super.onResume();
-        if (adView != null) {
-            adView.resume();
-        }
-    }
+        NetworkUtil.getConnectivityStatusString(Login.this);
 
-    @Override
-    public void onDestroy() {
-        if (adView != null) {
-            adView.destroy();
-        }
-        super.onDestroy();
+        super.onResume();
+
+
     }
 
 
@@ -276,7 +231,36 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         assert firebaseUser != null;
         Boolean emailFlag = firebaseUser.isEmailVerified();
         if(!emailFlag){
-            Toast.makeText(this,"Please verify your Email..!",Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+            builder1.setTitle("Email Not Verified");
+            builder1.setMessage(" Please verify Your email  to login.");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "Open Email",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent openEmail = new Intent(android.content.Intent.CATEGORY_APP_EMAIL);
+                            startActivity(openEmail);
+                            progressDialog.dismiss();
+                            finish();
+
+                        }
+                    });
+            builder1.setNegativeButton(
+                    "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            progressDialog.dismiss();
+                            startActivity(getIntent());
+                            dialog.cancel();
+                            finish();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            progressDialog.dismiss();
             firebaseAuth.signOut();
             return false;
         }else{
