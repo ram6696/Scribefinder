@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -51,7 +52,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
     private ProgressDialog progressDialog;
     private DatabaseReference databaseReference;
 
-    int year_x, month_x, day_x;
+    int year_x = 1970, month_x = 0, day_x = 1;
     static final int DIALOG_ID = 0;
     SharedPreferences sp = null;
     String currentUserId;
@@ -112,18 +113,17 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         statesListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stateSpinner.setAdapter(statesListAdapter);
 
-
-
-
-
         stateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 setValuesForDistrict(stateSpinner.getSelectedItem().toString());
                 System.out.print(volunteerData.getDistrict());
+<<<<<<< HEAD
                // districtSpinner.setSelection(volunteerData.getDistrictPosition());
 
+=======
+                districtSpinner.setSelection(volunteerData.getDistrictPosition());
+>>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
             }
 
             @Override
@@ -137,6 +137,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 setValuesForCity(districtSpinner.getSelectedItem().toString());
+<<<<<<< HEAD
                 //citySpinner.setSelection(volunteerData.getCityPosition());
 
 
@@ -144,6 +145,9 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
 
 
+=======
+                citySpinner.setSelection(volunteerData.getCityPosition());
+>>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
             }
 
 
@@ -156,11 +160,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             }
         });
 
-
         setPreviousValues();
-
-
-
 
     }
     @Override
@@ -182,7 +182,6 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             case "South Andaman":
                 citySpinnerItems = new String[]{"Bambooflat", "Garacharma", "Port Blair", "Prothrapur"};
                 break;
-
 
             //Districts of karnataka
 
@@ -3228,9 +3227,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                 if(dataSnapshot.exists()) {
                     volunteerData = dataSnapshot.getValue(VolunteerData.class);
                     if (volunteerData != null) {
-
                         setValuesToFields(volunteerData);
-
                     }
                 }
             }
@@ -3244,7 +3241,6 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
     private void setValuesToFields(final VolunteerData volunteerData) {
         etName.setText(volunteerData.getName());
-
         etEmail.setText(volunteerData.getEmail());
         etMobileNumber.setText(volunteerData.getMobileNumber());
 
@@ -3259,11 +3255,6 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         etdob.setText(volunteerData.getDob());
         etAddress.setText(volunteerData.getAddress());
         etPincode.setText(volunteerData.getPincode());
-
-
-
-
-
 
         System.out.println("State Position : "+volunteerData.getStatePosition());
         stateSpinner.setSelection(volunteerData.getStatePosition());
@@ -3435,13 +3426,13 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                                             });
                                     AlertDialog alert11 = builder1.create();
                                     alert11.show();
-                                    System.out.println(Objects.requireNonNull(task.getException()).getMessage());
+                                  //  System.out.println(Objects.requireNonNull(task.getException()).getMessage());
                                     progressDialog.dismiss();
                                 }
                             }
                         });
                     }else if(task.isCanceled()) {
-                        System.out.println(Objects.requireNonNull(task.getException()).getMessage());
+                       // System.out.println(Objects.requireNonNull(task.getException()).getMessage());
                         progressDialog.dismiss();
                     }
                 }
@@ -3484,39 +3475,38 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         try{
             boolean isDateValid = false;
 
-            String[] dateValues = etdob.getText().toString().split("/");
-
-            int date = Integer.parseInt(dateValues[0]);
-            int month = Integer.parseInt(dateValues[1]);
-            int year = Integer.parseInt(dateValues[2]);
-
-            if(date > 0 && date < 32 && month > 0 && month < 13){
-                Calendar now = Calendar.getInstance();
-                int curryear = now.get(Calendar.YEAR);
-                System.out.println(curryear);
-                System.out.println(year);
-                if(year < (curryear-18)){
-                    System.out.println("Valid Date");
-                    isDateValid = true;
+            if(!(etdob.getText().toString().trim().isEmpty())){
+                String[] dateValues = etdob.getText().toString().split("/");
+                if(dateValues.length == 3){
+                    if((dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
+                        int date = Integer.parseInt(dateValues[0]);
+                        int month = Integer.parseInt(dateValues[1]);
+                        int year = Integer.parseInt(dateValues[2]);
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
+                            isDateValid = true;
+                        }else{
+                            isDateValid = false;
+                        }
+                    }
                 }
             }
 
-            if(etdob.getText().toString().trim().isEmpty() && isDateValid){
+            if(isDateValid){
+                etdobLayout.setErrorEnabled(false);
+                return isDateValid;
+            }else{
                 etdobLayout.setErrorEnabled(true);
-                etdobLayout.setError("Please select a valid date.");
-                Toast.makeText(this,"Please selct a valid date",Toast.LENGTH_SHORT).show();
+                etdobLayout.setError("Please select/enter valid date.");
                 etdob.setError("");
                 requestFocus(etdob);
-                return false;
+                return isDateValid;
             }
         }catch(Exception ex){
             etdobLayout.setErrorEnabled(true);
-            etdobLayout.setError("Please select a valid date.");
+            etdobLayout.setError("There is some exception in the code.");
             requestFocus(etdob);
             return false;
         }
-        etdobLayout.setErrorEnabled(false);
-        return true;
     }
     private boolean checkAddress() {
         String address = etAddress.getText().toString().trim();
