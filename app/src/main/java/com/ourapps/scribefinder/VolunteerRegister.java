@@ -78,13 +78,13 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etMobileNumber = findViewById(R.id.etMobileNumber);
         etNewPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-<<<<<<< HEAD
+
         etAddress = findViewById(R.id.etAddress);
-=======
+
         etdob = findViewById(R.id.etDOBVR);
         etAddress = findViewById(R.id.etAddress);
 
->>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
+
         etPincode = findViewById(R.id.etPincode);
 
         etNameLayout = findViewById(R.id.etNameLayout);
@@ -965,7 +965,6 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
             //Districts and cities of Punjab
 
 
-
             case "Amritsar":
                 citySpinnerItems = new String[]{"Ajnala","Amritsar","Attari","Beas","Jandiala","Khadoor Sahib","Majitha","Naushahra Panwan","Patti","Raja Sansi","Tarn Taran","Valtoha","Verka"};
                 break;
@@ -1060,8 +1059,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 citySpinnerItems = new String[]{"Tarn Taran"};
                 break;
 
-
-//Districts and cities of Tripura
+                //Districts and cities of Tripura
 
 
             case "Dhalai District":
@@ -1081,10 +1079,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 break;
 
 
-
-
-
-//Districts and cities of Mizoram
+            //Districts and cities of Mizoram
 
 
             case "Aizawl":
@@ -1119,13 +1114,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 citySpinnerItems = new String[]{"Lungpho","N.vanlaiphai","Serchhip"};
                 break;
 
-
-
-
-
-
-
-//Districts and cities of Daman and Diu
+            //Districts and cities of Daman and Diu
 
 
             case "Daman":
@@ -1137,15 +1126,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 break;
 
 
-
-
-
-
-
-
-
-//Districts and cities Pondicherry
-
+            //Districts and cities Pondicherry
 
 
             case "Karaikal":
@@ -1156,11 +1137,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 citySpinnerItems = new String[]{"Ariankuppam","Bahour","Busy","Cassicade","Embalom","Kuruvinatham","Lawspet","Mannadipeth","Muthialpet","Nellithope","Nettapakkam","Orleampeth","Ossudu","Oupalam","Ozhukarai","Raj Bhavan","Reddiarpalayam","Thattanchavady","Thirubuvanai","Villenour"};
                 break;
 
-
-//Districts and cities of Uttaranchal
-
-
-
+                //Districts and cities of Uttarancha
             case "Almora":
                 citySpinnerItems = new String[]{"Almora","Bhikiasain","Dwarahat","Jageshwar","Ranjkhet","Salt","Someshwar"};
                 break;
