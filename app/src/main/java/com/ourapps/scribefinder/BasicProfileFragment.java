@@ -45,6 +45,7 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
     final List<String> languagesKnownToWrite = new ArrayList<>();
     Button EmailButton,CallButton;
 
+
     View view;
 
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;

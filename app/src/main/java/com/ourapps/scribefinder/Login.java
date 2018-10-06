@@ -54,7 +54,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         firebaseAuth = FirebaseAuth.getInstance();
 
         etEmail = findViewById(R.id.etEmail);
@@ -73,41 +72,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         SharedPreferences sp = getSharedPreferences("PasswordUpdate", MODE_PRIVATE);
         if(sp.contains("email")){
             etEmail.setText(sp.getString("email", ""));
-
         }
-
-//         Code for Ads
-        adView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
-        adView.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-            }
-
-            @Override
-            public void onAdClosed() {
-                Toast.makeText(getApplicationContext(), "Ad is closed!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(getApplicationContext(), "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                Toast.makeText(getApplicationContext(), "Ad left application!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-        });
-
-        adView.loadAd(adRequest);
     }
 
     @Override
@@ -133,10 +98,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
         super.onDestroy();
     }
-
-
-
-
 
     private void userLogin(){
 
@@ -218,11 +179,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                      } catch(Exception e) {
                          Log.e(TAG, e.getMessage());
                      }
-//                     progressDialog.dismiss();
-//                     etPasswordLayout.setErrorEnabled(true);
-//                     etPasswordLayout.setError("User does not exists!");
-//                     requestFocus(etPassword);
-//                     Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
              }
              }
          });

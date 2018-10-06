@@ -3450,40 +3450,41 @@ case "Wayanad":
     }
 
     private boolean checkDOB(){
-       try{
-           boolean isDateValid = false;
+        try{
+            boolean isDateValid = false;
 
-           String[] dateValues = etdob.getText().toString().split("/");
-           int date = Integer.parseInt(dateValues[0]);
-           int month = Integer.parseInt(dateValues[1]);
-           int year = Integer.parseInt(dateValues[2]);
+            if(!(etdob.getText().toString().trim().isEmpty())){
+                String[] dateValues = etdob.getText().toString().split("/");
+                if(dateValues.length == 3){
+                    if((dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
+                        int date = Integer.parseInt(dateValues[0]);
+                        int month = Integer.parseInt(dateValues[1]);
+                        int year = Integer.parseInt(dateValues[2]);
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
+                            isDateValid = true;
+                        }else{
+                            isDateValid = false;
+                        }
+                    }
+                }
+            }
 
-           if(date > 0 && date < 32 && month > 0 && month < 13){
-               Calendar now = Calendar.getInstance();
-               int curryear = now.get(Calendar.YEAR);
-               System.out.println(curryear);
-               System.out.println(year);
-               if(year < (curryear-18)){
-                   System.out.println("Valid Date");
-                   isDateValid = true;
-               }
-           }
-
-           if(etdob.getText().toString().trim().isEmpty() && isDateValid){
-               etdobLayout.setErrorEnabled(true);
-               etdobLayout.setError("Please select a valid date.");
-               etdob.setError("");
-               requestFocus(etdob);
-               return false;
-           }
-       }catch(Exception ex){
-           etdobLayout.setErrorEnabled(true);
-           etdobLayout.setError("Please select a valid date.");
-           requestFocus(etdob);
-           return false;
-       }
-        etdobLayout.setErrorEnabled(false);
-        return true;
+            if(isDateValid){
+                etdobLayout.setErrorEnabled(false);
+                return isDateValid;
+            }else{
+                etdobLayout.setErrorEnabled(true);
+                etdobLayout.setError("Please select/enter valid date.");
+                etdob.setError("");
+                requestFocus(etdob);
+                return isDateValid;
+            }
+        }catch(Exception ex){
+            etdobLayout.setErrorEnabled(true);
+            etdobLayout.setError("There is some exception in the code.");
+            requestFocus(etdob);
+            return false;
+        }
     }
 
     private boolean checkAddress() {
