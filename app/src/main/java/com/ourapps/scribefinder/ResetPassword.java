@@ -128,6 +128,14 @@ public class ResetPassword extends AppCompatActivity {
         });
 
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(ResetPassword.this);
+
+        super.onResume();
+
+
+    }
 
     private boolean checkEmail() {
         String email = etEmail.getText().toString().trim();

@@ -64,6 +64,14 @@ public class VolunteerPasswordChange extends AppCompatActivity implements View.O
 
         progressDialog =new ProgressDialog(this);
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(VolunteerPasswordChange.this);
+
+        super.onResume();
+
+
+    }
 
     @Override
     public void onClick(View view) {

@@ -65,6 +65,14 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
 
         setPreviousValues();
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(NeedyProfileEdit.this);
+
+        super.onResume();
+
+
+    }
 
     private void setPreviousValues() {
 

@@ -34,7 +34,7 @@ tools:context="com.ourapps.scribefinder.ContactUs">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="About us"
+        android:text="About Us"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -43,7 +43,7 @@ tools:context="com.ourapps.scribefinder.ContactUs">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="we are the gropu of volunteers initiated ourself to help visually impaired students to get volunteers for writing exams"
+        android:text="We are the group of volunteers initiated ourself to help visually impaired students to get volunteers for writing exams."
         android:textSize="20sp"
          android:textColor="@color/black"
         android:gravity="center"/>

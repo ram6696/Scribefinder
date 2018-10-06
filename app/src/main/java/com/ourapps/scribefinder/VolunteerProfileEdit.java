@@ -118,7 +118,12 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 setValuesForDistrict(stateSpinner.getSelectedItem().toString());
                 System.out.print(volunteerData.getDistrict());
+<<<<<<< HEAD
+               // districtSpinner.setSelection(volunteerData.getDistrictPosition());
+
+=======
                 districtSpinner.setSelection(volunteerData.getDistrictPosition());
+>>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
             }
 
             @Override
@@ -131,7 +136,17 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 setValuesForCity(districtSpinner.getSelectedItem().toString());
+<<<<<<< HEAD
+                //citySpinner.setSelection(volunteerData.getCityPosition());
+
+
+
+
+
+
+=======
                 citySpinner.setSelection(volunteerData.getCityPosition());
+>>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
             }
 
 
@@ -145,6 +160,14 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         });
 
         setPreviousValues();
+
+    }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(VolunteerProfileEdit.this);
+
+        super.onResume();
+
 
     }
     public void setValuesForCity(String district) {
@@ -3235,6 +3258,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         System.out.println("State Position : "+volunteerData.getStatePosition());
         stateSpinner.setSelection(volunteerData.getStatePosition());
         System.out.println("Selected State : "+stateSpinner.getSelectedItem().toString());
+
 
         setValuesForDistrict(stateSpinner.getSelectedItem().toString());
         System.out.println("District Position :"+volunteerData.getDistrictPosition());

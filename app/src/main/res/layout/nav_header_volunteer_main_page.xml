@@ -29,9 +29,10 @@
         android:src="@drawable/logo_png"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/toolbarColor"
-        android:onClick="onDPClickVolunteer"
+
         android:layout_gravity="center_horizontal"
-        tools:targetApi="donut" />
+        tools:targetApi="donut"
+        tools:ignore="MissingPrefix" />
 
     <TextView
         android:id="@+id/txvolunteerName"

@@ -78,9 +78,13 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etMobileNumber = findViewById(R.id.etMobileNumber);
         etNewPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
+<<<<<<< HEAD
+        etAddress = findViewById(R.id.etAddress);
+=======
         etdob = findViewById(R.id.etDOBVR);
         etAddress = findViewById(R.id.etAddress);
 
+>>>>>>> 2b3fcfd8a5e317e625ecad80d495339cee9b6c53
         etPincode = findViewById(R.id.etPincode);
 
         etNameLayout = findViewById(R.id.etNameLayout);
@@ -91,7 +95,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etdobLayout = findViewById(R.id.etDOBLayout);
         etAddressLayout = findViewById(R.id.etAddressLayout);
         etPincodeLayout = findViewById(R.id.etPincodeLayout);
-
+        etdob = findViewById(R.id.etDOB);
         etPincode.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
@@ -136,6 +140,14 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
 
             }
         });
+    }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(VolunteerRegister.this);
+
+        super.onResume();
+
+
     }
 
     private void setValuesForDistrict(String selectedItem) {
@@ -3357,8 +3369,8 @@ case "Wayanad":
                     databaseVolunteer.child("Volunteer").child(id).setValue(volunteerData);
                     progressDialog.dismiss();
 
-                    finish();
-                    //startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
+
+                   // startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
 
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerRegister.this);
@@ -3383,6 +3395,8 @@ case "Wayanad":
 
     private boolean checkName() {
         if(etName.getText().toString().trim().isEmpty()){
+            Toast.makeText(VolunteerRegister.this, "Please enter  Name", Toast.LENGTH_SHORT).show();
+
             etNameLayout.setErrorEnabled(true);
             etNameLayout.setError("Please enter Valid Name");
             requestFocus(etName);
@@ -3395,11 +3409,15 @@ case "Wayanad":
     private boolean checkEmail() {
         String email = etEmail.getText().toString().trim();
         if(email.isEmpty()){
+            Toast.makeText(VolunteerRegister.this, "Please enter Email", Toast.LENGTH_SHORT).show();
+
             etEmailLayout.setErrorEnabled(true);
             etEmailLayout.setError("Please enter Email");
             requestFocus(etEmail);
             return false;
         }else if(!isValidEmail(email)){
+            Toast.makeText(VolunteerRegister.this, "Please enter Valid Email", Toast.LENGTH_SHORT).show();
+
             etEmailLayout.setErrorEnabled(true);
             etEmailLayout.setError("Please enter Valid Email");
             requestFocus(etEmail);
@@ -3412,11 +3430,15 @@ case "Wayanad":
     private boolean checkMobileNumber() {
         String mobileNumber = etMobileNumber.getText().toString().trim();
         if(mobileNumber.isEmpty()){
+            Toast.makeText(VolunteerRegister.this, "Please enter Mobile Number", Toast.LENGTH_SHORT).show();
+
             etMobileNumberLayout.setErrorEnabled(true);
             etMobileNumberLayout.setError("Please enter Mobile Number");
             requestFocus(etMobileNumber);
             return false;
         }else if(mobileNumber.length() != 10){
+            Toast.makeText(VolunteerRegister.this, "Please enter Valid Mobile Number", Toast.LENGTH_SHORT).show();
+
             etMobileNumberLayout.setErrorEnabled(true);
             etMobileNumberLayout.setError("Please enter Valid Mobile Number");
             requestFocus(etMobileNumber);
@@ -3429,17 +3451,30 @@ case "Wayanad":
     private boolean checkPasswords() {
         String newPassword = etNewPassword.getText().toString().trim();
         String confirmPassword = etConfirmPassword.getText().toString().trim();
-        if(newPassword.isEmpty()){
+        if(newPassword.isEmpty() ){
+            Toast.makeText(VolunteerRegister.this, "Please enter New Password", Toast.LENGTH_SHORT).show();
+
             etNewPasswordLayout.setErrorEnabled(true);
             etNewPasswordLayout.setError("Please enter New Password");
             requestFocus(etNewPassword);
             return false;
-        }else if(confirmPassword.isEmpty()){
+        }else if(newPassword.length() < 6){
+
+            etNewPasswordLayout.setErrorEnabled(true);
+            etNewPasswordLayout.setError("Password Must have more than 6 characters");
+            requestFocus(etNewPassword);
+            return false;
+        }
+        else if(confirmPassword.isEmpty()){
+            Toast.makeText(VolunteerRegister.this, "Please enter confirm password", Toast.LENGTH_SHORT).show();
+
             etConfirmPasswordLayout.setErrorEnabled(true);
             etConfirmPasswordLayout.setError("Please enter Confirm Password");
             requestFocus(etConfirmPassword);
             return false;
         } else if(!newPassword.contentEquals(confirmPassword)){
+            Toast.makeText(VolunteerRegister.this, "Please not matching", Toast.LENGTH_SHORT).show();
+
             etConfirmPasswordLayout.setErrorEnabled(true);
             etConfirmPasswordLayout.setError("Passwords not matching");
             requestFocus(etConfirmPassword);
@@ -3450,41 +3485,44 @@ case "Wayanad":
     }
 
     private boolean checkDOB(){
-        try{
-            boolean isDateValid = false;
+       try{
+           boolean isDateValid = false;
 
-            if(!(etdob.getText().toString().trim().isEmpty())){
-                String[] dateValues = etdob.getText().toString().split("/");
-                if(dateValues.length == 3){
-                    if((dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
-                        int date = Integer.parseInt(dateValues[0]);
-                        int month = Integer.parseInt(dateValues[1]);
-                        int year = Integer.parseInt(dateValues[2]);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
-                            isDateValid = true;
-                        }else{
-                            isDateValid = false;
-                        }
-                    }
-                }
-            }
+           String[] dateValues = etdob.getText().toString().split("/");
+           int date = Integer.parseInt(dateValues[0]);
+           int month = Integer.parseInt(dateValues[1]);
+           int year = Integer.parseInt(dateValues[2]);
 
-            if(isDateValid){
-                etdobLayout.setErrorEnabled(false);
-                return isDateValid;
-            }else{
-                etdobLayout.setErrorEnabled(true);
-                etdobLayout.setError("Please select/enter valid date.");
-                etdob.setError("");
-                requestFocus(etdob);
-                return isDateValid;
-            }
-        }catch(Exception ex){
-            etdobLayout.setErrorEnabled(true);
-            etdobLayout.setError("There is some exception in the code.");
-            requestFocus(etdob);
-            return false;
-        }
+           String regEx ="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d{2}$";
+
+
+
+           if(date > 0 && date < 31 && month > 0 && month < 13 && year > 1970 && year <3000 ){
+               Calendar now = Calendar.getInstance();
+               int curryear = now.get(Calendar.YEAR);
+               System.out.println(curryear);
+               System.out.println(year);
+               if(year < (curryear-18)){
+                   System.out.println("Valid Date");
+                   isDateValid = true;
+               }
+           }
+
+           if(etdob.getText().toString().trim().isEmpty() ){
+               etdobLayout.setErrorEnabled(true);
+               etdobLayout.setError("Please select a valid date.");
+               etdob.setError("");
+               requestFocus(etdob);
+               return false;
+           }
+       }catch(Exception ex){
+           etdobLayout.setErrorEnabled(true);
+           etdobLayout.setError("Please select a valid date.");
+          // requestFocus(etdob);
+           return false;
+       }
+        etdobLayout.setErrorEnabled(false);
+        return true;
     }
 
     private boolean checkAddress() {

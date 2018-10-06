@@ -83,6 +83,14 @@ public class ViewUploadsActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onResume() {
+        NetworkUtil.getConnectivityStatusString(ViewUploadsActivity.this);
+
+        super.onResume();
+
+
+    }
 
 
     public void goBackToPreviousActivity(View view) {

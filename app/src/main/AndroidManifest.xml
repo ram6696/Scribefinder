@@ -19,16 +19,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true">
 
-        <receiver
-            android:name="com.ourapps.scribefinder.NetworkChangeReceiver"
-            android:enabled="true"
-            android:label="NetworkChangeReceiver" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
 
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
         <activity
             android:name=".LogoSplashScreen"
             android:theme="@style/SplashScreenTheme">
@@ -81,9 +72,6 @@
             android:parentActivityName=".NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
-        <activity
-            android:name=".RegisterSuccessfulMessage"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DisplaySearchedVolunteers"
             android:parentActivityName=".ScribeSearchPage"
