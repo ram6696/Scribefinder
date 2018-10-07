@@ -21,20 +21,24 @@ public class NetworkUtil {
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         if (null == activeNetwork) {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setTitle("No Internet Connection");
-            builder1.setMessage("Please Connect to the Internet");
-            builder1.setCancelable(true);
 
-            builder1.setPositiveButton(
-                    "Ok",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                           getConnectivityStatus(context);
-                        }
-                    });
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
+            Intent internet = new Intent(context,internetConnection.class);
+            context.startActivity(internet);
+
+//            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+//            builder1.setTitle("No Internet Connection");
+//            builder1.setMessage("Please Connect to the Internet");
+//            builder1.setCancelable(true);
+//
+//            builder1.setPositiveButton(
+//                    "Ok",
+//                    new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                           getConnectivityStatus(context);
+//                        }
+//                    });
+//            AlertDialog alert11 = builder1.create();
+//            alert11.show();
 
         }
 
