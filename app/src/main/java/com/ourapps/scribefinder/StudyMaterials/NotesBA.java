@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.ourapps.scribefinder.NeedyMainPage;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA1stSem;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA2ndSem;
@@ -60,7 +61,7 @@ public class NotesBA extends AppCompatActivity {
 
     public static class StudyMaterial extends AppCompatActivity {
 
-        String item[] = new String[]{"B.A", "B.Com"};
+        String item[] = new String[]{"B.A"};
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -86,14 +87,14 @@ public class NotesBA extends AppCompatActivity {
         }
 
         public void goBackToPreviousActivity(View view) {
-            finish();
-            //startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+
+            startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
         }
 
         @Override
         public void onBackPressed() {
-            finish();
-            //startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+
+            startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
         }
     }
 }

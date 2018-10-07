@@ -28,6 +28,16 @@ public class BA1stSem extends AppCompatActivity {
                 if (position == 0) {
                     startActivity(new Intent(BA1stSem.this, BA1stSemEconomics.class));
                 }
+                if(position == 1){
+                    startActivity(new Intent(BA1stSem.this, BA1stSemEnglsih.class));
+                }
+                if(position == 2){
+                    startActivity(new Intent(BA1stSem.this,BA1stSemEPH.class));
+                }
+                if(position == 3){
+                    startActivity(new Intent(BA1stSem.this,BA1stSemHistory.class));
+                }
+
             }
         });
     }

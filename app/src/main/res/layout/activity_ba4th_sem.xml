@@ -25,9 +25,15 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="@string/ba_4th_sem"
+            android:text="BA"
             android:layout_marginStart="40dp"/>
 
     </android.support.v7.widget.Toolbar>
+
+    <ListView
+        android:id="@+id/ListView10"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

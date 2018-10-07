@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
@@ -165,6 +166,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                          etPassword.setError(getString(R.string.error_invalid_email));
                          etPasswordLayout.requestFocus();
                          Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
+                     }catch(FirebaseAuthEmailException e){
+                         progressDialog.dismiss();
+                         etEmail.setError("Invalid Email");
+                         etEmail.requestFocus();
+                         Toast.makeText(Login.this,"Invalid email..!",Toast.LENGTH_LONG).show();
                      } catch(FirebaseAuthInvalidUserException e) {
                          progressDialog.dismiss();
                          etEmailLayout.setError(getString(R.string.error_user_does_not_exists));
