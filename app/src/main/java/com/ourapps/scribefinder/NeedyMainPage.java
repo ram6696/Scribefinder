@@ -51,7 +51,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView needyProfilePic;
     private TextView needyName, needyEmail;
@@ -59,8 +59,9 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
     public static final int RESULT_LOAD_IMAGE = 1;
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference mDatabaseRef;
     private StorageReference mStorageRef;
+    private FirebaseUser mCurrentUser;
 
     private String currentUserId;
     private String currentUserName;
@@ -84,15 +85,10 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        View headerView = navigationView.getHeaderView(0);
 
-        needyProfilePic =  headerView.findViewById(R.id.needyProfilePic);
-
-        needyProfilePic.setOnClickListener(NeedyMainPage.this);
-
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
+        mCurrentUser  = FirebaseAuth.getInstance().getCurrentUser();
 
         progressDialog = new ProgressDialog(this);
 
@@ -108,10 +104,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(NeedyMainPage.this);
-
         super.onResume();
-
-
     }
 
 
@@ -122,7 +115,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        mDatabase.child("Needy").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child("Needy").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -223,14 +216,11 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
 
-                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            String uid = user.getUid();
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-                            final Query data = reference.child("Needy").child(uid);
-                            final Query users = reference.child("Users").child(uid);
-                            assert user != null;
+                            String uid = mCurrentUser.getUid();
+                            final Query data = mDatabaseRef.child("Needy").child(uid);
+                            final Query users = mDatabaseRef.child("Users").child(uid);
 
-                            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            mCurrentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
@@ -244,7 +234,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                                     editor.remove("uid");
                                                     editor.remove("email");
                                                     editor.remove("password");
-                                                   // editor.remove("accType");
+                                                    editor.remove("accType");
                                                     editor.putBoolean("logStatus", false);
                                                     editor.apply();
                                                     AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyMainPage.this);
@@ -360,8 +350,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         downloadUri[0] = taskSnapshot.getDownloadUrl();
-                        boolean flag = mDatabase.child("Needy").child(currentUserId).child("photoUrl").setValue(downloadUri[0].toString()).isSuccessful();
-                        mDatabase.child("Needy").child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
+                        boolean flag = mDatabaseRef.child("Needy").child(currentUserId).child("photoUrl").setValue(downloadUri[0].toString()).isSuccessful();
+                        mDatabaseRef.child("Needy").child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 String picture = dataSnapshot.getValue().toString();
@@ -484,10 +474,5 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 }
             }, 2000);
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-        onDPClickNeedy(v);
     }
 }

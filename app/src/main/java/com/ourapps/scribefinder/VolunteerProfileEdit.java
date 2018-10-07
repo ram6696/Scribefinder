@@ -133,7 +133,6 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 setValuesForCity(districtSpinner.getSelectedItem().toString());
 
                 //citySpinner.setSelection(volunteerData.getCityPosition());
@@ -3506,6 +3505,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             return false;
         }
     }
+
     private boolean checkAddress() {
         String address = etAddress.getText().toString().trim();
         if(address.isEmpty()){
