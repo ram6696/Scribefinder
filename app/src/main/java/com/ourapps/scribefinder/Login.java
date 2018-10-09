@@ -6,8 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -47,6 +50,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private TextView tvForgetPassword;
     private AdView adView;
 
+
+    boolean doubleBackToExitPressedOnce = false;
+
     private TextInputLayout etEmailLayout, etPasswordLayout;
     private static final String TAG = "Login";
 
@@ -81,7 +87,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
 
     }
-
+    @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(Login.this);
 
@@ -94,7 +100,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
 
 
+
     private void userLogin(){
+
+        //NetworkUtil.getConnectivityStatusString(Login.this);
 
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
@@ -111,12 +120,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
         progressDialog.setMessage("Logging in...Please wait a moment.");
         progressDialog.show();
-        progressDialog.setCancelable(false);
+
+        NetworkUtil.getConnectivityStatusString(Login.this);
+        progressDialog.setCancelable(true);
 
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
              @Override
              public void onComplete(@NonNull Task<AuthResult> task) {
                  if (task.isSuccessful()){
+
                      boolean emailFlag = checkEmailVerification();
                      if(emailFlag){
                          final String id = task.getResult().getUser().getUid();
@@ -189,6 +201,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
          });
 
     }
+    @Override
+    public void onBackPressed() {
+
+            if(doubleBackToExitPressedOnce) {
+                finish();
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
+
 
     private boolean checkEmail() {
         String email = etEmail.getText().toString().trim();

@@ -109,6 +109,9 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
         sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserId = sp.getString("uid", "");
+
+
+        setPreviousValues();
         ArrayAdapter<CharSequence> statesListAdapter = ArrayAdapter.createFromResource(this, R.array.india_states, android.R.layout.simple_spinner_item);
         statesListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         stateSpinner.setAdapter(statesListAdapter);
@@ -128,9 +131,12 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
+
         });
 
+
         districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 setValuesForCity(districtSpinner.getSelectedItem().toString());
@@ -143,7 +149,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
 
 
-                citySpinner.setSelection(volunteerData.getCityPosition());
+                //citySpinner.setSelection(volunteerData.getCityPosition());
 
             }
 
@@ -155,11 +161,13 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
 
             }
+
         });
 
-        setPreviousValues();
+
 
     }
+
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(VolunteerProfileEdit.this);
@@ -168,6 +176,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
 
     }
+
     public void setValuesForCity(String district) {
         switch (district) {
             case "Nicobar":
@@ -3085,7 +3094,9 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         cityListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         citySpinner.setAdapter(cityListAdapter);
-       //cityListAdapter.notifyDataSetChanged();
+        citySpinner.setSelection(volunteerData.getCityPosition());
+
+        cityListAdapter.notifyDataSetChanged();
 
     }
 
@@ -3206,10 +3217,12 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         ArrayAdapter<String> districtListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, districtSpinnerItems);
         districtListAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         districtSpinner.setAdapter(districtListAdapter);
-
-
+         districtSpinner.setSelection(volunteerData.getDistrictPosition());
 
         districtListAdapter.notifyDataSetChanged();
+
+
+
     }
 
     private void setPreviousValues() {
@@ -3253,20 +3266,23 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         etAddress.setText(volunteerData.getAddress());
         etPincode.setText(volunteerData.getPincode());
 
-        System.out.println("State Position : "+volunteerData.getStatePosition());
+       // System.out.println("State Position : "+volunteerData.getStatePosition());
         stateSpinner.setSelection(volunteerData.getStatePosition());
-        System.out.println("Selected State : "+stateSpinner.getSelectedItem().toString());
+        //System.out.println("Selected State : "+stateSpinner.getSelectedItem().toString());
 
 
         setValuesForDistrict(stateSpinner.getSelectedItem().toString());
-        System.out.println("District Position :"+volunteerData.getDistrictPosition());
-        districtSpinner.setSelection(volunteerData.getDistrictPosition());
-        System.out.println("Selected District:"+districtSpinner.getSelectedItem().toString());
+       // System.out.println("District Position :"+volunteerData.getDistrictPosition());
+        districtSpinner.setSelection(volunteerData.getDistrictPosition(),true);
+        //System.out.println("Selected District:"+districtSpinner.getSelectedItem().toString());
+
+
 
         setValuesForCity(districtSpinner.getSelectedItem().toString());
-        System.out.println("City Position :"+volunteerData.getCityPosition());
-        citySpinner.setSelection(volunteerData.getCityPosition());
-        System.out.println("Selected City :"+citySpinner.getSelectedItem().toString());
+       // System.out.println("City Position :"+volunteerData.getCityPosition());
+
+        citySpinner.setSelection(volunteerData.getCityPosition(),true);
+       // System.out.println("Selected City :"+citySpinner.getSelectedItem().toString());
 
         if(volunteerData.isEnglish()){
             chEnglish.setChecked(true);
@@ -3337,6 +3353,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         final int districtPosition  = districtSpinner.getSelectedItemPosition();
         final String state          = stateSpinner.getSelectedItem().toString();
         final int statePosition     = stateSpinner.getSelectedItemPosition();
+
         String filterAddress        = "";
         String photoUrl             = volunteerData.getPhotoUrl();
         String languages            = "";
@@ -3475,7 +3492,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             if(!(etdob.getText().toString().trim().isEmpty())){
                 String[] dateValues = etdob.getText().toString().split("/");
                 if(dateValues.length == 3){
-                    if((dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
+                    if(!(dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
@@ -3494,14 +3511,14 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             }else{
                 etdobLayout.setErrorEnabled(true);
                 etdobLayout.setError("Please select/enter valid date.");
-                etdob.setError("");
-                requestFocus(etdob);
+
+                requestFocus(etdobLayout);
                 return isDateValid;
             }
         }catch(Exception ex){
             etdobLayout.setErrorEnabled(true);
             etdobLayout.setError("There is some exception in the code.");
-            requestFocus(etdob);
+            requestFocus(etdobLayout);
             return false;
         }
     }
@@ -3633,4 +3650,5 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         finish();
         startActivity(new Intent(VolunteerProfileEdit.this, VolunteerMainPage.class));
     }
+
 }

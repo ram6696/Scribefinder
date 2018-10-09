@@ -48,7 +48,7 @@ import java.util.Objects;
 
 public class VolunteerRegister extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText etName, etEmail, etMobileNumber, etNewPassword, etConfirmPassword, etdob, etAddress, etPincode;
+    private EditText etName, etEmail, etMobileNumber, etNewPassword, etConfirmPassword, etDOBVR, etAddress, etPincode;
     private TextInputLayout etNameLayout, etEmailLayout, etMobileNumberLayout, etNewPasswordLayout, etConfirmPasswordLayout, etdobLayout, etAddressLayout, etPincodeLayout;
     private RadioGroup genderGroup;
     private Spinner districtSpinner, stateSpinner, citySpinner;
@@ -61,7 +61,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
     String districtSpinnerItems[] = null;
     List<String> languagesKnownToWrite = new ArrayList<>();
 
-    int year_x = 1970, month_x = 0, day_x = 1;
+    int year_x = 1950, month_x = 0, day_x = 1;
     static final int DIALOG_ID = 0;
 
     @Override
@@ -81,7 +81,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
 
         etAddress = findViewById(R.id.etAddress);
 
-        etdob = findViewById(R.id.etDOBVR);
+        etDOBVR = findViewById(R.id.etDOBVR);
         etAddress = findViewById(R.id.etAddress);
 
 
@@ -95,7 +95,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
         etdobLayout = findViewById(R.id.etDOBLayout);
         etAddressLayout = findViewById(R.id.etAddressLayout);
         etPincodeLayout = findViewById(R.id.etPincodeLayout);
-        etdob = findViewById(R.id.etDOB);
+        etDOBVR = findViewById(R.id.etDOBVR);
         etPincode.setFilters(new InputFilter[]{new InputFilter.LengthFilter(6)});
         etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
 
@@ -3260,7 +3260,7 @@ case "Wayanad":
         int genderSelectedId        = genderGroup.getCheckedRadioButtonId();
         RadioButton selectedGender  = findViewById(genderSelectedId);
         final String gender         = (String) selectedGender.getText();
-        final String dob            = etdob.getText().toString().trim();
+        final String dob            = etDOBVR.getText().toString().trim();
         final String address        = etAddress.getText().toString().trim();
         final String pincode        = etPincode.getText().toString().trim();
         final String city           = citySpinner.getSelectedItem().toString().trim();
@@ -3462,46 +3462,42 @@ case "Wayanad":
     }
 
     private boolean checkDOB(){
-       try{
-           boolean isDateValid = false;
+        try{
+            boolean isDateValid = false;
 
-           String[] dateValues = etdob.getText().toString().split("/");
-           int date = Integer.parseInt(dateValues[0]);
-           int month = Integer.parseInt(dateValues[1]);
-           int year = Integer.parseInt(dateValues[2]);
+            if(!(etDOBVR.getText().toString().trim().isEmpty())){
+                String[] dateValues = etDOBVR.getText().toString().split("/");
+                if(dateValues.length == 3){
+                    if(!(dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
+                        int date = Integer.parseInt(dateValues[0]);
+                        int month = Integer.parseInt(dateValues[1]);
+                        int year = Integer.parseInt(dateValues[2]);
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
+                            isDateValid = true;
+                        }else{
+                            isDateValid = false;
+                        }
+                    }
+                }
+            }
 
-           String regEx ="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d{2}$";
-
-
-
-           if(date > 0 && date < 31 && month > 0 && month < 13 && year > 1970 && year <3000 ){
-               Calendar now = Calendar.getInstance();
-               int curryear = now.get(Calendar.YEAR);
-               System.out.println(curryear);
-               System.out.println(year);
-               if(year < (curryear-18)){
-                   System.out.println("Valid Date");
-                   isDateValid = true;
-               }
-           }
-
-           if(etdob.getText().toString().trim().isEmpty() ){
-               etdobLayout.setErrorEnabled(true);
-               etdobLayout.setError("Please select a valid date.");
-               etdob.setError("");
-               requestFocus(etdob);
-               return false;
-           }
-       }catch(Exception ex){
-           etdobLayout.setErrorEnabled(true);
-           etdobLayout.setError("Please select a valid date.");
-          // requestFocus(etdob);
-           return false;
-       }
-        etdobLayout.setErrorEnabled(false);
-        return true;
+            if(isDateValid){
+                etdobLayout.setErrorEnabled(false);
+                return isDateValid;
+            }else{
+                etdobLayout.setErrorEnabled(true);
+                etdobLayout.setError("Please select/enter valid date.");
+                etDOBVR.setError("");
+                requestFocus(etDOBVR);
+                return isDateValid;
+            }
+        }catch(Exception ex){
+            etdobLayout.setErrorEnabled(true);
+            etdobLayout.setError("There is some exception in the code.");
+            requestFocus(etDOBVR);
+            return false;
+        }
     }
-
     private boolean checkAddress() {
         String address = etAddress.getText().toString().trim();
         if(address.isEmpty()){
@@ -3577,7 +3573,7 @@ case "Wayanad":
             year_x = year;
             month_x = monthOfYear;
             day_x = dayOfMonth;
-            etdob.setText(day_x+"/"+(month_x+1)+"/"+year_x);
+            etDOBVR.setText(day_x+"/"+(month_x+1)+"/"+year_x);
         }
     };
 

@@ -128,11 +128,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA6thSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:targetApi="jelly_bean" />
-        <activity
             android:name=".StudyMaterials.BANotes.BA1stSemEconomics"
             android:parentActivityName=".StudyMaterials.BANotes.BA1stSem"
             android:theme="@style/AppTheme.NoActionBar"

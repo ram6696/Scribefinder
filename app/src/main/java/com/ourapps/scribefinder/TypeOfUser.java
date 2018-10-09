@@ -25,12 +25,14 @@ public class TypeOfUser extends AppCompatActivity {
     {
         Intent log= new Intent(this, NeedyRegister.class);
         startActivity(log);
+        finish();
     }
 
     public void volunteer(View view)
     {
         Intent log= new Intent(this, VolunteerRegister.class);
         startActivity(log);
+        finish();
     }
 
     public void goBackToPreviousActivity(View view) {

@@ -15,12 +15,11 @@ import com.ourapps.scribefinder.StudyMaterials.BANotes.BA2ndSem;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA3rdSem;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA4thSem;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA5thSem;
-import com.ourapps.scribefinder.StudyMaterials.BANotes.BA6thSem;
 
 public class NotesBA extends AppCompatActivity {
 
 
-    String item[] = new String[]{"1st SEM", "2nd SEM","3rd SEM","4th SEM","5th SEM","6th SEM" };
+    String item[] = new String[]{"1st SEM", "2nd SEM","3rd SEM","4th SEM","5th SEM" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +47,7 @@ public class NotesBA extends AppCompatActivity {
                 if(position == 4) {
                     startActivity(new Intent(NotesBA.this, BA5thSem.class ));
                 }
-                if(position == 5) {
-                    startActivity(new Intent(NotesBA.this, BA6thSem.class ));
-                }
+
             }
         });
     }

@@ -51,7 +51,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
-public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class NeedyMainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     private ImageView needyProfilePic;
     private TextView needyName, needyEmail;
@@ -83,8 +83,16 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+
+
+        needyProfilePic =  headerView.findViewById(R.id.needyProfilePic);
+
+
+        needyProfilePic.setOnClickListener(NeedyMainPage.this);
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
@@ -473,6 +481,13 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     doubleBackToExitPressedOnce = false;
                 }
             }, 2000);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == needyProfilePic){
+            onDPClickNeedy(v);
         }
     }
 }
