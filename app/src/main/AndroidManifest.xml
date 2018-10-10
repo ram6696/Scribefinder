@@ -43,58 +43,58 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".NeedyRegister"
+            android:name=".Needy.NeedyRegister"
             android:parentActivityName=".Login"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".VolunteerRegister"
+            android:name=".Volunteer.VolunteerRegister"
             android:parentActivityName=".TypeOfUser"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".NeedyMainPage"
+            android:name=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".VolunteerMainPage"
+            android:name=".Volunteer.VolunteerMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NeedyPasswordChange"
+            android:name=".Needy.NeedyPasswordChange"
             android:launchMode="singleTask"
-            android:parentActivityName=".NeedyMainPage"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".ScribeSearchPage"
-            android:parentActivityName=".NeedyMainPage"
+            android:name=".Needy.ScribeSearchPage"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".DisplaySearchedVolunteers"
-            android:parentActivityName=".ScribeSearchPage"
+            android:name=".Needy.DisplaySearchedVolunteers"
+            android:parentActivityName=".Needy.ScribeSearchPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".DisplaySingleScribeDetails"
-            android:parentActivityName=".DisplaySearchedVolunteers"
+            android:name=".Needy.DisplaySingleScribeDetails"
+            android:parentActivityName=".Needy.DisplaySearchedVolunteers"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NeedyProfileEdit"
-            android:parentActivityName=".NeedyMainPage"
+            android:name=".Needy.NeedyProfileEdit"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".VolunteerProfileEdit"
-            android:parentActivityName=".VolunteerMainPage"
+            android:name=".Volunteer.VolunteerProfileEdit"
+            android:parentActivityName=".Volunteer.VolunteerMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".VolunteerPasswordChange"
+            android:name=".Volunteer.VolunteerPasswordChange"
             android:launchMode="singleTask"
-            android:parentActivityName=".VolunteerMainPage"
+            android:parentActivityName=".Volunteer.VolunteerMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".StudyMaterials.NotesBA$StudyMaterial"
-            android:parentActivityName=".NeedyMainPage"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
@@ -134,12 +134,12 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".UploadNotes"
-            android:parentActivityName=".NeedyMainPage"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".ViewUploadsActivity"
-            android:parentActivityName=".NeedyMainPage"
+            android:parentActivityName=".Needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity

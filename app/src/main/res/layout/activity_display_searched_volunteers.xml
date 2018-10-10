@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".DisplaySearchedVolunteers">
+    tools:context=".Needy.DisplaySearchedVolunteers">
 
 
     <android.support.v7.widget.Toolbar

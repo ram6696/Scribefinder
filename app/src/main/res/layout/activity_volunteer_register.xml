@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.ourapps.scribefinder.VolunteerRegister">
+    tools:context="com.ourapps.scribefinder.Volunteer.VolunteerRegister">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

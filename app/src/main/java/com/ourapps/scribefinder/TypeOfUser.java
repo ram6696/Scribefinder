@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.ourapps.scribefinder.Needy.NeedyRegister;
+import com.ourapps.scribefinder.Volunteer.VolunteerRegister;
 
 public class TypeOfUser extends AppCompatActivity {
 

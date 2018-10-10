@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ourapps.scribefinder.NeedyMainPage;
+import com.ourapps.scribefinder.Needy.NeedyMainPage;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA1stSem;
 import com.ourapps.scribefinder.StudyMaterials.BANotes.BA2ndSem;

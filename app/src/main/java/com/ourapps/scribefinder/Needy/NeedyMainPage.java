@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder;
+package com.ourapps.scribefinder.Needy;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -44,7 +44,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ourapps.scribefinder.ContactUs;
+import com.ourapps.scribefinder.Login;
+import com.ourapps.scribefinder.NetworkUtil;
+import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.StudyMaterials.NotesBA;
+import com.ourapps.scribefinder.UploadNotes;
+import com.ourapps.scribefinder.ViewUploadsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -308,7 +314,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     }
 
     public void searchForScribe(View view) {
-        Intent NeedyMainPage= new Intent(com.ourapps.scribefinder.NeedyMainPage.this, ScribeSearchPage.class);
+        Intent NeedyMainPage= new Intent(com.ourapps.scribefinder.Needy.NeedyMainPage.this, ScribeSearchPage.class);
         startActivity(NeedyMainPage);
     }
 

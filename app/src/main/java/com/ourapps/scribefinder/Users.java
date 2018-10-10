@@ -12,7 +12,7 @@ public class Users {
     public Users() {
     }
 
-    Users(String userId, String email, String password, String accountType, String name, String mobileNumber) {
+    public Users(String userId, String email, String password, String accountType, String name, String mobileNumber) {
         this.userId = userId;
         this.email = email;
         this.password = password;

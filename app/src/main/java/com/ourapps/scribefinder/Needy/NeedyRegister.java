@@ -1,4 +1,4 @@
-package com.ourapps.scribefinder;
+package com.ourapps.scribefinder.Needy;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -27,6 +27,10 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.ourapps.scribefinder.Login;
+import com.ourapps.scribefinder.NetworkUtil;
+import com.ourapps.scribefinder.R;
+import com.ourapps.scribefinder.Users;
 
 import java.util.Objects;
 
