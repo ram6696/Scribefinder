@@ -1,10 +1,12 @@
 package com.ourapps.scribefinder;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,7 +22,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,8 +35,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.ourapps.scribefinder.Needy.NeedyMainPage;
-import com.ourapps.scribefinder.Volunteer.VolunteerMainPage;
+import com.ourapps.scribefinder.needy.NeedyMainPage;
+import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
@@ -46,8 +47,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private TextView tvForgetPassword;
-    private AdView adView;
-
 
     boolean doubleBackToExitPressedOnce = false;
 
@@ -58,7 +57,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -78,31 +76,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         SharedPreferences sp = getSharedPreferences("PasswordUpdate", MODE_PRIVATE);
         if(sp.contains("email")){
             etEmail.setText(sp.getString("email", ""));
-
         }
-
-//
-
-
     }
+
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(Login.this);
-
         super.onResume();
-
-
     }
 
-
-
-
-
-
     private void userLogin(){
-
-        //NetworkUtil.getConnectivityStatusString(Login.this);
-
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
@@ -189,19 +172,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                      } catch(Exception e) {
                          Log.e(TAG, e.getMessage());
                      }
-//                     progressDialog.dismiss();
-//                     etPasswordLayout.setErrorEnabled(true);
-//                     etPasswordLayout.setError("User does not exists!");
-//                     requestFocus(etPassword);
-//                     Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
              }
              }
          });
 
     }
+
     @Override
     public void onBackPressed() {
-
             if(doubleBackToExitPressedOnce) {
                 finish();
                 super.onBackPressed();
@@ -241,7 +219,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         String newPassword = etPassword.getText().toString().trim();
         if(newPassword.isEmpty()){
             etPasswordLayout.setErrorEnabled(true);
-            etPasswordLayout.setError("Please enter New Password");
+            etPasswordLayout.setError("Please enter new password");
             requestFocus(etPassword);
             return false;
         }
@@ -275,13 +253,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             builder1.setPositiveButton(
                     "Open Email",
                     new DialogInterface.OnClickListener() {
+                        @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
                         public void onClick(DialogInterface dialog, int id) {
                             Intent intent = new Intent(Intent.ACTION_MAIN);
                             intent.addCategory(Intent.CATEGORY_APP_EMAIL); ;
-                           startActivity(intent);
+                            startActivity(intent);
                             progressDialog.dismiss();
-
-
                         }
                     });
             builder1.setNegativeButton(
@@ -306,7 +283,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     }
 
     private boolean isValidEmail(String email) {
-        return !TextUtils.isEmpty(email) &&     Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private void requestFocus(View view){

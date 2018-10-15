@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ourapps.scribefinder.Volunteer.VolunteerMainPage"
+    tools:context="com.ourapps.scribefinder.volunteer.VolunteerMainPage"
     tools:showIn="@layout/app_bar_volunteer_main_page">
 
     <GridLayout

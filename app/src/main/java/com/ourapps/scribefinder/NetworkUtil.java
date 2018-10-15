@@ -1,47 +1,28 @@
 package com.ourapps.scribefinder;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.provider.Settings;
-import android.widget.Toast;
 
 public class NetworkUtil {
-    public static final int TYPE_WIFI = 1;
-    public static final int TYPE_MOBILE = 2;
-    public static final int TYPE_NOT_CONNECTED = 0;
+    private static final int TYPE_WIFI = 1;
+    private static final int TYPE_MOBILE = 2;
+    private static final int TYPE_NOT_CONNECTED = 0;
     public static final int NETWORK_STATUS_NOT_CONNECTED = 0;
-    public static final int NETWORK_STATUS_WIFI = 1;
-    public static final int NETWORK_STATUS_MOBILE = 2;
+    private static final int NETWORK_STATUS_WIFI = 1;
+    private static final int NETWORK_STATUS_MOBILE = 2;
 
     public static int getConnectivityStatus(final Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (null == activeNetwork) {
-
-            Intent internet = new Intent(context,internetConnection.class);
-            context.startActivity(internet);
-
-//            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-//            builder1.setTitle("No Internet Connection");
-//            builder1.setMessage("Please Connect to the Internet");
-//            builder1.setCancelable(true);
-//
-//            builder1.setPositiveButton(
-//                    "Ok",
-//                    new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                           getConnectivityStatus(context);
-//                        }
-//                    });
-//            AlertDialog alert11 = builder1.create();
-//            alert11.show();
-
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = null;
+        if (connectivityManager != null) {
+            activeNetwork = connectivityManager.getActiveNetworkInfo();
         }
-
+        if (activeNetwork == null) {
+            Intent internet = new Intent(context,InternetConnection.class);
+            context.startActivity(internet);
+        }
         return TYPE_NOT_CONNECTED;
     }
 

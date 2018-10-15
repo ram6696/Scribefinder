@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.ourapps.scribefinder.Needy.NeedyRegister;
-import com.ourapps.scribefinder.Volunteer.VolunteerRegister;
+import com.ourapps.scribefinder.needy.NeedyRegister;
+import com.ourapps.scribefinder.volunteer.VolunteerRegister;
 
 public class TypeOfUser extends AppCompatActivity {
 

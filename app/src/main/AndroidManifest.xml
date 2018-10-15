@@ -43,131 +43,135 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.NeedyRegister"
+            android:name=".needy.NeedyRegister"
             android:parentActivityName=".Login"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Volunteer.VolunteerRegister"
+            android:name=".volunteer.VolunteerRegister"
             android:parentActivityName=".TypeOfUser"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.NeedyMainPage"
+            android:name=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Volunteer.VolunteerMainPage"
+            android:name=".volunteer.VolunteerMainPage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Needy.NeedyPasswordChange"
+            android:name=".needy.NeedyPasswordChange"
             android:launchMode="singleTask"
-            android:parentActivityName=".Needy.NeedyMainPage"
+            android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.ScribeSearchPage"
-            android:parentActivityName=".Needy.NeedyMainPage"
+            android:name=".needy.ScribeSearchPage"
+            android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.DisplaySearchedVolunteers"
-            android:parentActivityName=".Needy.ScribeSearchPage"
+            android:name=".needy.DisplaySearchedVolunteers"
+            android:parentActivityName=".needy.ScribeSearchPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.DisplaySingleScribeDetails"
-            android:parentActivityName=".Needy.DisplaySearchedVolunteers"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".needy.DisplaySingleScribeDetails"
+            android:parentActivityName=".needy.DisplaySearchedVolunteers"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Needy.NeedyProfileEdit"
-            android:parentActivityName=".Needy.NeedyMainPage"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".needy.NeedyProfileEdit"
+            android:parentActivityName=".needy.NeedyMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Volunteer.VolunteerProfileEdit"
-            android:parentActivityName=".Volunteer.VolunteerMainPage"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".volunteer.VolunteerProfileEdit"
+            android:parentActivityName=".volunteer.VolunteerMainPage"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
         <activity
-            android:name=".Volunteer.VolunteerPasswordChange"
+            android:name=".volunteer.VolunteerPasswordChange"
             android:launchMode="singleTask"
-            android:parentActivityName=".Volunteer.VolunteerMainPage"
+            android:parentActivityName=".volunteer.VolunteerMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.NotesBA$StudyMaterial"
-            android:parentActivityName=".Needy.NeedyMainPage"
+            android:name=".studymaterials.NotesBA$StudyMaterial"
+            android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.NotesBA"
-            android:parentActivityName=".StudyMaterials.NotesBA$StudyMaterial"
+            android:name=".studymaterials.NotesBA"
+            android:parentActivityName=".studymaterials.NotesBA$StudyMaterial"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA1stSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
+            android:name=".studymaterials.ba_notes.BA1stSem"
+            android:parentActivityName=".studymaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA2ndSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
+            android:name=".studymaterials.ba_notes.BA2ndSem"
+            android:parentActivityName=".studymaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA3rdSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
+            android:name=".studymaterials.ba_notes.BA3rdSem"
+            android:parentActivityName=".studymaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA4thSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
+            android:name=".studymaterials.ba_notes.BA4thSem"
+            android:parentActivityName=".studymaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA5thSem"
-            android:parentActivityName=".StudyMaterials.NotesBA"
+            android:name=".studymaterials.ba_notes.BA5thSem"
+            android:parentActivityName=".studymaterials.NotesBA"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA1stSemEconomics"
-            android:parentActivityName=".StudyMaterials.BANotes.BA1stSem"
+            android:name=".studymaterials.ba_notes.BA1stSemEconomics"
+            android:parentActivityName=".studymaterials.ba_notes.BA1stSem"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".UploadNotes"
-            android:parentActivityName=".Needy.NeedyMainPage"
+            android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".ViewUploadsActivity"
-            android:parentActivityName=".Needy.NeedyMainPage"
+            android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".ContactUs"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Instruction"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".internetConnection" />
         <activity
-            android:name=".StudyMaterials.BANotes.BA1stSemEnglsih"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudyMaterials.BANotes.BA1stSemEPH"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudyMaterials.BANotes.BA1stSemHistory"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudyMaterials.BANotes.BA2ndSemHistory"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".StudyMaterials.BANotes.BA4thSemEconomics"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".StudyMaterials.BANotes.BA5thSemCorporate"
+            android:name=".InternetConnection"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".StudyMaterials.BANotes.BA5thSemRural"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".studymaterials.ba_notes.BA1stSemEnglsih"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".studymaterials.ba_notes.BA1stSemEPH"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".studymaterials.ba_notes.BA1stSemHistory"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".studymaterials.ba_notes.BA2ndSemHistory"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".studymaterials.ba_notes.BA4thSemEconomics"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".studymaterials.ba_notes.BA5thSemCorporate"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".studymaterials.ba_notes.BA5thSemRural"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

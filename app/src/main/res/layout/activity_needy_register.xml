@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.ourapps.scribefinder.Needy.NeedyRegister">
+    tools:context="com.ourapps.scribefinder.needy.NeedyRegister">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.MobileAds;
-import com.ourapps.scribefinder.Needy.NeedyMainPage;
-import com.ourapps.scribefinder.Volunteer.VolunteerMainPage;
+import com.ourapps.scribefinder.needy.NeedyMainPage;
+import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
 public class LogoSplashScreen extends AppCompatActivity {
 
