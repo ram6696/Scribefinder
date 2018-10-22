@@ -118,30 +118,30 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                              @Override
                              public void onDataChange(DataSnapshot dataSnapshot) {
                                  if (dataSnapshot.exists()){
-                                            Users currUser = dataSnapshot.getValue(Users.class);
-                                            Intent destPage = null;
-                                            assert currUser != null;
-                                            switch (currUser.getAccountType()){
-                                                case "Needy":
-                                                destPage = new Intent(Login.this, NeedyMainPage.class);
-                                                break;
-                                                case "Volunteer":
-                                                destPage = new Intent(Login.this, VolunteerMainPage.class);
-                                                break;
-                                            }
-                                            SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
-                                            SharedPreferences.Editor Ed= sp.edit();
-                                            Ed.putBoolean("logStatus", true);
-                                            Ed.putString("uid", id);
-                                            Ed.putString("email",currUser.getEmail());
-                                            Ed.putString("password",currUser.getPassword());
-                                            Ed.putString("accType", currUser.getAccountType());
-                                            Ed.putString("name", currUser.getName());
-                                            Ed.putString("mobileNumber", currUser.getMobileNumber());
-                                            Ed.apply();
-                                            progressDialog.dismiss();
-                                            startActivity(destPage);
-                                            finish();
+                                     Users currUser = dataSnapshot.getValue(Users.class);
+                                     Intent destPage = null;
+                                     assert currUser != null;
+                                     switch (currUser.getAccountType()) {
+                                         case "Needy":
+                                             destPage = new Intent(Login.this, NeedyMainPage.class);
+                                             break;
+                                         case "Volunteer":
+                                             destPage = new Intent(Login.this, VolunteerMainPage.class);
+                                             break;
+                                     }
+                                     SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+                                     SharedPreferences.Editor Ed = sp.edit();
+                                     Ed.putBoolean("logStatus", true);
+                                     Ed.putString("uid", id);
+                                     Ed.putString("email", currUser.getEmail());
+                                     Ed.putString("password", currUser.getPassword());
+                                     Ed.putString("accType", currUser.getAccountType());
+                                     Ed.putString("name", currUser.getName());
+                                     Ed.putString("mobileNumber", currUser.getMobileNumber());
+                                     Ed.apply();
+                                     progressDialog.dismiss();
+                                     startActivity(destPage);
+                                     finish();
                                  }
 
                              }

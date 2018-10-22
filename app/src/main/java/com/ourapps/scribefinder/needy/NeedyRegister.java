@@ -1,9 +1,11 @@
 package com.ourapps.scribefinder.needy;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -115,6 +117,7 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
         progressDialog.show();
 
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
@@ -148,9 +151,18 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyRegister.this);
                     builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
                     builder1.setCancelable(true);
-
                     builder1.setPositiveButton(
-                            "Ok",
+                            "Open Email",
+                            new DialogInterface.OnClickListener() {
+                                @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                                    intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                                    startActivity(intent);
+                                }
+                            });
+                    builder1.setNegativeButton(
+                            "Cancel",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     finish();

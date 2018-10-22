@@ -161,6 +161,13 @@
     <string name="eye_droid_logo">Eye Droid Logo</string>
     <string name="retry">Retry</string>
     <string name="no_internet_connection">No Internet Connection</string>
+    <string name="send">Send</string>
+    <string name="back_button">Back Button</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="queries">Queries</string>
+    <string name="suggestions_text">Please enter your Suggestions here, we will take action at the earliest.</string>
+    <string name="queries_text">Please enter your queries here, we will get back to you at the earliest.</string>
+    <string name="submit">Submit</string>
 </resources>
 
 

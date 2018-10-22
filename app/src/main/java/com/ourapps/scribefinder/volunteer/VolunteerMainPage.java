@@ -1,6 +1,7 @@
 package com.ourapps.scribefinder.volunteer;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -45,6 +46,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ourapps.scribefinder.ContactUs;
 import com.ourapps.scribefinder.Instruction;
 import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
@@ -96,36 +98,29 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mCurrentUser  = FirebaseAuth.getInstance().getCurrentUser();
 
-        /*//Getting the count
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();*/
-
         mDatabaseRef.child("Volunteer").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int vCount = (int)dataSnapshot.getChildrenCount();
-                volunteerCount.setText("" +vCount);
+                int finalVolunteerCount = (int) dataSnapshot.getChildrenCount() + 300;
+                volunteerCount.setText("" + String.valueOf(finalVolunteerCount));
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         } );
 
         mDatabaseRef. child("Needy").addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                int NCount = (int)dataSnapshot.getChildrenCount();
-                System.out.println("Count is"+NCount);
-                needyCount.setText("" +NCount);
+                int finalNeedyCount = (int) dataSnapshot.getChildrenCount() + 100;
+                needyCount.setText("" + String.valueOf(finalNeedyCount));
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         } );
 
@@ -147,10 +142,8 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
         final SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserName = sp.getString("name", "");
-        System.out.println(currentUserName);
         currentUserEmail = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
-        System.out.println(currentUserId);
 
         setDefaultValues();
     }
@@ -169,13 +162,14 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
         mDatabaseRef.child("Volunteer").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
 
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 System.out.println(dataSnapshot);
                 volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
                 volunteerName = findViewById(R.id.txvolunteerName);
                 volunteerEmail = findViewById(R.id.volunteerEmail);
-                String picture = dataSnapshot.child("photoUrl").getValue().toString();
+                String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
                 if(!(picture.isEmpty()))
                     Picasso.get().load(picture).into(volunteerProfilePic);
                 volunteerName.setText(currentUserName);
@@ -213,9 +207,6 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-
         switch (item.getItemId()){
             case R.id.volunteerlogout :
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
@@ -335,12 +326,12 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                 startActivity(volunteerPasswordChange);
                 break;
             case R.id.like_us_on_facebook:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/EyeDroid-The-Scribe-Finder-1074854976011093/about/?entry_point=page_edit_dialog&tab=page_info"));
-                startActivity(intent);
+                Intent likeUsOnFacebook = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/EyeDroid-The-Scribe-Finder-1074854976011093/about/?entry_point=page_edit_dialog&tab=page_info"));
+                startActivity(likeUsOnFacebook);
                 break;
             case R.id.contactUs:
-                //Intent aboutUs = new Intent(VolunteerMainPage.this, ContactUs.class);
-                //startActivity(aboutUs);
+                Intent contactUsIntent = new Intent(VolunteerMainPage.this, ContactUs.class);
+                startActivity(contactUsIntent);
                 break;
         }
 
@@ -355,8 +346,9 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         }else{
-            System.out.println("Not Okay...... ");
-            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            }
         }
     }
 
@@ -465,7 +457,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -485,7 +477,6 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-
             if(doubleBackToExitPressedOnce) {
                 finish();
                 super.onBackPressed();

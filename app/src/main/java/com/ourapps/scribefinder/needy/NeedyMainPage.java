@@ -45,12 +45,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ourapps.scribefinder.ContactUs;
 import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
-import com.ourapps.scribefinder.studymaterials.NotesBA;
 import com.ourapps.scribefinder.UploadNotes;
 import com.ourapps.scribefinder.ViewUploadsActivity;
+import com.ourapps.scribefinder.studymaterials.NotesBA;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -212,8 +213,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 startActivity(intent);
                 break;
             case R.id.contactUs:
-                //Intent volunteerPasswordChange= new Intent(NeedyMainPage.this, ContactUs.class);
-                //startActivity(volunteerPasswordChange);
+                Intent contactUsIntent = new Intent(NeedyMainPage.this, ContactUs.class);
+                startActivity(contactUsIntent);
                 break;
             case R.id.needydeleteAccount:
                 AlertDialog.Builder deleteBuilder = new AlertDialog.Builder(this);

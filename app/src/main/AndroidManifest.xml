@@ -150,7 +150,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".InternetConnection"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".studymaterials.ba_notes.BA1stSemEnglsih"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -168,10 +168,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".studymaterials.ba_notes.BA5thSemCorporate"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".studymaterials.ba_notes.BA5thSemRural"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContactUs"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:targetApi="jelly_bean" />
     </application>
 
 </manifest>

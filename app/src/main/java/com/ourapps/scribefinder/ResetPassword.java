@@ -1,7 +1,10 @@
 package com.ourapps.scribefinder;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.TextInputLayout;
@@ -13,7 +16,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class ResetPassword extends AppCompatActivity {
     private EditText etEmail;
@@ -52,50 +56,77 @@ public class ResetPassword extends AppCompatActivity {
                 ValueEventListener valueEventListener = new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                                DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-
+                                final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
                                 DatabaseReference idReference = rootRef.child("Users").child(postSnapshot.getKey());
                                 idReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if(dataSnapshot.exists()) {
-                                            Users userData = dataSnapshot.getValue(Users.class);
+                                            final Users userData = dataSnapshot.getValue(Users.class);
                                             assert userData != null;
                                             int SDK_INT = android.os.Build.VERSION.SDK_INT;
-                                            if (SDK_INT > 8)
-                                            {
-                                                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                                                        .permitAll().build();
-                                                StrictMode.setThreadPolicy(policy);
-                                                try {
-                                                    GMailSender sender = new GMailSender("scribefinder.info@gmail.com", "9738469125");
-                                                    sender.sendMail("Credentials of Your Scribe Finder",
-                                                            "Hello "+userData.getName()+
-                                                                    ",\n\n\tYou can login to your account using the following credentials.\n\n"+
-                                                                    "Your Email: "+userData.getEmail()+
-                                                                    "\nYour Password: "+userData.getPassword()+
-                                                                    "\n\nThanks,\nScribe Finder Team",
-                                                            "scribefinder.info@gmail.com",
-                                                            email);
-                                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(ResetPassword.this);
-                                                    alertDialog.setTitle("Email Sent");
-                                                    alertDialog.setMessage("An Email with your credentials has been sent to "+email+", Please check your Email.");
-                                                    alertDialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog,int which) {
-                                                           finishActivity(123);
+                                            if (SDK_INT > 8) {
+                                                rootRef.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @TargetApi(Build.VERSION_CODES.KITKAT)
+                                                    @Override
+                                                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                        String senderEmailId = Objects.requireNonNull(dataSnapshot.child("emailId").getValue()).toString();
+                                                        String password = Objects.requireNonNull(dataSnapshot.child("password").getValue()).toString();
+
+                                                        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                                                                .permitAll().build();
+                                                        StrictMode.setThreadPolicy(policy);
+                                                        try {
+                                                            GMailSender gMailSender = new GMailSender(senderEmailId, password);
+                                                            gMailSender.sendMail("Your EyeDroid Username and Password",
+                                                                    "Hey " + userData.getName() +
+                                                                            ",\n\nWe are so happy to have you on EyeDroid" + "\n\nHere are your login credentials:" +
+                                                                            "\n\nEmail: " + userData.getEmail() +
+                                                                            "\nPassword: " + userData.getPassword() +
+                                                                            "\n\nYou can set a new password after logging in to the app." +
+                                                                            "\n\nThanks,\nEyeDroid Team",
+                                                                    senderEmailId,
+                                                                    email);
+                                                            AlertDialog.Builder alertBuilder = new AlertDialog.Builder(ResetPassword.this);
+                                                            alertBuilder.setTitle("Email Sent");
+                                                            alertBuilder.setMessage("An email with your credentials has been sent to " + email + ", Please check your Email.");
+                                                            alertBuilder.setPositiveButton(
+                                                                    "Open Email",
+                                                                    new DialogInterface.OnClickListener() {
+                                                                        @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+                                                                        public void onClick(DialogInterface dialog, int id) {
+                                                                            Intent intent = new Intent(Intent.ACTION_MAIN);
+                                                                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                                                                            startActivity(intent);
+                                                                        }
+                                                                    });
+                                                            alertBuilder.setNegativeButton(
+                                                                    "Cancel",
+                                                                    new DialogInterface.OnClickListener() {
+                                                                        public void onClick(DialogInterface dialog, int id) {
+                                                                            finishActivity(123);
+                                                                        }
+                                                                    });
+                                                            alertBuilder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                                                public void onClick(DialogInterface dialog, int which) {
+
+                                                                }
+                                                            });
+                                                            progressDialog.dismiss();
+                                                            alertBuilder.show();
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    });
-                                                    progressDialog.dismiss();
-                                                    alertDialog.show();
+                                                    }
 
-                                                } catch (Exception e) {
-                                                    e.printStackTrace();
-                                                }
+                                                    @Override
+                                                    public void onCancelled(DatabaseError databaseError) {
+                                                    }
+                                                });
                                             }
-
                                         }
                                     }
                                     @Override
@@ -106,11 +137,9 @@ public class ResetPassword extends AppCompatActivity {
                             }
                         }else {
                             progressDialog.dismiss();
-                            System.out.println("No data found");
                             etEmailLayout.setErrorEnabled(true);
                             etEmailLayout.setError("Email does not exists!");
                             requestFocus(etEmail);
-                            Toast.makeText(ResetPassword.this, "Email does not exists", Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -120,7 +149,6 @@ public class ResetPassword extends AppCompatActivity {
 
                     }
                 };
-
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
                 Query query = reference.orderByChild("email").equalTo(email);
                 query.addListenerForSingleValueEvent(valueEventListener);
@@ -131,10 +159,7 @@ public class ResetPassword extends AppCompatActivity {
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(ResetPassword.this);
-
         super.onResume();
-
-
     }
 
     private boolean checkEmail() {
