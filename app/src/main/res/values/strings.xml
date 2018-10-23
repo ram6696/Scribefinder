@@ -1,9 +1,7 @@
 <resources>
-    <string name="app_name">Eye Droid</string>
-
+    <string name="app_name">EyeDroid</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="email">Email Address</string>
     <string name="email_hint">  Email</string>
     <string name="password">Password</string>
@@ -133,28 +131,20 @@
     <string name="menu_refresh">Menu Refresh</string>
     <string name="upload_notes_warning_message">Please upload notes with proper subject name as file name </string>
     <string name="error_invalid_email">Invalid credentials</string>
-    <string name="error_user_does_not_exists">User does not Exists</string>
+    <string name="error_user_does_not_exists">User does not Exist</string>
     <string name="file_not_selected">No File Selected</string>
     <!-- for intro slider -->
     <string name="Intro">Intro</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">GOT IT</string>
-
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="start">Got It</string>
     <string name="slide_1_title">Volunteer</string>
     <string name="slide_1_desc">Volunteers are the one who is interested in writing exams for the Visually impaired students</string>
-
     <string name="slide_2_title">Needy</string>
     <string name="slide_2_desc"> NEEDY is the one who are searching for volunteers</string>
-
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="title_activity_instructions">Instructions</string>
-
-    <!-- For Ads -->
-    <string name="admob_app_id">ca-app-pub-2428009821972719~1906239502</string>
-    <string name="banner_type_of_users">ca-app-pub-2428009821972719/4975255971</string>
-    <string name="test_banner_ad">ca-app-pub-3940256099942544/6300978111</string>
     <string name="contact_us">Contact Us</string>
     <string name="like_us_on_facebook">Like us on Facebook</string>
     <string name="internet_not_found_error_message">We could not establish a connection with our servers. Please try again when you are connected to the internet</string>

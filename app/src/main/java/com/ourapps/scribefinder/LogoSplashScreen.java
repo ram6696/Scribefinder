@@ -9,27 +9,22 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.MobileAds;
 import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
 public class LogoSplashScreen extends AppCompatActivity {
-
-    private TextView logoText;
-    private ImageView logoInformer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        MobileAds.initialize(this,"admob_app_id");
-        logoText = findViewById(R.id.logoText);
-        logoInformer = findViewById(R.id.logo);
+        TextView logoText = findViewById(R.id.logoText);
+        ImageView logoEyeDroid = findViewById(R.id.logo);
 
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.mytransition);
 
-        logoInformer.startAnimation(myAnimation);
+        logoEyeDroid.startAnimation(myAnimation);
         logoText.startAnimation(myAnimation);
 
         final Intent loginPage = new Intent(this,Intro.class);
@@ -42,14 +37,17 @@ public class LogoSplashScreen extends AppCompatActivity {
                     if (loginStatus) {
                         String accType = prefs.getString("accType", null);
                         Intent destPage = null;
-                        switch (accType){
-                            case "Needy":
-                                destPage = new Intent(LogoSplashScreen.this, NeedyMainPage.class);
-                                break;
-                            case "Volunteer":
-                                destPage = new Intent(LogoSplashScreen.this, VolunteerMainPage.class);
-                                break;
-                        }
+                        if (accType != null) {
+                            switch (accType) {
+                                case "Needy":
+                                    destPage = new Intent(LogoSplashScreen.this, NeedyMainPage.class);
+                                    break;
+                                case "Volunteer":
+                                    destPage = new Intent(LogoSplashScreen.this, VolunteerMainPage.class);
+                                    break;
+                            }
+                        } else
+                            System.out.println("Account Type is Null");
                         startActivity(destPage);
                         finish();
                     } else{

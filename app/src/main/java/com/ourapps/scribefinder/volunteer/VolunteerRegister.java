@@ -143,10 +143,7 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(VolunteerRegister.this);
-
         super.onResume();
-
-
     }
 
     private void setValuesForDistrict(String selectedItem) {
@@ -3471,6 +3468,9 @@ case "Wayanad":
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
+                        System.out.println(date);
+                        System.out.println(month);
+                        System.out.println(year);
                         if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
                             isDateValid = true;
                         }else{
@@ -3486,7 +3486,6 @@ case "Wayanad":
             }else{
                 etdobLayout.setErrorEnabled(true);
                 etdobLayout.setError("Please select/enter valid date.");
-                etDOBVR.setError("");
                 requestFocus(etDOBVR);
                 return isDateValid;
             }
