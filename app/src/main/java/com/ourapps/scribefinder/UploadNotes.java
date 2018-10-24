@@ -61,7 +61,7 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         progressBar = findViewById(R.id.progressbar);
 
         findViewById(R.id.btnUpload).setOnClickListener(this);
-        findViewById(R.id.tvViewUploads).setOnClickListener(this);
+
 
         sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserId = sp.getString("uid", "");
@@ -120,6 +120,8 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
                 int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
                 returnCursor.moveToFirst();
                 etChoose.setText(returnCursor.getString(nameIndex));
+                etChoose.setError(null);//removes error
+                etChoose.clearFocus();
                 selectedFile = data.getData();
                 //uploadFile(data.getData());
             }else{
@@ -159,9 +161,12 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
                                              }
             );
         }else{
-            etChoose.setError(getString(R.string.file_not_selected));
-            etChoose.requestFocus();
+
             Toast.makeText(UploadNotes.this, "No File Selected", Toast.LENGTH_LONG).show();
+
+            etChoose.setError("Please select file");
+            etChoose.requestFocus();
+
 
         }
     }
@@ -169,9 +174,7 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tvViewUploads:
-                startActivity(new Intent(this, ViewUploadsActivity.class));
-                break;
+
             case R.id.btnUpload:
                 uploadFile();
                 break;

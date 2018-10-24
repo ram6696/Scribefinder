@@ -232,9 +232,9 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                         "Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                startActivity(getIntent());
+
                                 dialog.cancel();
-                                finish();
+                               
                             }
                         });
                 AlertDialog alert11 = builder1.create();

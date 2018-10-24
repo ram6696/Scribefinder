@@ -106,19 +106,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
-            android:text="No file selected"
+
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/tvViewUploads"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="View Uploads"
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/colorPrimaryDark" />
+
 
     </LinearLayout>
 
