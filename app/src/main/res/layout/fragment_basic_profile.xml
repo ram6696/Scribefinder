@@ -28,7 +28,7 @@
                 android:src="@drawable/ic_account_circle"
                 android:layout_gravity="center_horizontal"
                 tools:targetApi="donut"
-                android:contentDescription="@string/image_not_available"/>
+                />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -36,6 +36,13 @@
                 android:orientation="vertical"
                 android:layout_marginStart="12dp">
 
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textSize="14sp"/>
                 <TextView
                     android:id="@+id/scribeName"
                     android:layout_width="wrap_content"
@@ -43,12 +50,6 @@
                     android:text="@string/name"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    android:textSize="14sp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -64,13 +65,20 @@
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:src="@drawable/ic_phone"
-                android:contentDescription="@string/image_not_available" />
+                />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginStart="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mobileNumber"
+                    android:textSize="14sp"
+                    android:layout_marginTop="25dp"/>
 
                 <TextView
                     android:id="@+id/scribeMobileNumber"
@@ -80,12 +88,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mobileNumber"
-                    android:textSize="14sp"
-                    android:layout_marginTop="25dp"/>
+
                 <Button
                     android:id="@+id/CallButton"
                     android:layout_width="wrap_content"
@@ -120,6 +123,13 @@
                 android:layout_marginStart="25dp">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:layout_marginTop="25dp"
+                    android:textSize="15sp"/>
+
+                <TextView
                     android:id="@+id/scribeEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,12 +137,7 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email"
-                    android:layout_marginTop="25dp"
-                    android:textSize="15sp"/>
+
                 <Button
                     android:id="@+id/EmailButton"
                     android:layout_width="wrap_content"

@@ -463,7 +463,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     onDPClickVolunteer(null);
                 } else {
-                    // permission denied
+                    Toast.makeText(this, "Permission required to read file from the storage...", Toast.LENGTH_LONG).show();
                     System.out.println("-----------------------Permission not given");
                 }
             }

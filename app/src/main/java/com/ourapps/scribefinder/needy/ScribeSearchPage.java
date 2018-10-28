@@ -321,16 +321,16 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                         if(searchLocation.contentEquals("your location")){
                             locName = addresses.get(0).getPostalCode();
                             locType = "pincode";
-                            Toast.makeText(getApplicationContext(), "Current location pincode is "+locName, Toast.LENGTH_LONG).show();
+                           // Toast.makeText(getApplicationContext(), "Current location pincode is "+locName, Toast.LENGTH_LONG).show();
 
                         }else if(searchLocation.contentEquals("district")){
                             locName = addresses.get(0).getSubAdminArea();
                             locType = "district";
-                            Toast.makeText(getApplicationContext(), "Current location district is "+locName, Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Current location district is "+locName, Toast.LENGTH_LONG).show();
                         }else if(searchLocation.contentEquals("state")){
                             locName = addresses.get(0).getAdminArea();
                             locType = "state";
-                            Toast.makeText(getApplicationContext(), "Current location state is "+locName, Toast.LENGTH_LONG).show();
+                           // Toast.makeText(getApplicationContext(), "Current location state is "+locName, Toast.LENGTH_LONG).show();
                         }
                     }
                 } catch (IOException e) {

@@ -469,7 +469,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
                             }
                         }
                     } else {
-                        System.out.println("111111111111111111111111111111111111111111111");
+                        System.out.println("Location access not there");
                     }
                 } else {
                     System.out.println("000000000000000000000000000000000000000000000000");

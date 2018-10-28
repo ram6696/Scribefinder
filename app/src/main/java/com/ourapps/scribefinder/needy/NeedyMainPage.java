@@ -200,8 +200,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                         "Cancel",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                finish();
-                                startActivity(getIntent());
+
+
                                 dialog.cancel();
                             }
                         });

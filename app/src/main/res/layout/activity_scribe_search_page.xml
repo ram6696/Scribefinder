@@ -11,6 +11,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+
         android:id="@+id/VolunteersSearchToolbar"
         android:background="@color/toolbarColor">
 
@@ -28,6 +29,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:contentDescription="search for scribe toolbar"
             android:text="@string/search_for_scribe"
             android:layout_marginStart="35dp"/>
 

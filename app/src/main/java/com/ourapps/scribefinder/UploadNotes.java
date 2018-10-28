@@ -104,6 +104,8 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
             getPDF();
         }else{
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+
             Toast.makeText(this, "Permission required to read file from the storage...", Toast.LENGTH_LONG).show();
         }
     }

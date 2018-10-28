@@ -22,10 +22,13 @@ public class LogoSplashScreen extends AppCompatActivity {
         TextView logoText = findViewById(R.id.logoText);
         ImageView logoEyeDroid = findViewById(R.id.logo);
 
+
         Animation myAnimation = AnimationUtils.loadAnimation(this, R.anim.mytransition);
+
 
         logoEyeDroid.startAnimation(myAnimation);
         logoText.startAnimation(myAnimation);
+
 
         final Intent loginPage = new Intent(this,Intro.class);
         Thread timer = new Thread(){

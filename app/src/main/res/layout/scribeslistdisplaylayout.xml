@@ -20,7 +20,7 @@
             android:src="@drawable/ic_account_circle"
             android:layout_gravity="center_horizontal"
             tools:targetApi="donut"
-            android:contentDescription="@string/image_not_available" />
+             />
 
         <LinearLayout
             android:layout_width="match_parent"

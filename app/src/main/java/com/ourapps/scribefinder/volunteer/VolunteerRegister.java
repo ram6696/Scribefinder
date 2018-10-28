@@ -3464,6 +3464,7 @@ case "Wayanad":
             if(!(etDOBVR.getText().toString().trim().isEmpty())){
                 String[] dateValues = etDOBVR.getText().toString().split("/");
                 if(dateValues.length == 3){
+                    System.out.println(dateValues.length);
                     if(!(dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
@@ -3471,7 +3472,7 @@ case "Wayanad":
                         System.out.println(date);
                         System.out.println(month);
                         System.out.println(year);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x /*&& year < (Calendar.getInstance().get(Calendar.YEAR) - 18)*/) {
                             isDateValid = true;
                         }else{
                             isDateValid = false;
@@ -3490,6 +3491,7 @@ case "Wayanad":
                 return isDateValid;
             }
         }catch(Exception ex){
+            System.out.println(ex);
             etdobLayout.setErrorEnabled(true);
             etdobLayout.setError("There is some exception in the code.");
             requestFocus(etDOBVR);

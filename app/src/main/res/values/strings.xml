@@ -98,7 +98,7 @@
     <string name="district">District</string>
     <string name="state">State</string>
     <string name="asterisk_symbol">*</string>
-    <string name="image_not_available">Back Button</string>
+    <string name="image_not_available">Back</string>
     <string name="request">Request</string>
     <string name="volunteers_found">Volunteers Found</string>
     <string name="search_for_scribe">Search for Scribe</string>
