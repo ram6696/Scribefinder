@@ -22,7 +22,6 @@
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -141,7 +140,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
-            android:name=".ViewUploadsActivity"
+            android:name=".ViewUploads"
             android:parentActivityName=".needy.NeedyMainPage"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />

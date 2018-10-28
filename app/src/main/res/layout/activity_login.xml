@@ -51,7 +51,8 @@
                     android:inputType="textEmailAddress"
                     android:backgroundTint="@color/button_background_color"
                     android:nextFocusUp="@id/etEmail"
-                    android:nextFocusLeft="@id/etEmail"/>
+                    android:nextFocusLeft="@id/etEmail"
+                    tools:targetApi="lollipop" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -71,20 +72,10 @@
                     android:ems="10"
                     android:selectAllOnFocus="true"
                     android:backgroundTint="@color/button_background_color"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    tools:targetApi="lollipop" />
 
             </android.support.design.widget.TextInputLayout>
-
-
-            <TextView
-                android:id="@+id/tvForgetPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/forget_password"
-                android:textSize="17sp"
-                android:layout_marginTop="45dp"
-                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/btnlogin"
@@ -97,6 +88,16 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/buttonshape"/>
 
+            <TextView
+                android:id="@+id/tvForgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="45dp"
+                android:text="@string/forget_password"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
 
             <TextView
                 android:id="@+id/tvRegisterHere"
@@ -105,7 +106,6 @@
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/new_user_register"
-
                 android:textSize="17sp"
                 android:textColor="@color/black"/>
 
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
-                android:text="App Introduction"
+                android:text="@string/introduction"
                 android:textSize="17sp"
                 android:onClick="intro"
                 android:textColor="@color/black"/>
@@ -123,12 +123,5 @@
         </LinearLayout>
 
     </ScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        />
 
 </LinearLayout>

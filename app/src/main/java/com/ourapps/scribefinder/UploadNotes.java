@@ -1,7 +1,7 @@
 package com.ourapps.scribefinder;
 
-import android.*;
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,12 +10,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,6 +38,7 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     TextView textViewStatus;
     EditText etChoose;
     ProgressBar progressBar;
+    private TextInputLayout etFileChooserLayout;
 
     //the firebase objects for storage and database
     StorageReference mStorageReference;
@@ -57,11 +58,12 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         mDatabaseReference = FirebaseDatabase.getInstance().getReference(UploadConstant .DATABASE_PATH_UPLOADS);
 
         textViewStatus = findViewById(R.id.textViewStatus);
+        etFileChooserLayout = findViewById(R.id.etFileChooserLayout);
+        etFileChooserLayout.setErrorEnabled(false);
         etChoose = findViewById(R.id.etChoose);
         progressBar = findViewById(R.id.progressbar);
 
         findViewById(R.id.btnUpload).setOnClickListener(this);
-
 
         sp = getSharedPreferences("Login", MODE_PRIVATE);
         currentUserId = sp.getString("uid", "");
@@ -69,10 +71,7 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(UploadNotes.this);
-
         super.onResume();
-
-
     }
 
     //this function will get the pdf from the storage
@@ -104,8 +103,6 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
             getPDF();
         }else{
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-
             Toast.makeText(this, "Permission required to read file from the storage...", Toast.LENGTH_LONG).show();
         }
     }
@@ -113,21 +110,25 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //when the user choses the file
         if (requestCode == PICK_PDF_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             //if a file is selected
             if (data.getData() != null) {
+                etFileChooserLayout.setErrorEnabled(false);
                 Uri returnUri = data.getData();
-                Cursor returnCursor = getContentResolver().query(returnUri, null, null, null, null);
-                int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                returnCursor.moveToFirst();
-                etChoose.setText(returnCursor.getString(nameIndex));
-                etChoose.setError(null);//removes error
-                etChoose.clearFocus();
-                selectedFile = data.getData();
-                //uploadFile(data.getData());
+                @SuppressLint("Recycle") Cursor returnCursor = getContentResolver().query(returnUri, null, null, null, null);
+                int nameIndex = 0;
+                if (returnCursor != null) {
+                    nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    returnCursor.moveToFirst();
+                    etChoose.setText(returnCursor.getString(nameIndex));
+                    etChoose.setError(null);
+                    etChoose.clearFocus();
+                    selectedFile = data.getData();
+                }
             }else{
-                textViewStatus.setText("No file choosen..!");
+                etFileChooserLayout.setErrorEnabled(true);
+                etFileChooserLayout.setError("Please select a file to upload");
+                requestFocus(etChoose);
             }
         }
     }
@@ -163,13 +164,9 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
                                              }
             );
         }else{
-
-            Toast.makeText(UploadNotes.this, "No File Selected", Toast.LENGTH_LONG).show();
-
-            etChoose.setError("Please select file");
-            etChoose.requestFocus();
-
-
+            etFileChooserLayout.setErrorEnabled(true);
+            etFileChooserLayout.setError("Please select a file to upload");
+            requestFocus(etChoose);
         }
     }
 
@@ -183,11 +180,17 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    public void up(View view) {
+    public void etChooseClicked(View view) {
         getPDF();
     }
 
     public void goBackToPreviousActivity(View view) {
         finish();
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
     }
 }

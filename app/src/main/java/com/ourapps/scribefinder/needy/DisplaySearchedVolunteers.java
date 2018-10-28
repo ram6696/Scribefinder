@@ -14,13 +14,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +65,6 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
     DatabaseReference rootRef;
 
-    private ArrayList<String> filteredIds;
-
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +97,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
         rootRef = FirebaseDatabase.getInstance().getReference();
         list = findViewById(R.id.volunteersFoundList);
-        filteredIds = getIntent().getStringArrayListExtra("volunteersList");
+        ArrayList<String> filteredIds = getIntent().getStringArrayListExtra("volunteersList");
 
         progressDialog.setMessage("Please wait a moment..");
         progressDialog.setCancelable(false);
@@ -303,11 +301,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
     @Override
     public void onResume(){
-
-            NetworkUtil.getConnectivityStatusString(DisplaySearchedVolunteers.this);
-
-
-
+        NetworkUtil.getConnectivityStatusString(DisplaySearchedVolunteers.this);
         super.onResume();
     }
 
@@ -388,6 +382,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("Registered")
     public class GPSTracker extends Service implements LocationListener {
 
         private final Context mContext;
@@ -474,8 +469,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
                 } else {
                     System.out.println("000000000000000000000000000000000000000000000000");
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 

@@ -50,7 +50,7 @@ import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.UploadNotes;
-import com.ourapps.scribefinder.ViewUploadsActivity;
+import com.ourapps.scribefinder.ViewUploads;
 import com.ourapps.scribefinder.studymaterials.NotesBA;
 import com.squareup.picasso.Picasso;
 
@@ -451,7 +451,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     }
 
     public void viewUploads(View view) {
-        Intent i = new Intent(NeedyMainPage.this, ViewUploadsActivity.class);
+        Intent i = new Intent(NeedyMainPage.this, ViewUploads.class);
         startActivity(i);
     }
 

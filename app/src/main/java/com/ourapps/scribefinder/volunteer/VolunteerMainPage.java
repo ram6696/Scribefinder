@@ -52,7 +52,7 @@ import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.UploadNotes;
-import com.ourapps.scribefinder.ViewUploadsActivity;
+import com.ourapps.scribefinder.ViewUploads;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -502,7 +502,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
     }
 
     public void viewUploads(View view) {
-        Intent i = new Intent(VolunteerMainPage.this,ViewUploadsActivity.class);
+        Intent i = new Intent(VolunteerMainPage.this, ViewUploads.class);
         startActivity(i);
     }
 

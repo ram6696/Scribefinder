@@ -267,13 +267,9 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
         @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-
             convertView = getLayoutInflater().inflate(R.layout.languageslistdisplaylayout, null);
-
             TextView txtLanguage = convertView.findViewById(R.id.txtLanguage);
-
             txtLanguage.setText(languagesKnownToWrite.get(position));
-
             return convertView;
         }
     }
