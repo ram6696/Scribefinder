@@ -30,8 +30,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Login"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory = "true"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ResetPassword"
             android:parentActivityName=".Login"
@@ -54,12 +53,10 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".needy.NeedyMainPage"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory = "true"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".volunteer.VolunteerMainPage"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory = "true"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".needy.NeedyPasswordChange"
             android:launchMode="singleTask"

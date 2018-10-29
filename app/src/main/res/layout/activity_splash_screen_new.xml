@@ -14,20 +14,20 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="188dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="92dp"
             android:contentDescription="@string/eye_droid_logo"
             android:src="@drawable/logo_png"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/appName"
             android:layout_width="150dp"
-            android:layout_height="0dp"
+            android:layout_height="238dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/app_name"
             android:gravity="center_horizontal"
@@ -36,10 +36,9 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.141"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="1.0"
             tools:text="@string/app_name" />
 
         <Button
