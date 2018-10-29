@@ -86,8 +86,10 @@
 
     <Button
         android:id="@+id/btnUpload"
-        android:textSize="16sp"
+        android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

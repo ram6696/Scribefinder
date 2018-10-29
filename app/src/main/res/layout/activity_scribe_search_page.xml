@@ -10,8 +10,7 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-
+        android:layout_height="?android:attr/actionBarSize"
         android:id="@+id/VolunteersSearchToolbar"
         android:background="@color/toolbarColor">
 
@@ -31,7 +30,8 @@
             android:textStyle="bold"
             android:contentDescription="search for scribe toolbar"
             android:text="@string/search_for_scribe"
-            android:layout_marginStart="35dp"/>
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -59,8 +59,10 @@
             <Button
                 android:id="@+id/btnNearMe"
                 android:text="Near Me"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textStyle="bold"
                 android:layout_width="280dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
@@ -162,8 +164,10 @@
                 android:layout_height="50dp"
                 android:background="@drawable/buttonshape"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 android:layout_marginTop="20dp"/>
 
         </LinearLayout>

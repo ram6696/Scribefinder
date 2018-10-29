@@ -29,15 +29,10 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/new_user"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp" />
 
     </android.support.v7.widget.Toolbar>
-
-    <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_width="0px"
-        android:layout_height="0px"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -153,7 +148,6 @@
                     android:id="@+id/genderGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/gender_textview"
                     android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp">
@@ -195,7 +189,10 @@
                     android:layout_height="40dp"
                     android:background="@color/button_background_color"
                     android:text="@string/dob"
-                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
                     android:layout_gravity="center_vertical"/>
 
                 <android.support.design.widget.TextInputLayout
@@ -400,10 +397,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="40dp"
-
                 android:background="@drawable/buttonshape"
                 android:text="@string/register"
-                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"/>
 

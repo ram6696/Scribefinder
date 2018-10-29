@@ -28,7 +28,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/type_of_user"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -37,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/VolunteersSearchToolbar"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <ImageView
@@ -63,6 +65,7 @@
         android:text="@string/appThemeText"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:layout_alignParentLeft="true"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -76,8 +79,10 @@
 
         <Button
             android:id="@+id/btnNeedy"
-            android:textSize="16sp"
+            android:textAllCaps="false"
             android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
@@ -90,8 +95,10 @@
             android:id="@+id/btnVolunteer"
             android:layout_marginTop="30dp"
             android:text="@string/i_am_volunteer"
-            android:textSize="16sp"
+            android:textAllCaps="false"
             android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"

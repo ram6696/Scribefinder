@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".needy.AddressFragment"
     android:background="@color/white">
 
@@ -64,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginLeft="25dp"
                 android:layout_marginStart="25dp">
 
                 <TextView
@@ -73,16 +73,15 @@
                     android:textSize="14sp"/>
 
                 <TextView
-                        android:id="@+id/scribeCity"
+                    android:id="@+id/scribeCity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/city"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
-
-
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -100,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginLeft="25dp"
                 android:layout_marginStart="25dp">
 
                 <TextView
@@ -115,8 +115,6 @@
                     android:text="@string/district"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
-
-
 
             </LinearLayout>
 
@@ -137,6 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginLeft="25dp"
                 android:layout_marginStart="25dp">
 
                 <TextView

@@ -26,7 +26,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/study_material"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp" />
 
     </android.support.v7.widget.Toolbar>
 

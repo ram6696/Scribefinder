@@ -18,7 +18,7 @@
         android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true">
         <activity
-            android:name=".LogoSplashScreen"
+            android:name=".SplashScreenNew"
             android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
