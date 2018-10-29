@@ -3462,26 +3462,29 @@ case "Wayanad":
             boolean isDateValid = false;
 
             if(!(etDOBVR.getText().toString().trim().isEmpty())){
+                System.out.println("going in");
                 String[] dateValues = etDOBVR.getText().toString().split("/");
                 if(dateValues.length == 3){
                     System.out.println(dateValues.length);
-                    if(!(dateValues[0]=="" && dateValues[0]==null &&  dateValues[1]=="" && dateValues[1]==null && dateValues[2]=="" && dateValues[2]==null)){
+                    if(!(dateValues[0]==" " && dateValues[0]==null &&  dateValues[1]==" " && dateValues[1]==null && dateValues[2]==" " && dateValues[2]==null)){
+
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
                         System.out.println(date);
                         System.out.println(month);
                         System.out.println(year);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x /*&& year < (Calendar.getInstance().get(Calendar.YEAR) - 18)*/) {
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004) {
                             isDateValid = true;
                         }else{
-                            isDateValid = false;
+                             isDateValid = false;
                         }
                     }
                 }
             }
 
             if(isDateValid){
+                System.out.println(isDateValid);
                 etdobLayout.setErrorEnabled(false);
                 return isDateValid;
             }else{

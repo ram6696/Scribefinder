@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:gravity="center"
@@ -101,7 +102,8 @@
                 android:id="@+id/etNewPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:passwordToggleEnabled="true">
 
                 <EditText
                     android:id="@+id/etNewPassword"
@@ -117,7 +119,9 @@
                 android:id="@+id/etConfirmPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                app:passwordToggleEnabled="true"
+                >
 
                 <EditText
                     android:id="@+id/etConfirmPassword"

@@ -84,8 +84,8 @@
 
                         <ImageView
                             android:id="@+id/studyMaterialImage"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_gravity="center"
                             android:contentDescription="@string/eye_droid_logo"
                             android:src="@drawable/logo_png" />

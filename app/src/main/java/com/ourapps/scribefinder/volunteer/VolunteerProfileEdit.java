@@ -2842,7 +2842,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > year_x && year < (Calendar.getInstance().get(Calendar.YEAR) - 18)) {
+                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004) {
                             isDateValid = true;
                         }else{
                             isDateValid = false;
