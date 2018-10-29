@@ -126,7 +126,9 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                     } catch (FirebaseAuthUserCollisionException emailIdAlreadyUsed) {
                         progressDialog.dismiss();
                         Toast.makeText(NeedyRegister.this, "Email Id already exists..!", Toast.LENGTH_SHORT).show();
-                        etEmail.requestFocus();
+                         etEmailLayout.setErrorEnabled(true);
+                         etEmailLayout.setError("Email already Exists");
+                        etEmailLayout.requestFocus();
                     } catch (FirebaseAuthWeakPasswordException weakPassword) {
                         progressDialog.dismiss();
                         Toast.makeText(NeedyRegister.this, "Password should be at least 6 characters..!", Toast.LENGTH_SHORT).show();
