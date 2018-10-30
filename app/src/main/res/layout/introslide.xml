@@ -8,31 +8,36 @@
     android:background="@color/white">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:scaleType="fitCenter"
         android:src="@drawable/visually_imapired"
         tools:layout_editor_absoluteX="117dp"
+        android:contentDescription="@string/app_name"
         tools:layout_editor_absoluteY="71dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Scribe Finder"
-        android:textColor="@color/black"
-        android:textStyle="italic"
-        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/button_background_color"
+        android:textSize="36sp"
+        android:textStyle="bold"
         android:layout_gravity="center"/>
-    <TextView
 
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/app_reason"
         android:textSize="25sp"
+        android:textColor="@color/button_background_color"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:text="App to find the volunteers for writing exams to the visually impaired students"/>
+        android:textStyle="bold" />
+
 </LinearLayout>

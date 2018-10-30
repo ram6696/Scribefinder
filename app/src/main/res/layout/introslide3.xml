@@ -15,27 +15,30 @@
         android:scaleType="fitCenter"
         android:src="@drawable/study"
         tools:layout_editor_absoluteX="117dp"
+        android:contentDescription="@string/study_material"
         tools:layout_editor_absoluteY="71dp" />
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:text="Study Material"/>
 
     <TextView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/study_material"
+        android:textColor="@color/button_background_color"
+        android:layout_gravity="center"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/study_materials_"
         android:textSize="25sp"
-        android:textColor="@color/black"
+        android:textColor="@color/button_background_color"
         android:layout_gravity="center"
         android:textAlignment="center"
-        android:text="Access to the study materials at one place"/>
+        android:textStyle="bold" />
 
 </LinearLayout>

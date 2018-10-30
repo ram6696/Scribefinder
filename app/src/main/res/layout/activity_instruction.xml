@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.ourapps.scribefinder.Instruction">
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@color/toolbarColor">
+
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-
             android:src="@drawable/ic_action_arrow_left"
             android:contentDescription="@string/image_not_available"
             android:onClick="goBackToPreviousActivity"/>
@@ -26,8 +25,9 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="Instructions"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:text="@string/instructions" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -39,117 +39,113 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Instructions for the Volunteers"
+            android:layout_marginTop="70dp"
             android:textColor="@color/black"
-            android:textStyle="italic"
-            android:layout_marginTop="50dp"
+            android:text="@string/instructions_for_the_volunteers"
+            android:textSize="24sp"
             android:textAlignment="center"
             android:layout_marginBottom="10dp"
-            android:textSize="27sp"/>
+            android:textStyle="bold" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/background_dark"/>
 
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/black"
-            android:text="1.This app is to make the job of visually      impaired students easy in finding the volunteer to write exams for them"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="20sp"
-            android:visibility="visible" />
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/background_dark"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="1.This app is to make the job of visually impaired students easy in finding the volunteer to write exams for them."
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
 
-            android:textColor="@color/black"
-            android:text="2.They are competing with all the students in their academics.So lets help them by being a volunteer"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
 
-            android:textSize="20sp"
-            android:visibility="visible" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="2.They are competing with all the students in their academics.So lets help them by being a volunteer."
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/background_dark"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="3.Please be fruitful to the visually impaired students who call you for writing exams."
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
 
-            android:text="3.Please be fruitful to the visually impaired students who call you for writing exams"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:visibility="visible" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/background_dark"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="4.If you are unable to go please refer someone to help them."
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/background_dark" />
 
-            android:text="4.If you are unable to go , Please refer someone to go for writing exams to them"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5. You can upload any study material which you have, so that it will be helpful for the students"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/background_dark"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="@string/or"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="5. You can also upload any study material you have ,so that it will be helpful for the students"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="@string/makeZipFile"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="(OR)"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="Make a zip file of all the study material and send it to Scribefinder.info@gmail.com"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/background_dark"/>
+        </ScrollView>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Like us on facebook"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:onClick="facebook"
-            android:background="@color/colorPrimary"/>
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>

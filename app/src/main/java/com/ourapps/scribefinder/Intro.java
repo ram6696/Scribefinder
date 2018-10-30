@@ -18,7 +18,6 @@ import android.widget.Button;
 public class Intro extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
 
     private int[] layouts;
     private Button btnSkip, btnNext;
@@ -53,9 +52,7 @@ public class Intro extends AppCompatActivity {
                 R.layout.introslide,
                 R.layout.intoslide1,
                 R.layout.introslide2,
-                R.layout.introslide3,
-
-                };
+                R.layout.introslide3,};
 
         // adding bottom dots
 
@@ -63,7 +60,7 @@ public class Intro extends AppCompatActivity {
         // making notification bar transparent
         changeStatusBarColor();
 
-        myViewPagerAdapter = new MyViewPagerAdapter();
+        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 

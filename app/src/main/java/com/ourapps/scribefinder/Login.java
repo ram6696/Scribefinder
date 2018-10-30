@@ -38,6 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private EditText etEmail;
@@ -106,74 +108,78 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         progressDialog.setCancelable(true);
 
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-             @Override
-             public void onComplete(@NonNull Task<AuthResult> task) {
-                 if (task.isSuccessful()){
+            @TargetApi(Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
 
-                     boolean emailFlag = checkEmailVerification();
-                     if(emailFlag){
-                         final String id = task.getResult().getUser().getUid();
-                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                         databaseReference.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-                             @Override
-                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                 if (dataSnapshot.exists()){
-                                     Users currUser = dataSnapshot.getValue(Users.class);
-                                     Intent destPage = null;
-                                     assert currUser != null;
-                                     switch (currUser.getAccountType()) {
-                                         case "Needy":
-                                             destPage = new Intent(Login.this, NeedyMainPage.class);
-                                             break;
-                                         case "Volunteer":
-                                             destPage = new Intent(Login.this, VolunteerMainPage.class);
-                                             break;
-                                     }
-                                     SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
-                                     SharedPreferences.Editor Ed = sp.edit();
-                                     Ed.putBoolean("logStatus", true);
-                                     Ed.putString("uid", id);
-                                     Ed.putString("email", currUser.getEmail());
-                                     Ed.putString("password", currUser.getPassword());
-                                     Ed.putString("accType", currUser.getAccountType());
-                                     Ed.putString("name", currUser.getName());
-                                     Ed.putString("mobileNumber", currUser.getMobileNumber());
-                                     Ed.apply();
-                                     progressDialog.dismiss();
-                                     startActivity(destPage);
-                                     finish();
-                                 }
+                    boolean emailFlag = checkEmailVerification();
+                    if(emailFlag){
+                        final String id = task.getResult().getUser().getUid();
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                        databaseReference.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if (dataSnapshot.exists()){
+                                    Users currUser = dataSnapshot.getValue(Users.class);
+                                    Intent destPage = null;
+                                    assert currUser != null;
+                                    switch (currUser.getAccountType()) {
+                                        case "Needy":
+                                            destPage = new Intent(Login.this, NeedyMainPage.class);
+                                            break;
+                                        case "Volunteer":
+                                            destPage = new Intent(Login.this, VolunteerMainPage.class);
+                                            break;
+                                    }
+                                    SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
+                                    SharedPreferences.Editor Ed = sp.edit();
+                                    Ed.putBoolean("logStatus", true);
+                                    Ed.putString("uid", id);
+                                    Ed.putString("email", currUser.getEmail());
+                                    Ed.putString("password", currUser.getPassword());
+                                    Ed.putString("accType", currUser.getAccountType());
+                                    Ed.putString("name", currUser.getName());
+                                    Ed.putString("mobileNumber", currUser.getMobileNumber());
+                                    Ed.apply();
+                                    progressDialog.dismiss();
+                                    startActivity(destPage);
+                                    finish();
+                                }
 
-                             }
+                            }
 
-                             @Override
-                             public void onCancelled(DatabaseError databaseError) {
-                             }
-                         });
-                     }
-                 }else {
-                     try {
-                         throw task.getException();
-                     } catch(FirebaseAuthInvalidCredentialsException e) {
-                         progressDialog.dismiss();
-                         etPassword.setError(getString(R.string.error_invalid_email));
-                         etPasswordLayout.requestFocus();
-                         Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
-                     }catch(FirebaseAuthEmailException e){
-                         progressDialog.dismiss();
-                         etEmail.setError("Invalid Email");
-                         etEmail.requestFocus();
-                         Toast.makeText(Login.this,"Invalid email..!",Toast.LENGTH_LONG).show();
-                     } catch(FirebaseAuthInvalidUserException e) {
-                         progressDialog.dismiss();
-                         etEmailLayout.setError(getString(R.string.error_user_does_not_exists));
-                         etEmailLayout.requestFocus();
-                         Toast.makeText(Login.this, "User does not exists...!", Toast.LENGTH_LONG).show();
-                     } catch(Exception e) {
-                         Log.e(TAG, e.getMessage());
-                     }
-             }
-             }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                    }
+                }else {
+                    try {
+                        throw Objects.requireNonNull(task.getException());
+                    } catch(FirebaseAuthInvalidCredentialsException e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Login.this, "Invalid Credentials...!", Toast.LENGTH_LONG).show();
+                        etPasswordLayout.setErrorEnabled(true);
+                        etPasswordLayout.setError("Invalid Credentials");
+                        requestFocus(etPassword);
+                    }catch(FirebaseAuthEmailException e){
+                        progressDialog.dismiss();
+                        Toast.makeText(Login.this,"Invalid email..!",Toast.LENGTH_LONG).show();
+                        etEmailLayout.setErrorEnabled(true);
+                        etEmailLayout.setError("Invalid Credentials");
+                        requestFocus(etEmail);
+                    } catch(FirebaseAuthInvalidUserException e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Login.this, "User does not exists...!", Toast.LENGTH_LONG).show();
+                        etEmailLayout.setErrorEnabled(true);
+                        etEmailLayout.setError(getString(R.string.error_user_does_not_exists));
+                        requestFocus(etEmail);
+                    } catch(Exception e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+                }
+            }
          });
 
     }
@@ -207,7 +213,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             return false;
         }else if(!isValidEmail(email)){
             etEmailLayout.setErrorEnabled(true);
-            etEmailLayout.setError("Please enter Valid Email");
+            etEmailLayout.setError("Please enter valid Email");
             requestFocus(etEmail);
             return false;
         }
