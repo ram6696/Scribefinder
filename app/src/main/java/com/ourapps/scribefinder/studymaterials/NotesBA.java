@@ -86,12 +86,14 @@ public class NotesBA extends AppCompatActivity {
         public void goBackToPreviousActivity(View view) {
 
             startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+            finish();
         }
 
         @Override
         public void onBackPressed() {
 
             startActivity(new Intent(StudyMaterial.this, NeedyMainPage.class));
+            finish();
         }
     }
 }
