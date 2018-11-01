@@ -43,6 +43,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
+import com.ourapps.scribefinder.TypeOfUser;
 import com.ourapps.scribefinder.Users;
 
 import java.util.ArrayList;
@@ -144,6 +145,12 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(VolunteerRegister.this);
         super.onResume();
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,TypeOfUser.class));
+        finish();
+
     }
 
     private void setValuesForDistrict(String selectedItem) {
@@ -3582,5 +3589,6 @@ case "Wayanad":
 
     public void goBackToPreviousActivity(View view) {
         finish();
+        startActivity(new Intent(this,TypeOfUser.class));
     }
 }

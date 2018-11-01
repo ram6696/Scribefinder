@@ -18,7 +18,7 @@
         android:id="@+id/needyProfilePic"
         android:layout_width="96dp"
         android:layout_height="96dp"
-        android:src="@drawable/ic_account_circle"
+        android:src="@drawable/profilrpic"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/toolbarColor"
         android:contentDescription="Profile picture"

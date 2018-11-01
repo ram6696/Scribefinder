@@ -17,6 +17,11 @@ public class TypeOfUser extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this,SplashScreenNew.class));
+        finish();
+    }
 
 
     public void needy(View view)
@@ -33,7 +38,9 @@ public class TypeOfUser extends AppCompatActivity {
     }
 
     public void goBackToPreviousActivity(View view) {
+        startActivity(new Intent(this,SplashScreenNew.class));
         finish();
+
     }
 }
 

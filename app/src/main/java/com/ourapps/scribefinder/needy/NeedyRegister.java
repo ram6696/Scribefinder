@@ -82,6 +82,8 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
 
     }
 
+
+
     @Override
     public void onClick(View view) {
         if(view == btnRegister){
@@ -152,7 +154,7 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                     progressDialog.dismiss();
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyRegister.this);
                     builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
-                    builder1.setCancelable(true);
+                    builder1.setCancelable(false);
                     builder1.setPositiveButton(
                             "Open Email",
                             new DialogInterface.OnClickListener() {
@@ -167,12 +169,14 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                             "Cancel",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
+
                                     startActivity(new Intent(NeedyRegister.this, Login.class));
+                                    finish();
                                 }
                             });
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
+
                 }
             }
         });

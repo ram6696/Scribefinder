@@ -51,7 +51,7 @@
             android:maxWidth="150dp"
             android:maxHeight="150dp"
             android:scaleType="centerInside"
-            android:src="@drawable/logo_png" />
+            android:src="@drawable/applogo" />
     </LinearLayout>
 
     <TextView

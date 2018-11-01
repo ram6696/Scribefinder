@@ -3,6 +3,7 @@ package com.ourapps.scribefinder.volunteer;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -102,7 +103,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int finalVolunteerCount = (int) dataSnapshot.getChildrenCount() + 300;
+                int finalVolunteerCount = (int) dataSnapshot.getChildrenCount() + 150;
                 volunteerCount.setText("" + String.valueOf(finalVolunteerCount));
             }
 
@@ -115,7 +116,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int finalNeedyCount = (int) dataSnapshot.getChildrenCount() + 100;
+                int finalNeedyCount = (int) dataSnapshot.getChildrenCount() + 50;
                 needyCount.setText("" + String.valueOf(finalNeedyCount));
             }
 
@@ -165,16 +166,50 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println(dataSnapshot);
-                volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
-                volunteerName = findViewById(R.id.txvolunteerName);
-                volunteerEmail = findViewById(R.id.volunteerEmail);
-                String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
-                if(!(picture.isEmpty()))
-                    Picasso.get().load(picture).into(volunteerProfilePic);
-                volunteerName.setText(currentUserName);
-                volunteerEmail.setText(currentUserEmail);
-                progressDialog.dismiss();
+                if (dataSnapshot.exists()) {
+                    System.out.println(dataSnapshot);
+                    volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
+                    volunteerName = findViewById(R.id.txvolunteerName);
+                    volunteerEmail = findViewById(R.id.volunteerEmail);
+                    String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
+                    if(!(picture.isEmpty()))
+                        Picasso.get().load(picture).into(volunteerProfilePic);
+                    volunteerName.setText(currentUserName);
+                    volunteerEmail.setText(currentUserEmail);
+                    progressDialog.dismiss();
+
+                }else{
+
+
+                    android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(VolunteerMainPage.this);
+                    builder1.setMessage("Please Login again or register");
+                    builder1.setCancelable(true);
+                    builder1.setPositiveButton(
+                            "OK",
+                             new DialogInterface.OnClickListener(){
+                                 public void onClick(DialogInterface dialog, int id) {
+
+                                     SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+                                     SharedPreferences.Editor editor = sharedPreferences.edit();
+                                     editor.remove("uid");
+                                     editor.remove("email");
+                                     editor.remove("password");
+                                     editor.remove("accType");
+                                     editor.putBoolean("logStatus", false);
+                                     editor.apply();
+                                     startActivity(new Intent(VolunteerMainPage.this, Login.class));
+                                     finish();
+                                 }
+
+                             }
+                    );
+                    android.app.AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+
+
+                }
+
             }
 
             @Override

@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
@@ -104,6 +105,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         progressDialog.setMessage("Logging in...Please wait a moment.");
         progressDialog.show();
 
+        //TODO
+//        Runnable progressRunnable = new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                progressDialog.cancel();
+//                Toast.makeText(Login.this,"Check your internet connection",Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//
+//        Handler pdCanceller = new Handler();
+//        pdCanceller.postDelayed(progressRunnable, 9000);
+
         NetworkUtil.getConnectivityStatusString(Login.this);
         progressDialog.setCancelable(true);
 
@@ -145,6 +159,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                     progressDialog.dismiss();
                                     startActivity(destPage);
                                     finish();
+                                }else{
+                                    System.out.println("Inside else");
+                                    Toast.makeText(Login.this,"Please register to login",Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -152,6 +169,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                             }
+
                         });
                     }
                 }else {
@@ -179,6 +197,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         Log.e(TAG, e.getMessage());
                     }
                 }
+
             }
          });
 
