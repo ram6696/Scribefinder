@@ -45,6 +45,7 @@ import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.TypeOfUser;
 import com.ourapps.scribefinder.Users;
+import com.ourapps.scribefinder.needy.NeedyRegister;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -3311,34 +3312,34 @@ case "Wayanad":
                     String filterAddress = "";
                     String languages = "";
 
-                    boolean english=false;
-                    boolean kannada=false;
-                    boolean telugu=false;
-                    boolean hindi=false;
-                    boolean tamil=false;
+                    boolean english = false;
+                    boolean kannada = false;
+                    boolean telugu = false;
+                    boolean hindi = false;
+                    boolean tamil = false;
 
-                    if(languagesKnownToWrite.contains("English")){
+                    if (languagesKnownToWrite.contains("English")) {
                         english = true;
-                        languages = languages+"English";
+                        languages = languages + "English";
                     }
-                    if(languagesKnownToWrite.contains("Kannada")){
+                    if (languagesKnownToWrite.contains("Kannada")) {
                         kannada = true;
-                        languages = languages+"Kannada";
+                        languages = languages + "Kannada";
                     }
-                    if(languagesKnownToWrite.contains("Telugu")){
+                    if (languagesKnownToWrite.contains("Telugu")) {
                         telugu = true;
-                        languages = languages+"Telugu";
+                        languages = languages + "Telugu";
                     }
-                    if(languagesKnownToWrite.contains("Hindi")){
+                    if (languagesKnownToWrite.contains("Hindi")) {
                         hindi = true;
-                        languages = languages+"Hindi";
+                        languages = languages + "Hindi";
                     }
-                    if(languagesKnownToWrite.contains("Tamil")){
+                    if (languagesKnownToWrite.contains("Tamil")) {
                         tamil = true;
-                        languages = languages+"Tamil";
+                        languages = languages + "Tamil";
                     }
 
-                    filterAddress = filterAddress+state+district+city;
+                    filterAddress = filterAddress + state + district + city;
 
                     sendEmailVerificaton();
 
@@ -3350,23 +3351,38 @@ case "Wayanad":
                     progressDialog.dismiss();
 
 
-                   // startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
+                    // startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
 
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerRegister.this);
                     builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
-                    builder1.setCancelable(true);
-
+                    builder1.setCancelable(false);
                     builder1.setPositiveButton(
-                            "Ok",
+                            "Open Email",
+                            new DialogInterface.OnClickListener() {
+                                @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                                    intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                                    startActivity(new Intent(VolunteerRegister.this, Login.class));
+                                    startActivity(intent);
+                                    finish();
+
+                                }
+                            });
+                    builder1.setNegativeButton(
+                            "Cancel",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
+
                                     startActivity(new Intent(VolunteerRegister.this, Login.class));
+                                    finish();
                                 }
                             });
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
+
                 }
                 }
             });

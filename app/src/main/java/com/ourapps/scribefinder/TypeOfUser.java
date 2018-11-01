@@ -19,8 +19,9 @@ public class TypeOfUser extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        startActivity(new Intent(this,SplashScreenNew.class));
         finish();
+        startActivity(new Intent(this,SplashScreenNew.class));
+
     }
 
 
@@ -28,18 +29,21 @@ public class TypeOfUser extends AppCompatActivity {
     {
         Intent log= new Intent(this, NeedyRegister.class);
         startActivity(log);
+        finish();
     }
 
     public void volunteer(View view)
     {
         Intent log= new Intent(this, VolunteerRegister.class);
         startActivity(log);
+        finish();
 
     }
 
     public void goBackToPreviousActivity(View view) {
-        startActivity(new Intent(this,SplashScreenNew.class));
         finish();
+        startActivity(new Intent(this,SplashScreenNew.class));
+
 
     }
 }

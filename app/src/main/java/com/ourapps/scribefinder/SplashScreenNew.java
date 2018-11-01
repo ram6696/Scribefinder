@@ -3,6 +3,7 @@ package com.ourapps.scribefinder;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -10,11 +11,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
 public class SplashScreenNew extends AppCompatActivity {
+    boolean doubleBackToExitPressedOnce = false;
+
 
     Button loginButton, registerButton;
     Animation fadeAnimation;
@@ -85,9 +89,19 @@ public class SplashScreenNew extends AppCompatActivity {
         startActivity(new Intent(this, Login.class));
         finish();
     }
+    @Override
+    public void onBackPressed() {
+
+            finish();
+
+            return;
+        }
+
+
 
     public void onRegisterButtonClicked(View view) {
         startActivity(new Intent(this, Intro.class));
         finish();
     }
 }
+

@@ -160,9 +160,13 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                             new DialogInterface.OnClickListener() {
                                 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
                                 public void onClick(DialogInterface dialog, int id) {
+
                                     Intent intent = new Intent(Intent.ACTION_MAIN);
                                     intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                                    startActivity(new Intent(NeedyRegister.this, Login.class));
                                     startActivity(intent);
+                                    finish();
+
                                 }
                             });
                     builder1.setNegativeButton(
