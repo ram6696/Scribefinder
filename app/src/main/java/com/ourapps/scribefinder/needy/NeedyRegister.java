@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
+import com.ourapps.scribefinder.TypeOfUser;
 import com.ourapps.scribefinder.Users;
 
 import java.util.Objects;
@@ -81,7 +82,11 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
 
 
     }
-
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(this,TypeOfUser.class));
+        finish();
+    }
 
 
     @Override

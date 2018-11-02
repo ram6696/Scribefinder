@@ -38,7 +38,7 @@
             tools:targetApi="jelly_bean" />
         <activity
             android:name=".TypeOfUser"
-            android:parentActivityName=".Login"
+            android:parentActivityName=".SplashScreenNew"
             android:theme="@style/AppTheme.NoActionBar"
             tools:targetApi="jelly_bean" />
         <activity
