@@ -71,7 +71,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="25dp">
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -92,12 +93,11 @@
                 <Button
                     android:id="@+id/CallButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:background="@drawable/buttonshape"
                     android:layout_marginLeft="200dp"
-
-
-                    android:text="Make Call"/>
+                    android:text="Make Call"
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
 
@@ -106,7 +106,7 @@
         <LinearLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal"
             android:layout_marginTop="35dp">
 
@@ -120,7 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginStart="25dp">
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -143,9 +144,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/buttonshape"
-                     android:layout_marginLeft="200dp"
-
-
+                    android:layout_marginLeft="200dp"
+                    android:textColor="@color/white"
                     android:text="Send mail"/>
 
             </RelativeLayout>

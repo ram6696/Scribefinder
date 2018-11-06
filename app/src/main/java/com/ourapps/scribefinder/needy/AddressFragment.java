@@ -59,7 +59,11 @@ public class AddressFragment extends Fragment {
                 if(dataSnapshot.exists()) {
                     VolunteerData volunteerData = dataSnapshot.getValue(VolunteerData.class);
                     assert volunteerData != null;
-                    scribeAddress.setText(volunteerData.getAddress());
+                    if(volunteerData.getAddress() != null && !volunteerData.getAddress().isEmpty()) {
+                        scribeAddress.setText(volunteerData.getAddress());
+                    }else{
+                        scribeAddress.setText(volunteerData.getCity());
+                    }
                     scribeCity.setText(volunteerData.getCity());
                     scribeDistrict.setText(volunteerData.getDistrict());
                     scribeState.setText(volunteerData.getState());

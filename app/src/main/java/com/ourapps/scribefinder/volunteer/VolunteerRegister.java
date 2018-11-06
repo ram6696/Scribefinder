@@ -3244,9 +3244,6 @@ case "Wayanad":
         if(!checkDOB()){
             return;
         }
-        if(!checkAddress()){
-            return;
-        }
         if(!checkPincode()){
             return;
         }
@@ -3524,17 +3521,7 @@ case "Wayanad":
             return false;
         }
     }
-    private boolean checkAddress() {
-        String address = etAddress.getText().toString().trim();
-        if(address.isEmpty()){
-            etAddressLayout.setErrorEnabled(true);
-            etAddressLayout.setError("Please enter Address");
-            requestFocus(etAddress);
-            return false;
-        }
-        etAddressLayout.setErrorEnabled(false);
-        return true;
-    }
+
 
     private boolean checkPincode() {
         String pincode = etPincode.getText().toString().trim();
