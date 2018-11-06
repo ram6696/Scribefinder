@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
+    android:contentDescription="Volunteers list screen"
     tools:context=".needy.DisplaySearchedVolunteers">
 
 
@@ -18,7 +19,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_action_arrow_left"
-
+             android:contentDescription="@string/back_button"
             android:onClick="goBackToPreviousActivity"/>
 
         <TextView

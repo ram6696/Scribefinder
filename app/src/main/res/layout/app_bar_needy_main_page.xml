@@ -4,16 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ourapps.scribefinder.needy.NeedyMainPage">
+    android:importantForAccessibility="no"
+    tools:context="com.ourapps.scribefinder.needy.NeedyMainPage"
+    tools:targetApi="jelly_bean">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/needyToolbar"
             android:layout_width="match_parent"
+            android:importantForAccessibility="no"
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/toolbarColor"
             app:popupTheme="@style/AppTheme.PopupOverlay" />

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:importantForAccessibility="no"
     tools:showIn="@layout/activity_intro">
 
 
@@ -20,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/dots_margin_bottom"
         android:gravity="center"
+        android:importantForAccessibility="no"
         android:focusableInTouchMode="true"
         android:orientation="horizontal"></LinearLayout>
 
@@ -27,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:alpha=".5"
-
+        android:importantForAccessibility="no"
         android:layout_above="@id/layoutDots"
         android:background="@android:color/black" />
 

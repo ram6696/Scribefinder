@@ -6,15 +6,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
+    android:focusedByDefault="true"
+    android:contentDescription="Login screen"
     android:gravity="center"
     android:padding="10dp"
-    tools:context="com.ourapps.scribefinder.Login">
+    tools:context="com.ourapps.scribefinder.Login"
+    tools:targetApi="o">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/login"
+        android:importantForAccessibility="no"
         android:textSize="25sp"
         android:textStyle="bold"
         android:layout_marginTop="40dp"
@@ -23,6 +27,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:importantForAccessibility="no"
         tools:ignore="ScrollViewCount">
 
         <LinearLayout
@@ -30,6 +35,7 @@
             android:orientation="vertical"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
+            android:importantForAccessibility="no"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:layout_marginTop="35dp">
@@ -38,6 +44,7 @@
                 android:id="@+id/etEmailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
                 android:layout_marginTop="10dp"
                 android:textColorHint="@color/black">
 
@@ -48,6 +55,7 @@
                     android:hint="@string/email"
                     android:ems="10"
                     android:inputType="textEmailAddress"
+                    android:contentDescription="Email address"
                     android:backgroundTint="@color/button_background_color"
                     android:nextFocusUp="@id/etEmail"
                     android:nextFocusLeft="@id/etEmail"
@@ -59,6 +67,7 @@
                 android:id="@+id/etPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:importantForAccessibility="no"
                 android:layout_marginTop="10dp"
                 android:textColorHint="@color/black"
                 app:passwordToggleEnabled="true">
@@ -70,6 +79,7 @@
                     android:hint="@string/password"
                     android:ems="10"
                     android:selectAllOnFocus="true"
+                    android:contentDescription="password"
                     android:backgroundTint="@color/button_background_color"
                     android:inputType="textPassword"
                     tools:targetApi="lollipop" />

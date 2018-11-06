@@ -17,7 +17,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/visually_imapired"
         tools:layout_editor_absoluteX="117dp"
-        android:contentDescription="@string/app_name"
+        android:importantForAccessibility="no"
         tools:layout_editor_absoluteY="71dp" />
 
     <TextView
@@ -28,11 +28,12 @@
         android:textColor="@color/button_background_color"
         android:textSize="36sp"
         android:textStyle="bold"
+        android:importantForAccessibility="no"
         android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:text="@string/app_reason"

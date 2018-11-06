@@ -2674,9 +2674,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         if(!checkDOB()){
             return;
         }
-        if(!checkAddress()){
-            return;
-        }
+
         if(!checkPincode()){
             return;
         }
@@ -2869,18 +2867,6 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private boolean checkAddress() {
-        String address = etAddress.getText().toString().trim();
-        if(address.isEmpty()){
-            etAddressLayout.setErrorEnabled(true);
-            etAddressLayout.setError("Please enter Address");
-            etAddress.setError("Valid Input Required");
-            requestFocus(etAddress);
-            return false;
-        }
-        etAddressLayout.setErrorEnabled(false);
-        return true;
-    }
 
 
     private boolean checkPincode() {

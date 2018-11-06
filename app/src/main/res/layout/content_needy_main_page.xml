@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/search_for_scribe"
+
                     android:src="@drawable/ic_search"
                     android:layout_marginTop="30dp"/>
 
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/study_material"
+
                     android:src="@drawable/ic_chrome_reader_mode"
                     android:layout_marginTop="30dp"/>
 
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/upload_notes"
+
                     android:src="@drawable/ic_cloud_upload"
                     android:layout_marginTop="4dp"/>
 
@@ -217,7 +217,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/view_uploads"
+
                     android:src="@drawable/ic_view_carousel"
                     android:layout_marginTop="4dp"/>
 

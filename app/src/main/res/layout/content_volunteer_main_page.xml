@@ -87,7 +87,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:contentDescription="@string/eye_droid_logo"
+                            android:contentDescription="@string/scribe_finder_logo"
                             android:src="@drawable/icon" />
 
                     </android.support.v7.widget.LinearLayoutCompat>

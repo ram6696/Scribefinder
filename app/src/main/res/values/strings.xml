@@ -95,7 +95,7 @@
     <string name="district">District</string>
     <string name="state">State</string>
     <string name="asterisk_symbol">*</string>
-    <string name="image_not_available">Back Button</string>
+    <string name="image_not_available">Back</string>
     <string name="request">Request</string>
     <string name="volunteers_found">Volunteers Found</string>
     <string name="search_for_scribe">Search for Scribe</string>
@@ -145,11 +145,11 @@
     <string name="contact_us">Contact Us</string>
     <string name="like_us_on_facebook">Like us on Facebook</string>
     <string name="internet_not_found_error_message">We could not establish a connection with our servers. Please try again when you are connected to the internet</string>
-    <string name="eye_droid_logo">Eye Droid Logo</string>
+    <string name="scribe_finder_logo">Scribe Finder Logo</string>
     <string name="retry">Retry</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="send">Send</string>
-    <string name="back_button">Back Button</string>
+    <string name="back_button">Back</string>
     <string name="suggestions">Suggestions</string>
     <string name="queries">Queries</string>
     <string name="suggestions_text">Please enter your Suggestions here, we will take action at the earliest.</string>
