@@ -3591,7 +3591,8 @@ case "Wayanad":
     };
 
     public void goBackToPreviousActivity(View view) {
-        finish();
+
         startActivity(new Intent(this,TypeOfUser.class));
+        finish();
     }
 }

@@ -260,8 +260,9 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                                                                 editor.apply();
                                                                                 progressDialog.cancel();
                                                                                 Toast.makeText(getApplicationContext(), "Account successfully deleted..!", Toast.LENGTH_LONG).show();
-                                                                                finish();
+
                                                                                 startActivity(new Intent(NeedyMainPage.this, Login.class));
+                                                                                finish();
                                                                             }
                                                                         }
                                                                     });

@@ -316,8 +316,9 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                                                                                 editor.apply();
                                                                                 progressDialog.cancel();
                                                                                 Toast.makeText(getApplicationContext(), "Account successfully deleted..!", Toast.LENGTH_LONG).show();
-                                                                                finish();
+
                                                                                 startActivity(new Intent(VolunteerMainPage.this, Login.class));
+                                                                                finish();
                                                                             }
                                                                         }
                                                                     });
