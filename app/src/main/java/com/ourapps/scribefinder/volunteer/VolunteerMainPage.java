@@ -3,7 +3,6 @@ package com.ourapps.scribefinder.volunteer;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -177,10 +176,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     volunteerName.setText(currentUserName);
                     volunteerEmail.setText(currentUserEmail);
                     progressDialog.dismiss();
-
                 }else{
-
-
                     android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(VolunteerMainPage.this);
                     builder1.setMessage("Please Login again or register");
                     builder1.setCancelable(true);

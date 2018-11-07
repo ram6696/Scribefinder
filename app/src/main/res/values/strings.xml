@@ -163,8 +163,8 @@
     <string name="this_is_the_list_of_notes_uploaded_by_all_the_users">This is the complete list of notes uploaded by all the users.</string>
     <string name="introduction">Introduction</string>
     <string name="app_reason">App to find volunteers for writing exams to the visually impaired students.</string>
-    <string name="volunteer_reason">Register as Volunteer for helping visually impaired students to write their exams.</string>
-    <string name="needy_reason">Register as Needy if you are Visually Impaired student.</string>
+    <string name="volunteer_reason">Register as volunteer for helping visually impaired students to write their exams.</string>
+    <string name="needy_reason">Register as needy if you are visually impaired student.</string>
     <string name="study_materials_">Access to the study materials at one place</string>
     <string name="instructions">Instructions</string>
     <string name="instructions_for_the_volunteers">Instructions for the Volunteers</string>
