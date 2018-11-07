@@ -213,6 +213,13 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/Scribe-Finder-327894291336361/posts"));
                 startActivity(intent);
                 break;
+            case R.id.shareApp :
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Scribe Finder is a app to help the Visually impaired students to search volunteers for writing their exams.Install the app and register as a visually impaired to search volunteers or register as a volunteer to help visually impaired students,in the following link : https://play.google.com/store/apps/details?id=com.ourapps.scribefinder");
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+                break;
             case R.id.contactUs:
                 Intent contactUsIntent = new Intent(NeedyMainPage.this, ContactUs.class);
                 startActivity(contactUsIntent);

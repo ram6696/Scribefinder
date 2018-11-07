@@ -27,6 +27,9 @@
         <item
             android:id="@+id/like_us_on_facebook"
             android:title="@string/like_us_on_facebook" />
+        <item
+            android:id="@+id/shareApp"
+            android:title="Invite a friend"/>
 
     <item
         android:id="@+id/contactUs"
