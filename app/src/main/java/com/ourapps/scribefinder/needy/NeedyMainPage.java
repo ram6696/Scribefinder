@@ -209,7 +209,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 alert11.show();
                 break;
             case R.id.like_us_on_facebook:
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/EyeDroid-The-Scribe-Finder-1074854976011093/about/?entry_point=page_edit_dialog&tab=page_info"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/Scribe-Finder-327894291336361/posts"));
                 startActivity(intent);
                 break;
             case R.id.contactUs:
