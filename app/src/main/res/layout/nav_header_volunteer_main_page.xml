@@ -21,7 +21,6 @@
         android:src="@drawable/profilrpic"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/toolbarColor"
-
         android:layout_gravity="center_horizontal"
         tools:targetApi="donut"
         tools:ignore="MissingPrefix" />

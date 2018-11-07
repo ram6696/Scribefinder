@@ -1,6 +1,7 @@
 package com.ourapps.scribefinder.needy;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -308,6 +309,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         startActivity(NeedyMainPage);
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void onDPClickNeedy(View view) {
         boolean flag = checkLocationPermission();
         if(flag){

@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".needy.DisplaySingleScribeDetails"
     android:orientation="vertical"
     android:background="@color/white">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/displaySingleScribeToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@drawable/gradient">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:contentDescription="@string/back_button"
+            android:onClick="goBackToPreviousActivity"
+            android:src="@drawable/ic_action_arrow_left" />
+
+        <TextView
+            android:id="@+id/toolbarScribeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:id="@+id/displaySingleScribeToolbar"
-            android:background="@drawable/gradient">
-
-            <TextView
-                android:id="@+id/toolbarScribeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
-
-        </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
@@ -36,15 +44,13 @@
             android:id="@+id/tabLayout"
             android:background="@drawable/gradient"
             android:minHeight="?android:attr/actionBarSize"
-            app:tabTextColor="@color/black">
-        </android.support.design.widget.TabLayout>
+            app:tabTextColor="@color/black"></android.support.design.widget.TabLayout>
 
         <android.support.v4.view.ViewPager
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/pager">
-        </android.support.v4.view.ViewPager>
+            android:id="@+id/pager"></android.support.v4.view.ViewPager>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

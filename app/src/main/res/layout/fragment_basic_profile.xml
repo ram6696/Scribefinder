@@ -107,6 +107,7 @@
                     android:background="@drawable/buttonshape"
                     android:layout_marginLeft="200dp"
                     android:text="Make Call"
+                    android:textAllCaps="false"
                     android:textColor="@color/white"/>
 
             </RelativeLayout>
@@ -161,7 +162,8 @@
                     android:background="@drawable/buttonshape"
                     android:layout_marginLeft="200dp"
                     android:textColor="@color/white"
-                    android:text="Send mail"/>
+                    android:text="Send mail"
+                    android:textAllCaps="false" />
 
             </RelativeLayout>
 

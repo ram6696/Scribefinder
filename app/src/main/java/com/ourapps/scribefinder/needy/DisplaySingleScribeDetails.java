@@ -1,10 +1,11 @@
 package com.ourapps.scribefinder.needy;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,7 @@ public class DisplaySingleScribeDetails extends AppCompatActivity implements Bas
 
         android.support.v7.widget.Toolbar displaySingleScribeToolbar = findViewById(R.id.displaySingleScribeToolbar);
         TextView toolbarScribeName = displaySingleScribeToolbar.findViewById(R.id.toolbarScribeName);
-        toolbarScribeName.setText(getIntent().getStringExtra("name"));
+        toolbarScribeName.setText(getString(R.string.details_of) + " " + getIntent().getStringExtra("name"));
 
         TabLayout tabLayout= findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Contact"));
@@ -62,5 +63,9 @@ public class DisplaySingleScribeDetails extends AppCompatActivity implements Bas
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+    }
+
+    public void goBackToPreviousActivity(View view) {
+        finish();
     }
 }
