@@ -51,7 +51,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-
                     android:src="@drawable/ic_search"
                     android:layout_marginTop="30dp"/>
 
@@ -157,7 +156,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-
                     android:src="@drawable/ic_cloud_upload"
                     android:layout_marginTop="4dp"/>
 
@@ -165,8 +163,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -203,6 +201,7 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
             android:onClick="viewUploads"
+            android:layout_marginLeft="0dp"
             tools:targetApi="lollipop">
 
             <LinearLayout
@@ -217,7 +216,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-
                     android:src="@drawable/ic_view_carousel"
                     android:layout_marginTop="4dp"/>
 
@@ -225,8 +223,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp">
 
                     <TextView
                         android:layout_width="match_parent"

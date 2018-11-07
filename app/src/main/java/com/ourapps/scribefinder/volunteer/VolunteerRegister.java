@@ -45,10 +45,8 @@ import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.TypeOfUser;
 import com.ourapps.scribefinder.Users;
-import com.ourapps.scribefinder.needy.NeedyRegister;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -149,9 +147,8 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
     }
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this,TypeOfUser.class));
+        startActivity(new Intent(this, TypeOfUser.class));
         finish();
-
     }
 
     private void setValuesForDistrict(String selectedItem) {
@@ -3347,9 +3344,7 @@ case "Wayanad":
                     databaseVolunteer.child("Volunteer").child(id).setValue(volunteerData);
                     progressDialog.dismiss();
 
-
                     // startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
-
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerRegister.this);
                     builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
@@ -3359,27 +3354,23 @@ case "Wayanad":
                             new DialogInterface.OnClickListener() {
                                 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
                                 public void onClick(DialogInterface dialog, int id) {
-
                                     Intent intent = new Intent(Intent.ACTION_MAIN);
                                     intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                                     startActivity(new Intent(VolunteerRegister.this, Login.class));
                                     startActivity(intent);
                                     finish();
-
                                 }
                             });
                     builder1.setNegativeButton(
                             "Cancel",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-
                                     startActivity(new Intent(VolunteerRegister.this, Login.class));
                                     finish();
                                 }
                             });
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
-
                 }
                 }
             });

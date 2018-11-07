@@ -168,4 +168,7 @@
     <string name="study_materials_">Access to the study materials at one place</string>
     <string name="instructions">Instructions</string>
     <string name="instructions_for_the_volunteers">Instructions for the Volunteers</string>
+    <string name="needy_registration">Needy Registration</string>
+    <string name="volunteer_registration">Volunteer Registration</string>
+    <string name="details_of">Details of </string>
 </resources>

@@ -97,10 +97,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(ScribeSearchPage.this);
-
         super.onResume();
-
-
     }
 
 
@@ -3217,7 +3214,6 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                             locName = addresses.get(0).getPostalCode();
                             locType = "pincode";
                            // Toast.makeText(getApplicationContext(), "Current location pincode is "+locName, Toast.LENGTH_LONG).show();
-
                         }else if(searchLocation.contentEquals("district")){
                             locName = addresses.get(0).getSubAdminArea();
                             locType = "district";

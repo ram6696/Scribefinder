@@ -5,7 +5,6 @@
     android:layout_height="fill_parent"
     android:background="@color/white"
     android:orientation="vertical"
-
     android:contentDescription="Needy Registration Screen"
     android:gravity="center"
     tools:context="com.ourapps.scribefinder.needy.NeedyRegister">
@@ -13,14 +12,13 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:id="@+id/VolunteersSearchToolbar"
+        android:id="@+id/needyRegistrationToolbar"
         android:background="@color/toolbarColor">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/ic_action_arrow_left"
-
             android:contentDescription="@string/back_button"
             android:onClick="goBackToPreviousActivity"/>
 
@@ -31,8 +29,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-
-            android:text="@string/new_user"
+            android:text="@string/needy_registration"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp" />
 
@@ -62,7 +59,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="30dp"
+                tools:targetApi="jelly_bean">
 
                 <EditText
                     android:id="@+id/etName"
@@ -70,10 +68,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:contentDescription="Name"
                     android:hint="@string/name"
                     android:nextFocusUp="@id/etName"
-                    android:nextFocusLeft="@id/etName"/>
+                    android:autofillHints="@string/name"
+                    android:nextFocusLeft="@id/etName"
+                    tools:targetApi="o" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -82,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                tools:targetApi="jelly_bean">
 
                 <EditText
                     android:id="@+id/etEmail"
@@ -90,8 +90,9 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/email"
-                    android:contentDescription="@string/email"
-                    android:inputType="textEmailAddress" />
+                    android:importantForAutofill="no"
+                    android:inputType="textEmailAddress"
+                    tools:targetApi="o" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -100,7 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                tools:targetApi="jelly_bean">
 
                 <EditText
                     android:id="@+id/etMobileNumber"
@@ -108,7 +110,6 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/mobileNumber"
-                    android:contentDescription="Mobile Number"
                     android:inputType="phone" />
 
             </android.support.design.widget.TextInputLayout>
