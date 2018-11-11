@@ -68,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
+                    android:contentDescription="Name"
                     android:hint="@string/name"
                     android:nextFocusUp="@id/etName"
                     android:autofillHints="@string/name"
@@ -90,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/email"
+                    android:contentDescription="Email Address"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     tools:targetApi="o" />
@@ -110,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/mobileNumber"
+                    android:contentDescription="Mobile Number"
                     android:inputType="phone" />
 
             </android.support.design.widget.TextInputLayout>
@@ -133,19 +136,37 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/etConfirmPasswordLayout"
+            android:id="@+id/etConfirmPasswordLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Re-type New Password"
+                android:ems="10"
+                android:hint="@string/confirm_password"
+                android:inputType="textWebPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/certificateUploadLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:importantForAccessibility="no"
                 android:layout_marginTop="10dp">
 
                 <EditText
-                    android:id="@+id/etConfirmPassword"
+                    android:id="@+id/certificateUpload"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="Re-type New Password"
+                    android:contentDescription="Upload blinds Certificate"
                     android:ems="10"
-                    android:hint="@string/confirm_password"
+                    android:hint="Upload Certificate"
                     android:inputType="textWebPassword" />
 
             </android.support.design.widget.TextInputLayout>
