@@ -52,8 +52,6 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
 
     View view;
 
-    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
-
     LinearLayout mobileNumberLayout, emailLayout;
 
     public BasicProfileFragment() {
@@ -143,12 +141,6 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -175,12 +167,6 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if(view == CallButton){
-//            int permissionCheck = ContextCompat.checkSelfPermission(view.getContext(), Manifest.permission.CALL_PHONE);
-//            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_CALL_PHONE);
-//            } else {
-//                makeCall();
-//            }
             makeCall();
         }else if(view == EmailButton){
             sendMail();

@@ -2453,7 +2453,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             case "Purulia":
                 citySpinnerItems = new String[] {"Arsa","Banduan","Hura","Jaipur","Jhalda","Kashipur","Manbazar","Para","Purulia","Raghunathpur"};
                 break;
-            case "South 24-Parganas":
+            case "South 24-Paraganas":
                 citySpinnerItems = new String[] {"Baruipur","Basanti","Behala East","Behala West","Bhangar","Bishnupur","Budge Budge","Canning","Diamond Harbour","Falta","Garden Reach","Gosaba","Jadavpur","Joynagar","Kakdwip","Kulpi","Kultali","Magrahat","Maheshtala","Mandirbazar","Mathurapur","Patharpratima","Sagar","Satgachia","Sonarpur"};
                 break;
             case "Uttar Dinajpur":
@@ -2629,7 +2629,8 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                 break;
         }
         etdob.setText(volunteerData.getDob());
-        etAddress.setText(volunteerData.getAddress());
+        if(volunteerData.getAddress() != null && !volunteerData.getAddress().isEmpty()){
+        etAddress.setText(volunteerData.getAddress());}
         etPincode.setText(volunteerData.getPincode());
 
         stateSpinner.setSelection(volunteerData.getStatePosition());

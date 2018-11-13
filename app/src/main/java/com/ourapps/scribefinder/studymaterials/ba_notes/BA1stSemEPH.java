@@ -34,7 +34,7 @@ public class BA1stSemEPH extends AppCompatActivity {
                         break;
                     case 1:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse(" https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%201..docx?alt=media&token=e6b95bf8-76ba-490d-b6bb-3e071472bafa"));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%201..docx?alt=media&token=e6b95bf8-76ba-490d-b6bb-3e071472bafa"));
                         startActivity(intent[0]);
                         break;
                     case 2:

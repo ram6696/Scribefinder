@@ -659,6 +659,14 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
 
             //Districts and Cities of Andrapradesh
 
+            case "Anantapur" :
+                citySpinnerItems = new String[]{"Anantapur","Dhamavaram","Gooty","Gorantla","Guntakal","Hindupur","Kadiri","Kalyandurga","Madakasira","Nallamada","Penukonda","Rayadurgam","Singanamala","Tadpatri","Uravakonda"};
+                break;
+
+            case "Chittor" :
+                citySpinnerItems = new String[]{"Chandragiri","Chittor","Kuppam","Madanpalle","Nagari","Palmaner","Pilleru","Punganur","Puttur","Satyavedu","Sri Kalahasthi","Thamballapalle","Tirupati","Vayalpad","Vepanjeri"};
+                break;
+
             case "East Godavari" :
                 citySpinnerItems = new String[]{"Alamuru","Allavaram","Amalapuram","Anaparty","Annavaram","Burugupudi","Eleswaram","Jagampeta","Kadiam","Kakinada","Mandapeta","Mummidivaram","Peddapuram","Pithapuram","Prathipadu","Rajahmundry","Ramachadrapuram","Rampachodapuram","Ravulapuram","Samalkot","Samara","Seethanagaram","Tallarevu","Tuni","Yellavaram"};
                 break;
@@ -3097,7 +3105,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                 citySpinnerItems = new String[] {"Arsa","Banduan","Hura","Jaipur","Jhalda","Kashipur","Manbazar","Para","Purulia","Raghunathpur"};
                 break;
 
-            case "South 24-Parganas":
+            case "South 24-Paraganas":
                 citySpinnerItems = new String[] {"Baruipur","Basanti","Behala East","Behala West","Bhangar","Bishnupur","Budge Budge","Canning","Diamond Harbour","Falta","Garden Reach","Gosaba","Jadavpur","Joynagar","Kakdwip","Kulpi","Kultali","Magrahat","Maheshtala","Mandirbazar","Mathurapur","Patharpratima","Sagar","Satgachia","Sonarpur"};
                 break;
 
