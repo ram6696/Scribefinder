@@ -171,4 +171,11 @@
     <string name="needy_registration">Needy Registration</string>
     <string name="volunteer_registration">Volunteer Registration</string>
     <string name="details_of">Details of </string>
+    <string name="upload_certificate">Upload Certificate</string>
+    <string name="upload_and_register">Upload and Register</string>
+    <string name="registration_successful">Registration Successful</string>
+    <string name="open_mail">Open Mail</string>
+    <string name="verificationmailmessage">Verification mail has sent to ur Email id, Please verify to login</string>
+    <string name="certificatevalidationmessage">Note : Certificate verification process has been initiated and it will take maximum 30 minutes to complete. You are not allowed to search for the volunteers until the verification process completes.</string>
+    <string name="certificate_reason">Please upload your Physical handicap certificate or Visually Impaired certificate for verification purpose.</string>
 </resources>

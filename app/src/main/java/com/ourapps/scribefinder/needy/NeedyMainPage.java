@@ -115,8 +115,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onResume() {
-        NetworkUtil.getConnectivityStatusString(NeedyMainPage.this);
         super.onResume();
+        NetworkUtil.getConnectivityStatusString(NeedyMainPage.this);
     }
 
     private void setDefaultValues() {
@@ -321,7 +321,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void onDPClickNeedy(View view) {
-        boolean flag = checkLocationPermission();
+        boolean flag = checkStoragePermission();
         if(flag){
             Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(i, RESULT_LOAD_IMAGE);
@@ -331,7 +331,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         }
     }
 
-    public boolean checkLocationPermission() {
+    public boolean checkStoragePermission() {
         String permission = "android.permission.READ_EXTERNAL_STORAGE";
         int res = this.checkCallingOrSelfPermission(permission);
         return (res == PackageManager.PERMISSION_GRANTED);

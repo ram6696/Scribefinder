@@ -173,7 +173,6 @@ public class UploadNotes extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-
             case R.id.btnUpload:
                 uploadFile();
                 break;
