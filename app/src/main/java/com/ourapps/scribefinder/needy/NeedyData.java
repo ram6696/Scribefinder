@@ -13,11 +13,13 @@ public class NeedyData {
     private String password;
     private String accountType;
     private String photoUrl;
+    private String certificateUrl;
+    private boolean validUser;
 
     public NeedyData() {
     }
 
-    public NeedyData(String needyId, String name, String email, String mobileNumber, String password, String accountType, String photoUrl) {
+    NeedyData(String needyId, String name, String email, String mobileNumber, String password, String accountType, String photoUrl, String certificateUrl, boolean validUser) {
         this.needyId = needyId;
         this.name = name;
         this.email = email;
@@ -25,10 +27,16 @@ public class NeedyData {
         this.password = password;
         this.accountType = accountType;
         this.photoUrl = photoUrl;
+        this.certificateUrl = certificateUrl;
+        this.validUser = validUser;
     }
 
-    public String getNeedyId() {
+    String getNeedyId() {
         return needyId;
+    }
+
+    public void setNeedyId(String needyId) {
+        this.needyId = needyId;
     }
 
     public String getName() {
@@ -63,12 +71,35 @@ public class NeedyData {
         this.password = password;
     }
 
-    public String getAccountType() {
+    String getAccountType() {
         return accountType;
     }
 
-    public String getPhotoUrl() {
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    String getPhotoUrl() {
         return photoUrl;
     }
 
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    String getCertificateUrl() {
+        return certificateUrl;
+    }
+
+    public void setCertificateUrl(String certificateUrl) {
+        this.certificateUrl = certificateUrl;
+    }
+
+    boolean isValidUser() {
+        return validUser;
+    }
+
+    public void setValidUser(boolean validUser) {
+        this.validUser = validUser;
+    }
 }

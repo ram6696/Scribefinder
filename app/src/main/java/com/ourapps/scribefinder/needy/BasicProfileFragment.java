@@ -65,7 +65,6 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
         super.onCreate(savedInstanceState);
         Bundle bundle = this.getArguments();
 
-
         if (bundle != null) {
             myId = bundle.getString("id","");
         }

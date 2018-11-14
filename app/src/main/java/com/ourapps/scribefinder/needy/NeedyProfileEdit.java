@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
@@ -129,6 +130,8 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         final String mobileNumber   = etMobileNumber.getText().toString().trim();
         final String password       = needyData.getPassword();
         final String photoUrl       = needyData.getPhotoUrl();
+        final String certificateUrl = needyData.getCertificateUrl();
+        final boolean isValidUser   = needyData.isValidUser();
 
         progressDialog.setMessage("Updating Profile Details..");
         progressDialog.show();
@@ -136,7 +139,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         final DatabaseReference needyReference = databaseReference.child("Needy").child(currentUserId);
         final DatabaseReference usersReference = databaseReference.child("Users").child(currentUserId);
 
-        NeedyData newData = new NeedyData(currentUserId, name, email, mobileNumber,password, "Needy", photoUrl);
+        NeedyData newData = new NeedyData(currentUserId, name, email, mobileNumber,password, "Needy", photoUrl, certificateUrl,isValidUser);
 
         needyReference.setValue(newData).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -179,7 +182,9 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
                                         });
                                 AlertDialog alert11 = builder1.create();
                                 alert11.show();
-                                System.out.println(Objects.requireNonNull(task.getException()).getMessage());
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                                    System.out.println(Objects.requireNonNull(task.getException()).getMessage());
+                                }
                                 progressDialog.dismiss();
                             }
                         }

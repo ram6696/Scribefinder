@@ -64,7 +64,6 @@
         android:layout_marginStart="5dp"
         android:text="@string/makeZipFile" />
 
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/etFileChooserLayout"
         android:layout_width="match_parent"
@@ -80,7 +79,8 @@
             android:ems="10"
             android:hint="@string/choose_file"
             android:onClick="etChooseClicked"
-            tools:ignore="TextFields" />
+            tools:ignore="TextFields,UnusedAttribute"
+            android:importantForAutofill="no" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/buttonshape"

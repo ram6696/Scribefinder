@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -123,7 +124,7 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        NeedyData newNeedyData = new NeedyData(needyData.getNeedyId(), needyData.getName(), needyData.getEmail(), needyData.getMobileNumber(), etConfirmPassword.getText().toString().trim(), needyData.getAccountType(), needyData.getPhotoUrl());
+                                        NeedyData newNeedyData = new NeedyData(needyData.getNeedyId(), needyData.getName(), needyData.getEmail(), needyData.getMobileNumber(), etConfirmPassword.getText().toString().trim(), needyData.getAccountType(), needyData.getPhotoUrl(), needyData.getCertificateUrl(), needyData.isValidUser());
                                         databaseReference.child("Needy").child(userId).setValue(newNeedyData);
                                         Users newUsersData = new Users(needyData.getNeedyId(), needyData.getEmail(), etConfirmPassword.getText().toString().trim(),needyData.getAccountType(), needyData.getName(), needyData.getMobileNumber());
                                         databaseReference.child("Users").child(userId).setValue(newUsersData);
@@ -153,7 +154,9 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
                                         alert1.show();
                                     } else {
                                         try{
-                                            throw Objects.requireNonNull(task.getException());
+                                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                                                throw Objects.requireNonNull(task.getException());
+                                            }
                                         }catch(FirebaseAuthWeakPasswordException weakPassword){
                                             progressDialog.dismiss();
                                             etNewPasswordLayout.setErrorEnabled(true);

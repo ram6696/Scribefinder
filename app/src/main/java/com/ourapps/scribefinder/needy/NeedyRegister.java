@@ -69,7 +69,6 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
         etNewPasswordLayout = findViewById(R.id.etNewPasswordLayout);
         etConfirmPasswordLayout = findViewById(R.id.etConfirmPasswordLayout);
 
-
         etMobileNumber.setFilters(new InputFilter[]{new InputFilter.LengthFilter(10)});
         btnRegister = findViewById(R.id.btnRegiser);
         btnRegister.setOnClickListener(this);
@@ -77,17 +76,14 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
     @Override
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(NeedyRegister.this);
-
         super.onResume();
-
-
     }
+
     @Override
     public void onBackPressed(){
         startActivity(new Intent(this,TypeOfUser.class));
         finish();
     }
-
 
     @Override
     public void onClick(View view) {
@@ -150,42 +146,13 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                         e.printStackTrace();
                     }
                 } else {
-                    sendEmailVerification();
-                    String id = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
-                    Users currUser = new Users(id, email, password, "Needy", name, mobileNumber);
-                    databaseNeedy.child("Users").child(id).setValue(currUser);
-                    NeedyData needyData = new NeedyData(id, name, email, mobileNumber, password, "Needy","");
-                    databaseNeedy.child("Needy").child(id).setValue(needyData);
+                    Intent certificatePage = new Intent(NeedyRegister.this, UploadNeedyCertificate.class);
+                    certificatePage.putExtra("name", name);
+                    certificatePage.putExtra("email", email);
+                    certificatePage.putExtra("mobileNumber", mobileNumber);
+                    certificatePage.putExtra("password", password);
                     progressDialog.dismiss();
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyRegister.this);
-                    builder1.setMessage("Successfully Registered. Verification mail has sent to ur Email id, Please verify to login.");
-                    builder1.setCancelable(false);
-                    builder1.setPositiveButton(
-                            "Open Email",
-                            new DialogInterface.OnClickListener() {
-                                @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
-                                public void onClick(DialogInterface dialog, int id) {
-
-                                    Intent intent = new Intent(Intent.ACTION_MAIN);
-                                    intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-                                    startActivity(new Intent(NeedyRegister.this, Login.class));
-                                    startActivity(intent);
-                                    finish();
-
-                                }
-                            });
-                    builder1.setNegativeButton(
-                            "Cancel",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-
-                                    startActivity(new Intent(NeedyRegister.this, Login.class));
-                                    finish();
-                                }
-                            });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-
+                    startActivity(certificatePage);
                 }
             }
         });
@@ -266,25 +233,6 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
     private void requestFocus(View view){
         if(view.requestFocus()){
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
-    }
-
-    private void sendEmailVerification(){
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser != null) {
-            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        //Toast.makeText(NeedyRegister.this, "Verification mail has sent to your mail ID. Please verify!", Toast.LENGTH_LONG).show();
-                        firebaseAuth.signOut();
-                        //finish();
-                        //startActivity(new Intent(NeedyRegister.this, Login.class));
-                    } else {
-                        Toast.makeText(NeedyRegister.this, "Unable to send Verification mail.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
         }
     }
 
