@@ -83,11 +83,11 @@ public class ResetPassword extends AppCompatActivity {
                                                             GMailSender gMailSender = new GMailSender(senderEmailId, password);
                                                             gMailSender.sendMail("Your EyeDroid Username and Password",
                                                                     "Hey " + userData.getName() +
-                                                                            ",\n\nWe are so happy to have you on EyeDroid" + "\n\nHere are your login credentials:" +
+                                                                            ",\n\nWe are so happy to have you on Scribe Finder" + "\n\nHere are your login credentials:" +
                                                                             "\n\nEmail: " + userData.getEmail() +
                                                                             "\nPassword: " + userData.getPassword() +
                                                                             "\n\nYou can set a new password after logging in to the app." +
-                                                                            "\n\nThanks,\nEyeDroid Team",
+                                                                            "\n\nThanks,\nScribe Finder Team",
                                                                     senderEmailId,
                                                                     email);
                                                             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(ResetPassword.this);

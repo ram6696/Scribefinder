@@ -326,4 +326,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         startActivity(new Intent(Login.this, Intro.class));
         finish();
     }
+
+    public void Contact(View view) {
+        startActivity(new Intent(this,ContactUs.class));
+        finish();
+    }
 }

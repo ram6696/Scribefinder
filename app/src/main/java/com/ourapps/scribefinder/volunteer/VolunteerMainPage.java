@@ -170,9 +170,14 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
                     volunteerName = findViewById(R.id.txvolunteerName);
                     volunteerEmail = findViewById(R.id.volunteerEmail);
-                    String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
+//                    String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
+//                    if(!(picture.isEmpty() && picture == null))
+//                        Picasso.get().load(picture).into(volunteerProfilePic);
+                    String picture = null;
+                    if(dataSnapshot.child("photoUrl").getValue().toString() !=null)
+                        picture = dataSnapshot.child("photoUrl").getValue().toString();
                     if(!(picture.isEmpty()))
-                        Picasso.get().load(picture).into(volunteerProfilePic);
+                    Picasso.get().load(picture).into(volunteerProfilePic);
                     volunteerName.setText(currentUserName);
                     volunteerEmail.setText(currentUserEmail);
                     progressDialog.dismiss();

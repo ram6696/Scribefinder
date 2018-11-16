@@ -34,21 +34,21 @@ public class BA1stSemEPH extends AppCompatActivity {
                         break;
                     case 1:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse(" https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%201..docx?alt=media&token=e6b95bf8-76ba-490d-b6bb-3e071472bafa"));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%201..docx?alt=media&token=e6b95bf8-76ba-490d-b6bb-3e071472bafa"));
                         startActivity(intent[0]);
                         break;
                     case 2:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%202..docx?alt=media&token=65157d45-91fd-4c2c-afb3-a5769565aa01 "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%202..docx?alt=media&token=65157d45-91fd-4c2c-afb3-a5769565aa01"));
                         startActivity(intent[0]);
                         break;
                     case 3:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%203..docx?alt=media&token=dff851da-7198-46e6-8815-f2c5ae9aea73 "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%203..docx?alt=media&token=dff851da-7198-46e6-8815-f2c5ae9aea73"));
                         break;
                     case 4:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%204..docx?alt=media&token=1753c5f7-1aef-44db-9e56-8d992cd98793 "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FEnvironment%20and%20Public%20health%2FUNIT%204..docx?alt=media&token=1753c5f7-1aef-44db-9e56-8d992cd98793"));
                         startActivity(intent[0]);
                         break;
 

@@ -35,25 +35,23 @@ public class BA1stSemHistory extends AppCompatActivity {
                         break;
                     case 1:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitII.doc?alt=media&token=6e66b1d9-5ee7-4dcf-b696-aab2e227837a "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitII.doc?alt=media&token=6e66b1d9-5ee7-4dcf-b696-aab2e227837a"));
                         startActivity(intent[0]);
                         break;
                     case 2:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitIII.doc?alt=media&token=ca055306-6ecb-4bac-9c98-4810c142ccba "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitIII.doc?alt=media&token=ca055306-6ecb-4bac-9c98-4810c142ccba"));
                         startActivity(intent[0]);
                         break;
                     case 3:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitIV.doc?alt=media&token=6b32d58a-f33a-4971-895f-8c9c2d9c65cd "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitIV.doc?alt=media&token=6b32d58a-f33a-4971-895f-8c9c2d9c65cd"));
                         break;
                     case 4:
                         intent[0] = new Intent(Intent.ACTION_VIEW);
-                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitV.doc?alt=media&token=8eaf02bf-ee59-459c-8563-544b805411b1 "));
+                        intent[0].setData(Uri.parse("https://firebasestorage.googleapis.com/v0/b/scribesearchapp.appspot.com/o/BA%20NOTES%2F1st%20Sem%2FHistory%2FUnitV.doc?alt=media&token=8eaf02bf-ee59-459c-8563-544b805411b1"));
                         startActivity(intent[0]);
                         break;
-
-
                 }
 
             }

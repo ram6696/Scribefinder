@@ -153,23 +153,6 @@
 
         </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/certificateUploadLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:importantForAccessibility="no"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/certificateUpload"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="Upload blinds Certificate"
-                    android:ems="10"
-                    android:hint="Upload Certificate"
-                    android:inputType="textWebPassword" />
-
-            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btnRegiser"

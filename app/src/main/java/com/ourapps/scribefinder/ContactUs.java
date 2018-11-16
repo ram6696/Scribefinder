@@ -56,6 +56,7 @@ public class ContactUs extends AppCompatActivity {
             }
         });
 
+
         progressDialog = new ProgressDialog(this);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -93,7 +94,7 @@ public class ContactUs extends AppCompatActivity {
                                     "\n\nUser Email : " + userEmail + "\n" + "Account Type : " + userAccType + "\n"
                                             + "User Name : " + userName + "\n" + "Comments Type : " + commentsType + "\n" + "Comments : " + userMessage + "\n",
                                     adminEmail,
-                                    userEmail);
+                                    adminEmail);
                             AlertDialog.Builder alertBuilder = new AlertDialog.Builder(ContactUs.this);
                             alertBuilder.setTitle("Email Sent");
                             alertBuilder.setMessage("We have received your " + commentsType + ". Thank you for your time.");

@@ -2477,7 +2477,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                 districtSpinnerItems = new String[]{"Nicobar","North & Middle Andaman","South Andaman"};
                 break;
             case "Andhra Pradesh":
-                districtSpinnerItems = new String[]{"Anantapur","Chittoor","East Godavari","Guntur","Kadapa","Krishna","Kurnool","Nellore","Prakasam","Srikakulam","Vishakapatanam","Vizianagaram","West Godavari"};
+                districtSpinnerItems = new String[]{"Anantapur","Chittor","East Godavari","Guntur","Kadapa","Krishna","Kurnool","Nellore","Prakasam","Srikakulam","Vishakapatanam","Vizianagaram","West Godavari"};
                 break;
             case "Arunachal Pradesh":
                 districtSpinnerItems = new String[]{"Anjaw","Central Siang", "Changlang","Dibang Valley","East Kameng","East Siang","Kra Daadi","Kurung Kumey","Lohit","Longding","Lower Dibang Valley","Lower Siang","Lower Subansiri","Namsai","Papum Pare","Tawang","Tirap","Upper Siang","Upper Subansiri","West Kameng","West Siang"};
@@ -2579,7 +2579,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                 districtSpinnerItems = new String[]{"Almora","Bageshwar","Chamoli","Champawat","Dehradun","Haridwar","Nainital","Pauri Garhwal","Pithoragarh","Rudraprayag","Tehri Garhwal","Udham Singh Nagar","Uttarkashi"};
                 break;
             case "West Bengal":
-                districtSpinnerItems = new String[]{"Bankura","Birbhum","Burdwan","Coochbehar","Dakshin Dinajpur","Darjeeling","Hoogly","Howrah","Jalpaiguri","Kolkatta","Malda","Murshidabad","Nadia","North 24-Parganas","Pashchim Medinpur","Purbo Medinpur","Purulia","South 24-Paraganas","Uttar Dinajpur"};
+                districtSpinnerItems = new String[]{"Bankura","Birbhum","Burdwan","Coochbehar","Dakshin Dinajpur","Darjeeling","Hoogly","Howrah","Jalpaiguri","Kolkatta","Malda","Murshidabad","Nadia","North 24-Parganas","Pashchim Medinpur","Purbo Medinpur","Purulia","South 24-Parganas","Uttar Dinajpur"};
                 break;
         }
 

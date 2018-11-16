@@ -133,7 +133,10 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                 needyProfilePic = findViewById(R.id.needyProfilePic);
                 needyName = findViewById(R.id.needyName);
                 needyEmail = findViewById(R.id.needyEmail);
-                String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
+               // String picture = Objects.requireNonNull(dataSnapshot.child("photoUrl").getValue()).toString();
+                String picture = null;
+                if(dataSnapshot.child("photoUrl").getValue().toString() !=null)
+                    picture = dataSnapshot.child("photoUrl").getValue().toString();
                 if(!(picture.isEmpty()))
                     Picasso.get().load(picture).into(needyProfilePic);
                 needyName.setText(currentUserName);
