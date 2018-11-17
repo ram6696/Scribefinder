@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
@@ -105,28 +103,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         progressDialog.setMessage("Logging in...Please wait a moment.");
         progressDialog.show();
 
-        //TODO
-//        Runnable progressRunnable = new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                progressDialog.cancel();
-//                Toast.makeText(Login.this,"Check your internet connection",Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//
-//        Handler pdCanceller = new Handler();
-//        pdCanceller.postDelayed(progressRunnable, 9000);
-
         NetworkUtil.getConnectivityStatusString(Login.this);
-        progressDialog.setCancelable(true);
 
+        progressDialog.setCancelable(true);
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-
                     boolean emailFlag = checkEmailVerification();
                     if(emailFlag){
                         final String id = task.getResult().getUser().getUid();
@@ -205,7 +189,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onBackPressed() {
-
         startActivity(new Intent(Login.this,SplashScreenNew.class));
         finish();
 //            if(doubleBackToExitPressedOnce) {

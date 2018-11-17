@@ -2,14 +2,16 @@ package com.ourapps.scribefinder.needy;
 
 import android.content.Intent;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.R;
 
 public class RegistrationSuccessPage extends AppCompatActivity {
+
+    private static final Object View = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,15 @@ public class RegistrationSuccessPage extends AppCompatActivity {
         }
         startActivity(new Intent(this, Login.class));
         startActivity(intent);
-        finish();
+        cancelPageAndGoBackToLogin((android.view.View) View);
     }
 
     public void cancelPageAndGoBackToLogin(View view) {
         startActivity(new Intent(this, Login.class));
         finish();
+        finishActivity(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            finishAndRemoveTask();
+        }
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".needy.UploadNeedyCertificate">
+    tools:context=".needy.UploadNeedyCertificateExistingUsers">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
@@ -70,12 +70,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <ImageView
-        android:id="@+id/certificateImageView"
+        android:id="@+id/certificateImageViewExistingUser"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         app:srcCompat="@drawable/profilrpic"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -90,8 +90,8 @@
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/buttonshape"
-        android:text="@string/register"
-        android:onClick="registerNeedyAfterPhotoUploaded" />
+        android:text="@string/upload_certificate"
+        android:onClick="uploadCertificate" />
 
 
 </LinearLayout>

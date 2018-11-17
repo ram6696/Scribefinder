@@ -16,7 +16,8 @@
         android:icon="@drawable/app_logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/app_logo"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".SplashScreenNew"
             android:theme="@style/SplashScreenTheme">
@@ -180,7 +181,15 @@
         <activity
             android:name=".needy.UploadNeedyCertificate"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".needy.RegistrationSuccessPage"></activity>
+        <activity
+            android:name=".needy.RegistrationSuccessPage"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".needy.UploadNeedyCertificateExistingUsers"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

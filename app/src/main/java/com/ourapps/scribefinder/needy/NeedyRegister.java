@@ -1,9 +1,7 @@
 package com.ourapps.scribefinder.needy;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,14 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.ourapps.scribefinder.Login;
 import com.ourapps.scribefinder.NetworkUtil;
 import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.TypeOfUser;
-import com.ourapps.scribefinder.Users;
 
 import java.util.Objects;
 
@@ -43,17 +36,14 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
     private TextInputLayout etNameLayout, etEmailLayout, etMobileNumberLayout, etNewPasswordLayout, etConfirmPasswordLayout;
     private Button btnRegister;
     private ProgressDialog progressDialog;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseNeedy;
+    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_needy_register);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        databaseNeedy = FirebaseDatabase.getInstance().getReference();
-
+        mFirebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
         etName = findViewById(R.id.etName);
@@ -119,7 +109,7 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
         progressDialog.setMessage("Registering User..");
         progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        mFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -146,7 +136,9 @@ public class NeedyRegister extends AppCompatActivity implements View.OnClickList
                         e.printStackTrace();
                     }
                 } else {
+                    String currentUserId = Objects.requireNonNull(mFirebaseAuth.getCurrentUser()).getUid();
                     Intent certificatePage = new Intent(NeedyRegister.this, UploadNeedyCertificate.class);
+                    certificatePage.putExtra("currentUserId", currentUserId);
                     certificatePage.putExtra("name", name);
                     certificatePage.putExtra("email", email);
                     certificatePage.putExtra("mobileNumber", mobileNumber);

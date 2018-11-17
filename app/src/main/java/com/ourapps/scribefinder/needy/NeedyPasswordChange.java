@@ -72,10 +72,7 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
     }
     public void onResume() {
         NetworkUtil.getConnectivityStatusString(NeedyPasswordChange.this);
-
         super.onResume();
-
-
     }
 
     @Override

@@ -155,17 +155,6 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        /*if(id == R.id.action_contactUs){
-           // Intent contactUsIntent = new Intent(NeedyMainPage.this, ContactUs.class);
-            //startActivity(contactUsIntent);
-        }*/
-        //return  || super.onOptionsItemSelected(item);
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()){
@@ -194,6 +183,9 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                 editor.putBoolean("logStatus", false);
                                 editor.apply();
                                 finish();
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                    finishAndRemoveTask();
+                                }
                                 startActivity(new Intent(NeedyMainPage.this, Login.class));
                             }
                         });
@@ -268,9 +260,11 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                                                                 editor.apply();
                                                                                 progressDialog.cancel();
                                                                                 Toast.makeText(getApplicationContext(), "Account successfully deleted..!", Toast.LENGTH_LONG).show();
-
-                                                                                startActivity(new Intent(NeedyMainPage.this, Login.class));
                                                                                 finish();
+                                                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                                                                    finishAndRemoveTask();
+                                                                                }
+                                                                                startActivity(new Intent(NeedyMainPage.this, Login.class));
                                                                             }
                                                                         }
                                                                     });
@@ -313,8 +307,67 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     }
 
     public void searchForScribe(View view) {
-        Intent NeedyMainPage= new Intent(com.ourapps.scribefinder.needy.NeedyMainPage.this, ScribeSearchPage.class);
-        startActivity(NeedyMainPage);
+        progressDialog.setMessage("Please wait a moment..");
+        progressDialog.show();
+        mDatabaseRef.child("Needy").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    progressDialog.dismiss();
+                    NeedyData needyData = dataSnapshot.getValue(NeedyData.class);
+                    if (needyData != null) {
+                        if (needyData.getCertificateUrl() == null) {
+                            //Certificate not uploaded.
+                            android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(NeedyMainPage.this);
+                            builder1.setMessage("You have not uploaded your Physical handicap certificate or Visually impaired certificate, you will not be allowed to search for volunteers until your certificate validation process completes.");
+                            builder1.setCancelable(false);
+                            builder1.setPositiveButton(
+                                    "Upload Certificate",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Intent uploadNeedyCertificateExistingUser = new Intent(NeedyMainPage.this, UploadNeedyCertificateExistingUsers.class);
+                                            startActivity(uploadNeedyCertificateExistingUser);
+                                        }
+                                    });
+                            builder1.setNegativeButton(
+                                    "Cancel",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    });
+                            android.app.AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        } else if (!needyData.isValidUser()) {
+                            //Certificate uploaded but verification has not completed still.
+                            android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(NeedyMainPage.this);
+                            builder1.setMessage("Your certificate validation process is still in pending stage, Please try after 15 minutes, you will not be allowed to search for volunteers until your certificate validation process completes.");
+                            builder1.setCancelable(false);
+                            builder1.setNegativeButton(
+                                    "Cancel",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    });
+                            android.app.AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        } else {
+                            //Certificate uploaded and verified also, allow to search..
+                            Intent NeedyMainPage = new Intent(NeedyMainPage.this, ScribeSearchPage.class);
+                            startActivity(NeedyMainPage);
+                        }
+                    }
+                } else {
+                    System.out.println("Needy data not there");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -354,20 +407,21 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
             progressDialog.setMessage("Setting your profile picture....");
             progressDialog.show();
 
-            final Uri[] downloadUri = new Uri[1];
-
+            //final Uri[] downloadUri = new Uri[1];
             if(!currentUserName.equals("")){
                 Uri uri = Uri.fromFile(newFile);
                 StorageReference storageReference = mStorageRef.child("dp/"+ currentUserId.concat(currentUserName) +".jpg");
                 storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        downloadUri[0] = taskSnapshot.getDownloadUrl();
-                        boolean flag = mDatabaseRef.child("Needy").child(currentUserId).child("photoUrl").setValue(downloadUri[0].toString()).isSuccessful();
+                        //downloadUri[0] = taskSnapshot.getDownloadUrl();
                         mDatabaseRef.child("Needy").child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                String picture = dataSnapshot.getValue().toString();
+                                String picture = null;
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                                    picture = Objects.requireNonNull(dataSnapshot.getValue()).toString();
+                                }
                                 Picasso.get().load(picture).into(needyProfilePic);
                                 progressDialog.dismiss();
                             }
@@ -422,12 +476,12 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
             Bitmap selectedBitmap = BitmapFactory.decodeStream(inputStream, null, o2);
             inputStream.close();
 
-            // here i override the original image file
-            file.createNewFile();
-            FileOutputStream outputStream = new FileOutputStream(file);
-
-            selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100 , outputStream);
-
+            if (file.createNewFile()) {
+                FileOutputStream outputStream = new FileOutputStream(file);
+                if (selectedBitmap != null) {
+                    selectedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                }
+            }
             return file;
         } catch (Exception e) {
             e.printStackTrace();
