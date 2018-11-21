@@ -59,7 +59,7 @@ public class ResetPassword extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                 final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                                DatabaseReference idReference = rootRef.child("Users").child(postSnapshot.getKey());
+                                DatabaseReference idReference = rootRef.child(getString(R.string.databaseUsersParentReference)).child(postSnapshot.getKey());
                                 idReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -149,7 +149,7 @@ public class ResetPassword extends AppCompatActivity {
 
                     }
                 };
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.databaseUsersParentReference));
                 Query query = reference.orderByChild("email").equalTo(email);
                 query.addListenerForSingleValueEvent(valueEventListener);
             }

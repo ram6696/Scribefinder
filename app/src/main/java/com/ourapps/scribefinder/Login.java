@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     if(emailFlag){
                         final String id = task.getResult().getUser().getUid();
                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                        databaseReference.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                        databaseReference.child(getString(R.string.databaseUsersParentReference)).child(id).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()){

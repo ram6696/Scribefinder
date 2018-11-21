@@ -86,6 +86,8 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
         name = sp.getString("name", "");
         email = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
+
+
     }
 
     @Override
@@ -198,12 +200,15 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
     }
 
     public void uploadCertificate(View view) {
+        setProgressBarIndeterminateVisibility(true);
+        System.out.println(currentUserId);
         if (currentUserId != null && !currentUserId.isEmpty()) {
+            System.out.println(photoUri);
             if (photoUri != null) {
                 progressDialog.setMessage("Uploading certificate please wait a moment..");
                 progressDialog.show();
                 try {
-                    mStorageRef = mStorageRef.child("NeedyCertificates/" + name.concat(currentUserId) + ".jpg");
+                    mStorageRef = mStorageRef.child(R.string.storageNeedyCertificatesReference + name.concat(currentUserId) + ".jpg");
                     mStorageRef.putFile(photoUri)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -211,33 +216,34 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                                         urlOfUploadedCertificate = Objects.requireNonNull(taskSnapshot.getDownloadUrl()).toString();
                                     }
-                                    mDatabaseRef.child("Needy").child(currentUserId).child("certificateUrl").setValue(urlOfUploadedCertificate).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("certificateUrl").setValue(urlOfUploadedCertificate).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            mDatabaseRef.child("Needy").child(currentUserId).child("validUser").setValue(false).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("validUser").setValue(false).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
+                                                    setProgressBarIndeterminateVisibility(false);
                                                     registeredSuccessfullySendMail();
                                                 }
                                             })
-                                                    .addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            progressDialog.dismiss();
-                                                            Log.e(TAG, "Failed to set data for valid user");
-                                                            Toast.makeText(UploadNeedyCertificateExistingUsers.this, "An error occurred while uploading, please try again.. ", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-                                        }
-                                    })
                                             .addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
                                                     progressDialog.dismiss();
-                                                    Log.e(TAG, "Failed to set data for certificate Url");
+                                                    Log.e(TAG, "Failed to set data for valid user");
                                                     Toast.makeText(UploadNeedyCertificateExistingUsers.this, "An error occurred while uploading, please try again.. ", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            progressDialog.dismiss();
+                                            Log.e(TAG, "Failed to set data for certificate Url");
+                                            Toast.makeText(UploadNeedyCertificateExistingUsers.this, "An error occurred while uploading, please try again.. ", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {

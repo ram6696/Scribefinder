@@ -32,7 +32,7 @@ public class RegistrationSuccessPage extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
             intent.addCategory(Intent.CATEGORY_APP_EMAIL);
         }
-        startActivity(new Intent(this, Login.class));
+        //startActivity(new Intent(this, Login.class));
         startActivity(intent);
         cancelPageAndGoBackToLogin((android.view.View) View);
     }

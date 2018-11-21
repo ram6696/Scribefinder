@@ -125,7 +125,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        mDatabaseRef.child("Needy").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -230,8 +230,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                 progressDialog.setCancelable(false);
 
                                 String uid = mCurrentUser.getUid();
-                                final Query needyDataRef = mDatabaseRef.child("Needy").child(uid);
-                                final Query usersDataRef = mDatabaseRef.child("Users").child(uid);
+                                final Query needyDataRef = mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(uid);
+                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(uid);
 
                                 mCurrentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -309,13 +309,14 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     public void searchForScribe(View view) {
         progressDialog.setMessage("Please wait a moment..");
         progressDialog.show();
-        mDatabaseRef.child("Needy").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     progressDialog.dismiss();
                     NeedyData needyData = dataSnapshot.getValue(NeedyData.class);
                     if (needyData != null) {
+                        System.out.println(needyData.getCertificateUrl());
                         if (needyData.getCertificateUrl() == null) {
                             //Certificate not uploaded.
                             android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(NeedyMainPage.this);
@@ -415,7 +416,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         //downloadUri[0] = taskSnapshot.getDownloadUrl();
-                        mDatabaseRef.child("Needy").child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 String picture = null;

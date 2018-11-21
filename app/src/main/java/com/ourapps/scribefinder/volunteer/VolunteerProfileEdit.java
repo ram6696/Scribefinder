@@ -2746,7 +2746,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             progressDialog.setCancelable(false);
 
             final DatabaseReference volunteerReference = databaseReference.child("Volunteer").child(currentUserId);
-            final DatabaseReference usersReference = databaseReference.child("Users").child(currentUserId);
+            final DatabaseReference usersReference = databaseReference.child(getString(R.string.databaseUsersParentReference)).child(currentUserId);
 
             VolunteerData newVolunteerData = new VolunteerData(currentUserId, name, email, mobileNumber, password, gender, dob, address, pincode, city, cityPosition, district, districtPosition, state, statePosition, english, kannada, telugu, hindi, tamil, "Volunteer", filterAddress, languages, photoUrl);
 

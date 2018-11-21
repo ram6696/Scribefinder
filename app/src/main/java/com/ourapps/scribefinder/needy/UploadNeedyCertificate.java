@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -56,6 +57,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
 
     private ImageView certificateImageView;
     private EditText etChoose;
+    private Button btnRegister;
 
     private ProgressDialog progressDialog;
 
@@ -65,6 +67,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
     private String mobileNumber;
     private String password;
     private String urlOfUploadedCertificate;
+    private boolean certificateUploadStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
 
         certificateImageView = findViewById(R.id.certificateImageView);
         etChoose = findViewById(R.id.etChoose);
+        btnRegister = findViewById(R.id.btnRegisterUploadNeedyCertificate);
 
         Log.i(TAG, "Fetching all entered data from previous needy page");
         currentUserId = getIntent().getStringExtra("currentUserId");
@@ -113,12 +117,6 @@ public class UploadNeedyCertificate extends AppCompatActivity {
         }
     }
 
-    public boolean checkStoragePermission() {
-        String permission = "android.permission.READ_EXTERNAL_STORAGE";
-        int res = this.checkCallingOrSelfPermission(permission);
-        return (res == PackageManager.PERMISSION_GRANTED);
-    }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
@@ -131,7 +129,8 @@ public class UploadNeedyCertificate extends AppCompatActivity {
             if (selectedImage != null) {
                 cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             } else {
-                Log.e(TAG, "Selected image is null");
+                Log.e(TAG, "Image not selected");
+                Toast.makeText(UploadNeedyCertificate.this, "Image not selected", Toast.LENGTH_LONG).show();
             }
             int columnIndex;
             File newFile = null;
@@ -157,6 +156,8 @@ public class UploadNeedyCertificate extends AppCompatActivity {
                                         etChoose.setText(name.concat("'s Certificate"));
                                         Picasso.get().load(downloadUri[0]).into(certificateImageView);
                                         urlOfUploadedCertificate = downloadUri[0].toString();
+                                        certificateUploadStatus = true;
+                                        btnRegister.setText(getText(R.string.register));
                                         progressDialog.dismiss();
                                     }
                                 }
@@ -177,17 +178,23 @@ public class UploadNeedyCertificate extends AppCompatActivity {
         }
     }
 
+    public boolean checkStoragePermission() {
+        String permission = "android.permission.READ_EXTERNAL_STORAGE";
+        int res = this.checkCallingOrSelfPermission(permission);
+        return (res == PackageManager.PERMISSION_GRANTED);
+    }
+
     private void storeNeedyDataToDatabase() {
         if (currentUserId != null && !currentUserId.isEmpty()) {
             progressDialog.setMessage("Registering user please wait a moment..");
             progressDialog.show();
             Users currUser = new Users(currentUserId, email, password, "Needy", name, mobileNumber);
-            mDatabaseRef.child("Users").child(currentUserId).setValue(currUser)
+            mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(currentUserId).setValue(currUser)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             NeedyData needyData = new NeedyData(currentUserId, name, email, mobileNumber, password, "Needy", "", urlOfUploadedCertificate, false);
-                            mDatabaseRef.child("Needy").child(currentUserId).setValue(needyData)
+                            mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).setValue(needyData)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -292,11 +299,10 @@ public class UploadNeedyCertificate extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.e(TAG, "Unable to send Verification mail");
+                    Log.e(TAG, "Unable to send verification mail");
                     Toast.makeText(UploadNeedyCertificate.this, "An error occurred while registering, please try again.. ", Toast.LENGTH_SHORT).show();
                 }
-            })
-            ;
+            });
         } else {
             Log.e(TAG, "Current User is null, Unable to send mail");
             Toast.makeText(UploadNeedyCertificate.this, "An error occurred while registering, please try again.. ", Toast.LENGTH_SHORT).show();
@@ -304,9 +310,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
     }
 
     private void registeredSuccessfully() {
-
-        int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8) {
+        if(certificateUploadStatus){
             mDatabaseRef.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
                 @TargetApi(Build.VERSION_CODES.KITKAT)
                 @Override
@@ -318,6 +322,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
                     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                             .permitAll().build();
                     StrictMode.setThreadPolicy(policy);
+
                     try {
                         GMailSender gMailSender = new GMailSender(senderEmailId, password);
                         gMailSender.sendMail("Needy Certificate for Verification(New User)",
@@ -346,6 +351,14 @@ public class UploadNeedyCertificate extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
+        }else{
+            progressDialog.dismiss();
+            startActivity(new Intent(UploadNeedyCertificate.this, RegistrationSuccessPage.class));
+            finish();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                finishAndRemoveTask();
+            }
+            Log.i(TAG, "Certificate not uploaded so not initiating verification process");
         }
     }
 

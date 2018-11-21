@@ -84,7 +84,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        DatabaseReference idReference = databaseReference.child("Needy").child(currentUserId);
+        DatabaseReference idReference = databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId);
         idReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -136,8 +136,8 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Updating Profile Details..");
         progressDialog.show();
 
-        final DatabaseReference needyReference = databaseReference.child("Needy").child(currentUserId);
-        final DatabaseReference usersReference = databaseReference.child("Users").child(currentUserId);
+        final DatabaseReference needyReference = databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId);
+        final DatabaseReference usersReference = databaseReference.child(getString(R.string.databaseUsersParentReference)).child(currentUserId);
 
         NeedyData newData = new NeedyData(currentUserId, name, email, mobileNumber,password, "Needy", photoUrl, certificateUrl,isValidUser);
 

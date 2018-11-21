@@ -3346,7 +3346,7 @@ case "Wayanad":
 
                     String id = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
                     Users currUser = new Users(id, email, password, "Volunteer", name, mobileNumber);
-                    databaseVolunteer.child("Users").child(id).setValue(currUser);
+                    databaseVolunteer.child(getString(R.string.databaseUsersParentReference)).child(id).setValue(currUser);
                     VolunteerData volunteerData = new VolunteerData(id, name, email, mobileNumber, password, gender, dob, address, pincode, city, cityPosition, district, districtPosition, state, statePosition, english, kannada, telugu, hindi, tamil, "Volunteer", filterAddress, languages, "");
                     databaseVolunteer.child("Volunteer").child(id).setValue(volunteerData);
                     progressDialog.dismiss();

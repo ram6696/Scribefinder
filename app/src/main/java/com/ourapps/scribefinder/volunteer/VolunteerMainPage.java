@@ -111,7 +111,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             }
         } );
 
-        mDatabaseRef. child("Needy").addValueEventListener(new ValueEventListener() {
+        mDatabaseRef. child(getString(R.string.databaseNeedyParentReference)).addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -283,7 +283,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
 
                                 String uid = mCurrentUser.getUid();
                                 final Query volunteerDataRef = mDatabaseRef.child("Volunteer").child(uid);
-                                final Query usersDataRef = mDatabaseRef.child("Users").child(uid);
+                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(uid);
 
                                 mCurrentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
