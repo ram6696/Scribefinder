@@ -6,11 +6,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -107,7 +107,7 @@ public class VolunteerPasswordChange extends AppCompatActivity implements View.O
         progressDialog.setMessage("Changing password...");
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("Volunteer").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(getString(R.string.database_volunteer_parent_reference)).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
@@ -125,9 +125,9 @@ public class VolunteerPasswordChange extends AppCompatActivity implements View.O
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     VolunteerData newVolunteerData = new VolunteerData(volunteerData.getVolunteerId(), volunteerData.getName(), volunteerData.getEmail(), volunteerData.getMobileNumber(), etConfirmPassword.getText().toString().trim(), volunteerData.getGender(), volunteerData.getDob(), volunteerData.getAddress(), volunteerData.getPincode(), volunteerData.getCity(), volunteerData.getCityPosition(), volunteerData.getDistrict(), volunteerData.getDistrictPosition(), volunteerData.getState(), volunteerData.getStatePosition(), volunteerData.isEnglish(), volunteerData.isKannada(), volunteerData.isTelugu(), volunteerData.isHindi(), volunteerData.isTamil(), volunteerData.getAccountType(), volunteerData.getFilterAddress(), volunteerData.getLanguages(), volunteerData.getPhotoUrl());
-                                    databaseReference.child("Volunteer").child(userId).setValue(newVolunteerData);
+                                    databaseReference.child(getString(R.string.database_volunteer_parent_reference)).child(userId).setValue(newVolunteerData);
                                     Users newUsersData = new Users(volunteerData.getVolunteerId(), volunteerData.getEmail(), etConfirmPassword.getText().toString().trim(),volunteerData.getAccountType(), volunteerData.getName(), volunteerData.getMobileNumber());
-                                    databaseReference.child(getString(R.string.databaseUsersParentReference)).child(userId).setValue(newUsersData);
+                                    databaseReference.child(getString(R.string.database_users_parent_reference)).child(userId).setValue(newUsersData);
                                     progressDialog.dismiss();
                                     AlertDialog.Builder builder1 = new AlertDialog.Builder(VolunteerPasswordChange.this);
                                     builder1.setMessage("Your password has been changed successfully, Please login again.");

@@ -8,8 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.R;
+import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.studymaterials.ba_notes.BA1stSem;
 import com.ourapps.scribefinder.studymaterials.ba_notes.BA2ndSem;
 import com.ourapps.scribefinder.studymaterials.ba_notes.BA3rdSem;
@@ -26,7 +26,7 @@ public class NotesBA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_b);
 
-        ListView listView = (ListView) findViewById(R.id.ListView1);
+        ListView listView = findViewById(R.id.ListView1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, item);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

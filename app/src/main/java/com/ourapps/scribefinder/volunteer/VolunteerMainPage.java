@@ -25,6 +25,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -68,7 +69,8 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
     private TextView volunteerName, volunteerEmail;
     private ProgressDialog progressDialog;
 
-    public static final int RESULT_LOAD_IMAGE = 1;
+    private static final int RESULT_LOAD_IMAGE = 1;
+    private static final String TAG = VolunteerMainPage.class.getSimpleName();
 
     private DatabaseReference mDatabaseRef;
     private StorageReference mStorageRef;
@@ -98,7 +100,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mCurrentUser  = FirebaseAuth.getInstance().getCurrentUser();
 
-        mDatabaseRef.child("Volunteer").addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.database_volunteer_parent_reference)).addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -111,7 +113,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
             }
         } );
 
-        mDatabaseRef. child(getString(R.string.databaseNeedyParentReference)).addValueEventListener(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -160,13 +162,12 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        mDatabaseRef.child("Volunteer").child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.database_volunteer_parent_reference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    System.out.println(dataSnapshot);
                     volunteerProfilePic = findViewById(R.id.volunteerProfilePic);
                     volunteerName = findViewById(R.id.txvolunteerName);
                     volunteerEmail = findViewById(R.id.volunteerEmail);
@@ -282,8 +283,8 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                                 progressDialog.setCancelable(false);
 
                                 String uid = mCurrentUser.getUid();
-                                final Query volunteerDataRef = mDatabaseRef.child("Volunteer").child(uid);
-                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(uid);
+                                final Query volunteerDataRef = mDatabaseRef.child(getString(R.string.database_volunteer_parent_reference)).child(uid);
+                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.database_users_parent_reference)).child(uid);
 
                                 mCurrentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -426,8 +427,8 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         downloadUri[0] = taskSnapshot.getDownloadUrl();
-                        mDatabaseRef.child("Volunteer").child(currentUserId).child("photoUrl").setValue(downloadUri[0].toString()).isSuccessful();
-                        mDatabaseRef.child("Volunteer").child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabaseRef.child(getString(R.string.database_volunteer_parent_reference)).child(currentUserId).child("photoUrl").setValue(downloadUri[0].toString()).isSuccessful();
+                        mDatabaseRef.child(getString(R.string.database_volunteer_parent_reference)).child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                             @TargetApi(Build.VERSION_CODES.KITKAT)
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -447,7 +448,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        System.out.println("Failed to upload......");
+                        Log.e(TAG, "Failed to upload......");
                     }
                 });
             }
@@ -503,7 +504,7 @@ public class VolunteerMainPage extends AppCompatActivity implements NavigationVi
                     onDPClickVolunteer(null);
                 } else {
                     Toast.makeText(this, "Permission required to read file from the storage...", Toast.LENGTH_LONG).show();
-                    System.out.println("-----------------------Permission not given");
+                    Log.e(TAG, "-----------------------Permission not given");
                 }
             }
             break;

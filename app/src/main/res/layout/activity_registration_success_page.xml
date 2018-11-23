@@ -45,7 +45,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="@string/verificationmailmessage" />
+        android:text="@string/verification_mail_message" />
 
     <TextView
         android:id="@+id/textView2"
@@ -59,7 +59,7 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/certificatevalidationmessage" />
+        android:text="@string/certificate_validation_message" />
 
     <LinearLayout
         android:layout_width="fill_parent"

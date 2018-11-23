@@ -11,6 +11,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,6 +31,8 @@ public class ResetPassword extends AppCompatActivity {
     private EditText etEmail;
     private TextInputLayout etEmailLayout;
     private ProgressDialog progressDialog;
+
+    private static final String TAG = ResetPassword.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class ResetPassword extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                                 final DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-                                DatabaseReference idReference = rootRef.child(getString(R.string.databaseUsersParentReference)).child(postSnapshot.getKey());
+                                DatabaseReference idReference = rootRef.child(getString(R.string.database_users_parent_reference)).child(postSnapshot.getKey());
                                 idReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -68,7 +71,7 @@ public class ResetPassword extends AppCompatActivity {
                                             assert userData != null;
                                             int SDK_INT = android.os.Build.VERSION.SDK_INT;
                                             if (SDK_INT > 8) {
-                                                rootRef.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                rootRef.child(getString(R.string.database_admin_parent_reference)).addListenerForSingleValueEvent(new ValueEventListener() {
                                                     @TargetApi(Build.VERSION_CODES.KITKAT)
                                                     @Override
                                                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -131,7 +134,7 @@ public class ResetPassword extends AppCompatActivity {
                                     }
                                     @Override
                                     public void onCancelled(DatabaseError databaseError) {
-                                        System.out.println("The read failed: " + databaseError.getCode());
+                                        Log.e(TAG, "The read failed: " + databaseError.getCode());
                                     }
                                 });
                             }
@@ -145,11 +148,11 @@ public class ResetPassword extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        System.out.println(databaseError);
+                        Log.e(TAG, databaseError.getMessage());
 
                     }
                 };
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.databaseUsersParentReference));
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.database_users_parent_reference));
                 Query query = reference.orderByChild("email").equalTo(email);
                 query.addListenerForSingleValueEvent(valueEventListener);
             }

@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     if(emailFlag){
                         final String id = task.getResult().getUser().getUid();
                         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-                        databaseReference.child(getString(R.string.databaseUsersParentReference)).child(id).addValueEventListener(new ValueEventListener() {
+                        databaseReference.child(getString(R.string.database_users_parent_reference)).child(id).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if (dataSnapshot.exists()){
@@ -144,7 +144,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                     startActivity(destPage);
                                     finish();
                                 }else{
-                                    System.out.println("Inside else");
+                                    Log.e(TAG, "Inside else");
                                     Toast.makeText(Login.this,"Please register to login",Toast.LENGTH_SHORT).show();
                                 }
 
@@ -267,7 +267,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                         @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
                         public void onClick(DialogInterface dialog, int id) {
                             Intent intent = new Intent(Intent.ACTION_MAIN);
-                            intent.addCategory(Intent.CATEGORY_APP_EMAIL); ;
+                            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
                             startActivity(intent);
                             progressDialog.dismiss();
                         }

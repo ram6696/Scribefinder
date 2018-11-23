@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/email"
+                    android:hint="@string/email_address"
                     android:contentDescription="Email Address"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/mobileNumber"
+                    android:hint="@string/mobile_number"
                     android:contentDescription="Mobile Number"
                     android:inputType="phone" />
 

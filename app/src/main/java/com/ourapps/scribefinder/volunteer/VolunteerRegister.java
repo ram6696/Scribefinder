@@ -16,6 +16,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -61,12 +62,12 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseVolunteer;
-    String citySpinnerItems[] =null;
-    String districtSpinnerItems[] = null;
-    List<String> languagesKnownToWrite = new ArrayList<>();
-
-    int year_x = 1950, month_x = 0, day_x = 1;
-    static final int DIALOG_ID = 0;
+    private static final String TAG = VolunteerRegister.class.getSimpleName();
+    private static final int DIALOG_ID = 0;
+    private String citySpinnerItems[] = null;
+    private String districtSpinnerItems[] = null;
+    private List<String> languagesKnownToWrite = new ArrayList<>();
+    private int year_x = 1950, month_x = 0, day_x = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -361,64 +362,49 @@ public class VolunteerRegister extends AppCompatActivity implements View.OnClick
                 citySpinnerItems = new String[]{"Ankola","Bhatkal","Haliyal","Honavar","Karwar","Kumta","Mundgod","Siddapur","Sirsi","Supa","Uttar Kannada"};
                 break;
 
-
                 //Distrcits of Odisa
             case "Angul":
                 citySpinnerItems = new String[]{"Angul"};
                 break;
-
             case "Balangir":
                 citySpinnerItems = new String[]{"Balangir","Kantabanji","Patnagarh", "Titlagarh"};
                 break;
-
             case "Baleswar":
                 citySpinnerItems = new String[]{"Azimabad","Baleswar","Issannagar", "Sovarampur","Srikanthpur"};
                 break;
-
             case "Bargarh":
                 citySpinnerItems = new String[]{"Barapali","Bargarh","Khaliapali", "Padmapur"};
                 break;
-
             case "Bhadrak":
                 citySpinnerItems = new String[]{"Basudebpur","Bhadrak","Dhamanagar"};
                 break;
-
             case "Bhubaneshwar":
                 citySpinnerItems = new String[]{"Bhubaneshwar"};
                 break;
-
             case "Boudh":
                 citySpinnerItems = new String[]{"Boudhnagar","Malisahi"};
                 break;
-
             case "Cuttak":
                 citySpinnerItems = new String[]{"Ahagad","Banki","Belagachhia", "Charibatia","Choudwar","Cuttak"};
                 break;
-
             case "Debagarh":
                 citySpinnerItems = new String[]{"Debagarh"};
                 break;
-
             case "Dhenkanal":
                 citySpinnerItems = new String[]{"Bhuban","Dhenkanal","Kamakshyanagar"};
                 break;
-
             case "Gajapati":
                 citySpinnerItems = new String[]{"Kashinagara","Parlakhemundi"};
                 break;
-
             case "Ganjam":
                 citySpinnerItems = new String[]{"Brahmapur","Ganjam"};
                 break;
-
             case "Jagatsinghapur":
                 citySpinnerItems = new String[]{"Jagatsinghapur","Paradip"};
                 break;
-
             case "Jajapur":
                 citySpinnerItems = new String[]{"Byasanagar","Jajapur"};
                 break;
-
             case "Jharsuguda":
                 citySpinnerItems = new String[]{"Belpahar","Brajarajnagar","Jharsuguda"};
                 break;
@@ -3179,7 +3165,7 @@ case "Wayanad":
                     languagesKnownToWrite.add("English");
                 else{
                     if(languagesKnownToWrite.contains("English")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("English"));
+                        languagesKnownToWrite.remove("English");
                     }
                 }
                 break;
@@ -3188,7 +3174,7 @@ case "Wayanad":
                     languagesKnownToWrite.add("Hindi");
                 else{
                     if(languagesKnownToWrite.contains("Hindi")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Hindi"));
+                        languagesKnownToWrite.remove("Hindi");
                     }
                 }
                 break;
@@ -3197,7 +3183,7 @@ case "Wayanad":
                     languagesKnownToWrite.add("Kannada");
                 else{
                     if(languagesKnownToWrite.contains("Kannada")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Kannada"));
+                        languagesKnownToWrite.remove("Kannada");
                     }
                 }
                 break;
@@ -3206,7 +3192,7 @@ case "Wayanad":
                     languagesKnownToWrite.add("Tamil");
                 else{
                     if(languagesKnownToWrite.contains("Tamil")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Tamil"));
+                        languagesKnownToWrite.remove("Tamil");
                     }
                 }
                 break;
@@ -3215,7 +3201,7 @@ case "Wayanad":
                     languagesKnownToWrite.add("Telugu");
                 else{
                     if(languagesKnownToWrite.contains("Telugu")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Telugu"));
+                        languagesKnownToWrite.remove("Telugu");
                     }
                 }
                 break;
@@ -3346,9 +3332,9 @@ case "Wayanad":
 
                     String id = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
                     Users currUser = new Users(id, email, password, "Volunteer", name, mobileNumber);
-                    databaseVolunteer.child(getString(R.string.databaseUsersParentReference)).child(id).setValue(currUser);
+                    databaseVolunteer.child(getString(R.string.database_users_parent_reference)).child(id).setValue(currUser);
                     VolunteerData volunteerData = new VolunteerData(id, name, email, mobileNumber, password, gender, dob, address, pincode, city, cityPosition, district, districtPosition, state, statePosition, english, kannada, telugu, hindi, tamil, "Volunteer", filterAddress, languages, "");
-                    databaseVolunteer.child("Volunteer").child(id).setValue(volunteerData);
+                    databaseVolunteer.child(getString(R.string.database_volunteer_parent_reference)).child(id).setValue(volunteerData);
                     progressDialog.dismiss();
 
                     // startActivity(new Intent(VolunteerRegister.this, RegisterSuccessfulMessage.class));
@@ -3478,31 +3464,19 @@ case "Wayanad":
     private boolean checkDOB(){
         try{
             boolean isDateValid = false;
-
             if(!(etDOBVR.getText().toString().trim().isEmpty())){
-                System.out.println("going in");
                 String[] dateValues = etDOBVR.getText().toString().split("/");
                 if(dateValues.length == 3){
-                    System.out.println(dateValues.length);
-                    if(!(dateValues[0]==" " && dateValues[0]==null &&  dateValues[1]==" " && dateValues[1]==null && dateValues[2]==" " && dateValues[2]==null)){
-
+                    if (!(dateValues[0].equals(" ") && dateValues[0] == null && dateValues[1].
+                            equals(" ") && dateValues[1] == null && dateValues[2].equals(" ") && dateValues[2] == null)) {
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
-                        System.out.println(date);
-                        System.out.println(month);
-                        System.out.println(year);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004) {
-                            isDateValid = true;
-                        }else{
-                             isDateValid = false;
-                        }
+                        isDateValid = date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004;
                     }
                 }
             }
-
             if(isDateValid){
-                System.out.println(isDateValid);
                 etdobLayout.setErrorEnabled(false);
                 return isDateValid;
             }else{
@@ -3512,7 +3486,7 @@ case "Wayanad":
                 return isDateValid;
             }
         }catch(Exception ex){
-            System.out.println(ex);
+            Log.i(TAG, ex.getMessage());
             etdobLayout.setErrorEnabled(true);
             etdobLayout.setError("There is some exception in the code.");
             requestFocus(etDOBVR);

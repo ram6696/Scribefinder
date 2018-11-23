@@ -76,7 +76,7 @@ public class ContactUs extends AppCompatActivity {
                 final String userMessage = et_Comments.getText().toString();
                 final String userEmail = sharedPreferences.getString("email", "");
 
-                databaseReference.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child(getString(R.string.database_admin_parent_reference)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @TargetApi(Build.VERSION_CODES.KITKAT)
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

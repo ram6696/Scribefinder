@@ -19,6 +19,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,6 +43,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class ScribeSearchPage extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = ScribeSearchPage.class.getSimpleName();
+
     private Spinner districtSpinner, stateSpinner, citySpinner;
     private Button btnSearch, btnNearMe;
     private ProgressDialog progressDialog;
@@ -3136,7 +3140,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                     languagesKnownToWrite.add("English");
                 else {
                     if (languagesKnownToWrite.contains("English")) {
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("English"));
+                        languagesKnownToWrite.remove("English");
                     }
                 }
                 break;
@@ -3145,7 +3149,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                     languagesKnownToWrite.add("Hindi");
                 else {
                     if (languagesKnownToWrite.contains("Hindi")) {
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Hindi"));
+                        languagesKnownToWrite.remove("Hindi");
                     }
                 }
                 break;
@@ -3154,7 +3158,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                     languagesKnownToWrite.add("Kannada");
                 else {
                     if (languagesKnownToWrite.contains("Kannada")) {
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Kannada"));
+                        languagesKnownToWrite.remove("Kannada");
                     }
                 }
                 break;
@@ -3163,7 +3167,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                     languagesKnownToWrite.add("Tamil");
                 else {
                     if (languagesKnownToWrite.contains("Tamil")) {
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Tamil"));
+                        languagesKnownToWrite.remove("Tamil");
                     }
                 }
                 break;
@@ -3172,7 +3176,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                     languagesKnownToWrite.add("Telugu");
                 else {
                     if (languagesKnownToWrite.contains("Telugu")) {
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Telugu"));
+                        languagesKnownToWrite.remove("Telugu");
                     }
                 }
                 break;
@@ -3282,7 +3286,7 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
             }
         };
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Volunteer");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.database_volunteer_parent_reference));
         Query query = reference.orderByChild(locType).equalTo(filterString);
         query.addValueEventListener(valueEventListener);
     }
@@ -3451,10 +3455,10 @@ public class ScribeSearchPage extends AppCompatActivity implements View.OnClickL
                             }
                         }
                     } else {
-                        System.out.println("111111111111111111111111111111111111111111111");
+                        Log.e(TAG, "Location permission not given");
                     }
                 } else {
-                    System.out.println("000000000000000000000000000000000000000000000000");
+                    Log.e(TAG, "Both GPS and Internet permission not given");
                 }
             }
             catch (Exception e) {

@@ -26,7 +26,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/ba_notes"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -34,6 +35,7 @@
         android:id="@+id/ListView1"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:theme="@style/Base.Widget.AppCompat.ListView" />
 
 </LinearLayout>

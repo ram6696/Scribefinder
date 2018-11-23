@@ -105,7 +105,7 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
         progressDialog.setMessage("Changing password...");
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(getString(R.string.database_needy_parent_reference)).child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
@@ -122,9 +122,9 @@ public class NeedyPasswordChange extends AppCompatActivity implements View.OnCli
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         NeedyData newNeedyData = new NeedyData(needyData.getNeedyId(), needyData.getName(), needyData.getEmail(), needyData.getMobileNumber(), etConfirmPassword.getText().toString().trim(), needyData.getAccountType(), needyData.getPhotoUrl(), needyData.getCertificateUrl(), needyData.isValidUser());
-                                        databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(userId).setValue(newNeedyData);
+                                        databaseReference.child(getString(R.string.database_needy_parent_reference)).child(userId).setValue(newNeedyData);
                                         Users newUsersData = new Users(needyData.getNeedyId(), needyData.getEmail(), etConfirmPassword.getText().toString().trim(),needyData.getAccountType(), needyData.getName(), needyData.getMobileNumber());
-                                        databaseReference.child(getString(R.string.databaseUsersParentReference)).child(userId).setValue(newUsersData);
+                                        databaseReference.child(getString(R.string.database_users_parent_reference)).child(userId).setValue(newUsersData);
                                         progressDialog.dismiss();
                                         AlertDialog.Builder builder1 = new AlertDialog.Builder(NeedyPasswordChange.this);
                                         builder1.setMessage("Your password has been changed successfully, Please login again.");

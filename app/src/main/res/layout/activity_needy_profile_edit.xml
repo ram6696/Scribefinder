@@ -29,7 +29,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="@string/edit_profile"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp" />
 
     </android.support.v7.widget.Toolbar>
 
@@ -96,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/mobileNumber"
+                    android:hint="@string/mobile_number"
                     android:inputType="phone" />
 
             </android.support.design.widget.TextInputLayout>

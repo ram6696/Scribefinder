@@ -1,34 +1,17 @@
 <resources>
-    <string name="app_name">Scribe Finder</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="email">Email Address</string>
-    <string name="email_hint">  Email</string>
-    <string name="password">Password</string>
-    <string name="password_hint">  Password</string>
-    <string name="forget_password">Forgot Password</string>
-    <string name="new_user_register">New User? Register Here.</string>
-    <string name="login">Login</string>
-    <string name="i_am_needy">I am Needy/Visually Impaired</string>
-    <string name="i_am_volunteer">I am Volunteer</string>
-    <string name="appThemeText">They have the WILL, will you help them pave the WAY?</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="contactUs">Contact Us</string>
-    <string name="name">Name</string>
-    <string name="mobileNumber">Mobile Number</string>
-    <string name="register">Register</string>
-    <string name="if_already_registered_sign_in">If already Registered, Sign In</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="languages_known_to_write">Languages known to write</string>
-    <string name="english">English</string>
-    <string name="telugu">Telugu</string>
-    <string name="kannada">Kannada</string>
-    <string name="hindi">Hindi</string>
-    <string name="tamil">Tamil</string>
-    <string name="select_state">Select State</string>
-    <string name="select_dist">Select District</string>
-    <string name="select_cit">Select City</string>
-    <string name="title_activity_needy_main_page">NeedyMainPage</string>
+
+    //Database References
+    <string name="database_needy_parent_reference">Needy</string>
+    <string name="database_users_parent_reference">Users</string>
+    <string name="database_volunteer_parent_reference">Volunteer</string>
+    <string name="database_uploads_parent_reference">uploads</string>
+    <string name="database_admin_parent_reference">Admin</string>
+
+    //Storage References
+    <string name="storage_needy_certificates_reference">NeedyCertificates</string>
+    <string name="storage_dp_reference">dp</string>
+    <string name="storage_uploads_reference">uploads</string>
+
     <string-array name="india_states">
         <item>Andaman and Nicobar Islands</item>
         <item>Andhra Pradesh</item>
@@ -67,9 +50,40 @@
         <item>Uttar Pradesh</item>
         <item>West Bengal</item>
     </string-array>
+
+    <string name="app_name">Scribe Finder</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="email_address">Email Address</string>
+    <string name="email_address_hint">  Email</string>
+    <string name="password">Password</string>
+    <string name="password_hint">  Password</string>
+    <string name="forget_password">Forgot Password</string>
+    <string name="new_user_register">New User? Register Here.</string>
+    <string name="login">Login</string>
+    <string name="i_am_needy">I am Needy/Visually Impaired</string>
+    <string name="i_am_volunteer">I am Volunteer</string>
+    <string name="app_theme_text">They have the WILL, will you help them pave the WAY?</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="register">Register</string>
+    <string name="if_already_registered_sign_in">If already Registered, Sign In</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="languages_known_to_write">Languages known to write</string>
+    <string name="english">English</string>
+    <string name="telugu">Telugu</string>
+    <string name="kannada">Kannada</string>
+    <string name="hindi">Hindi</string>
+    <string name="tamil">Tamil</string>
+    <string name="select_state">Select State</string>
+    <string name="select_dist">Select District</string>
+    <string name="select_cit">Select City</string>
+    <string name="title_activity_needy_main_page">NeedyMainPage</string>
     <string name="action_settings">Settings</string>
     <string name="address">Address</string>
-    <string name="pincode">Pincode</string>
+    <string name="pin_code">Pin code</string>
     <string name="city">City</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="change_password">Change Password</string>
@@ -130,7 +144,6 @@
     <string name="error_invalid_email">Invalid credentials</string>
     <string name="error_user_does_not_exists">User does not Exist</string>
     <string name="file_not_selected">No File Selected</string>
-    <!-- for intro slider -->
     <string name="Intro">Intro</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
@@ -142,7 +155,6 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="title_activity_instructions">Instructions</string>
-    <string name="contact_us">Contact Us</string>
     <string name="like_us_on_facebook">Like us on Facebook</string>
     <string name="internet_not_found_error_message">We could not establish a connection with our servers. Please try again when you are connected to the internet</string>
     <string name="scribe_finder_logo">Scribe Finder Logo</string>
@@ -155,11 +167,11 @@
     <string name="suggestions_text">Please enter your Suggestions here, we will take action at the earliest.</string>
     <string name="queries_text">Please enter your queries here, we will get back to you at the earliest.</string>
     <string name="submit">Submit</string>
-    <string name="default_mailid">eyedroid@scribefinder.com</string>
+    <string name="default_email_address">scribefinder.info@gmail.com</string>
     <string name="needy">Needy</string>
     <string name="volunteer_count">Total Volunteers Registered</string>
     <string name="or">(or)</string>
-    <string name="makeZipFile">Make a zip file of all the notes and send it to scribefinder.info@gmail.com</string>
+    <string name="make_zip_file">Make a zip file of all the notes and send it to scribefinder.info@gmail.com</string>
     <string name="this_is_the_list_of_notes_uploaded_by_all_the_users">This is the complete list of notes uploaded by all the users.</string>
     <string name="introduction">Introduction</string>
     <string name="app_reason">App to find volunteers for writing exams to the visually impaired students.</string>
@@ -175,21 +187,9 @@
     <string name="upload_and_register">Upload and Register</string>
     <string name="registration_successful">Registration Successful</string>
     <string name="open_mail">Open Mail</string>
-    <string name="verificationmailmessage">Verification mail has sent to ur Email id, Please verify to login</string>
-    <string name="certificatevalidationmessage">Note : Certificate verification process has been initiated and it will take maximum 30 minutes to complete. You are not allowed to search for the volunteers until the verification process completes.</string>
+    <string name="verification_mail_message">Verification mail has sent to ur Email id, Please verify to login</string>
+    <string name="certificate_validation_message">Note : Certificate verification process has been initiated and it will take maximum 30 minutes to complete. You are not allowed to search for the volunteers until the verification process completes.</string>
     <string name="certificate_reason">Please upload your Physical handicap certificate or Visually Impaired certificate for verification purpose.</string>
-
-    //Database References
-    <string name="databaseNeedyParentReference">Needy</string>
-    <string name="databaseUsersParentReference">Users</string>
-    <string name="databaseVolunteerParentReference">Volunteer</string>
-    <string name="databaseUploadsParentReference">uploads</string>
-
-    //Storage References
-    <string name="storageNeedyCertificatesReference">NeedyCertificates</string>
-    <string name="storageDPReference">dp</string>
-    <string name="storageUploadsReference">uploads</string>
-
     <string name="skip_and_register">Skip and Register</string>
     <string name="skip_registration_message">You can skip uploading certificate and continue for registration but you will be not allowed to search for volunteers untill you upload certificate.</string>
 </resources>

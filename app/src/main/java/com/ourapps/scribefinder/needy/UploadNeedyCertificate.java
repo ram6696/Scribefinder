@@ -145,7 +145,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
             try {
                 Uri uri = Uri.fromFile(newFile);
                 if (currentUserId != null) {
-                    mStorageRef = mStorageRef.child("NeedyCertificates/" + name.concat(currentUserId) + ".jpg");
+                    mStorageRef = mStorageRef.child(getString(R.string.storage_needy_certificates_reference) + "/" + name.concat(currentUserId) + ".jpg");
                     mStorageRef.putFile(uri)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -189,12 +189,12 @@ public class UploadNeedyCertificate extends AppCompatActivity {
             progressDialog.setMessage("Registering user please wait a moment..");
             progressDialog.show();
             Users currUser = new Users(currentUserId, email, password, "Needy", name, mobileNumber);
-            mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(currentUserId).setValue(currUser)
+            mDatabaseRef.child(getString(R.string.database_users_parent_reference)).child(currentUserId).setValue(currUser)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             NeedyData needyData = new NeedyData(currentUserId, name, email, mobileNumber, password, "Needy", "", urlOfUploadedCertificate, false);
-                            mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).setValue(needyData)
+                            mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).setValue(needyData)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
@@ -311,7 +311,7 @@ public class UploadNeedyCertificate extends AppCompatActivity {
 
     private void registeredSuccessfully() {
         if(certificateUploadStatus){
-            mDatabaseRef.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabaseRef.child(getString(R.string.database_admin_parent_reference)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @TargetApi(Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

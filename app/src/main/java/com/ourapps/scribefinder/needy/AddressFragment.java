@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.ourapps.scribefinder.volunteer.VolunteerData;
 public class AddressFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private static final String TAG = AddressFragment.class.getSimpleName();
 
     TextView scribeAddress, scribeCity, scribeDistrict, scribeState;
     String myId = null;
@@ -52,7 +54,7 @@ public class AddressFragment extends Fragment {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
 
-        DatabaseReference idReference = rootRef.child("Volunteer").child(myId);
+        DatabaseReference idReference = rootRef.child(getString(R.string.database_volunteer_parent_reference)).child(myId);
         idReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -72,7 +74,7 @@ public class AddressFragment extends Fragment {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.e(TAG, "The read failed: " + databaseError.getCode());
             }
         });
 

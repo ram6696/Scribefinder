@@ -5,12 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -41,6 +42,8 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
     SharedPreferences sp = null;
     String currentUserId;
     NeedyData needyData;
+
+    private static final String TAG = NeedyProfileEdit.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        DatabaseReference idReference = databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId);
+        DatabaseReference idReference = databaseReference.child(getString(R.string.database_needy_parent_reference)).child(currentUserId);
         idReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -100,7 +103,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.e(TAG, "The read failed: " + databaseError.getCode());
             }
         });
 
@@ -136,8 +139,8 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Updating Profile Details..");
         progressDialog.show();
 
-        final DatabaseReference needyReference = databaseReference.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId);
-        final DatabaseReference usersReference = databaseReference.child(getString(R.string.databaseUsersParentReference)).child(currentUserId);
+        final DatabaseReference needyReference = databaseReference.child(getString(R.string.database_needy_parent_reference)).child(currentUserId);
+        final DatabaseReference usersReference = databaseReference.child(getString(R.string.database_users_parent_reference)).child(currentUserId);
 
         NeedyData newData = new NeedyData(currentUserId, name, email, mobileNumber,password, "Needy", photoUrl, certificateUrl,isValidUser);
 
@@ -150,7 +153,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                System.out.println("Successfully Updated");
+                                Log.i(TAG, "Successfully Updated");
                                 SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
                                 SharedPreferences.Editor Ed= sp.edit();
                                 Ed.putString("name", name);
@@ -183,14 +186,14 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
                                 AlertDialog alert11 = builder1.create();
                                 alert11.show();
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                                    System.out.println(Objects.requireNonNull(task.getException()).getMessage());
+                                    Log.i(TAG, Objects.requireNonNull(task.getException()).getMessage());
                                 }
                                 progressDialog.dismiss();
                             }
                         }
                     });
                 }else if(task.isCanceled()){
-                    System.out.println(task.getException().getMessage());
+                    Log.e(TAG, task.getException().getMessage());
                     progressDialog.dismiss();
                 }
             }
@@ -233,7 +236,7 @@ public class NeedyProfileEdit extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
-        System.out.println("Pressed Back Button");
+        Log.i(TAG, "Pressed Back Button");
         finish();
         startActivity(new Intent(NeedyProfileEdit.this, NeedyMainPage.class));
     }

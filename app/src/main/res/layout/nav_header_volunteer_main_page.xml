@@ -38,7 +38,7 @@
         android:id="@+id/volunteerEmail"
         android:layout_width="match_parent"
         android:gravity="center_horizontal"
-        android:text="@string/default_mailid"
+        android:text="@string/default_email_address"
         android:layout_height="15dp" />
 
 </LinearLayout>

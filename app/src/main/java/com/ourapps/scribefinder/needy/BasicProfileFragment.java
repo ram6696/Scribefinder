@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class BasicProfileFragment extends Fragment implements View.OnClickListener {
 
     private OnFragmentInteractionListener mListener;
+    private static final String TAG = BasicProfileFragment.class.getSimpleName();
 
     TextView scribeName, scribeMobileNumber, scribeEmail;
     private ImageView profilePic;
@@ -97,7 +99,7 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
         CallButton = view.findViewById(R.id.CallButton);
         CallButton.setOnClickListener(this);
 
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Volunteer").child(myId);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child(getString(R.string.database_volunteer_parent_reference)).child(myId);
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -135,7 +137,7 @@ public class BasicProfileFragment extends Fragment implements View.OnClickListen
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.e(TAG, "The read failed: " + databaseError.getCode());
             }
         });
 

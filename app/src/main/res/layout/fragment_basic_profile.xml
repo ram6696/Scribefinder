@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:text="@string/mobileNumber"
+                    android:text="@string/mobile_number"
                     android:textSize="14sp"
                     android:layout_marginTop="25dp"/>
 
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:text="@string/mobileNumber"
+                    android:text="@string/mobile_number"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 
@@ -140,7 +140,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/email"
+                    android:text="@string/email_address"
                     android:importantForAccessibility="no"
                     android:layout_marginTop="25dp"
                     android:textSize="15sp"/>
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:importantForAccessibility="no"
-                    android:text="@string/email"
+                    android:text="@string/email_address"
                     android:textSize="16sp"
                     android:textColor="@color/black"/>
 

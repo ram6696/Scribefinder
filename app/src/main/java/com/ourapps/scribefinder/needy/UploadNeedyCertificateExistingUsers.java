@@ -86,8 +86,6 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
         name = sp.getString("name", "");
         email = sp.getString("email", "");
         currentUserId = sp.getString("uid", "");
-
-
     }
 
     @Override
@@ -157,24 +155,22 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
         try {
 
             // BitmapFactory options to downsize the image
-            BitmapFactory.Options o = new BitmapFactory.Options();
-            o.inJustDecodeBounds = true;
-            o.inSampleSize = 6;
-            // factor of downsizing the image
-
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 8;
+            options.inJustDecodeBounds = true;
             FileInputStream inputStream = new FileInputStream(file);
 
             //Bitmap selectedBitmap = null;
-            BitmapFactory.decodeStream(inputStream, null, o);
+            BitmapFactory.decodeStream(inputStream, null, options);
             inputStream.close();
 
             // The new size we want to scale to
-            final int REQUIRED_SIZE = 100;
+            final int REQUIRED_SIZE = 70;
 
             // Find the correct scale value. It should be the power of 2.
             int scale = 1;
-            while (o.outWidth / scale / 2 >= REQUIRED_SIZE &&
-                    o.outHeight / scale / 2 >= REQUIRED_SIZE) {
+            while (options.outWidth / scale / 2 >= REQUIRED_SIZE &&
+                    options.outHeight / scale / 2 >= REQUIRED_SIZE) {
                 scale *= 2;
             }
 
@@ -201,14 +197,14 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
 
     public void uploadCertificate(View view) {
         setProgressBarIndeterminateVisibility(true);
-        System.out.println(currentUserId);
+        Log.d(TAG, currentUserId);
         if (currentUserId != null && !currentUserId.isEmpty()) {
-            System.out.println(photoUri);
+
             if (photoUri != null) {
                 progressDialog.setMessage("Uploading certificate please wait a moment..");
                 progressDialog.show();
                 try {
-                    mStorageRef = mStorageRef.child(R.string.storageNeedyCertificatesReference + name.concat(currentUserId) + ".jpg");
+                    mStorageRef = mStorageRef.child(getString(R.string.storage_needy_certificates_reference) + "/" + name.concat(currentUserId) + ".jpg");
                     mStorageRef.putFile(photoUri)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
@@ -216,10 +212,10 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                                         urlOfUploadedCertificate = Objects.requireNonNull(taskSnapshot.getDownloadUrl()).toString();
                                     }
-                                    mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("certificateUrl").setValue(urlOfUploadedCertificate).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).child("certificateUrl").setValue(urlOfUploadedCertificate).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("validUser").setValue(false).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).child("validUser").setValue(false).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
                                                     setProgressBarIndeterminateVisibility(false);
@@ -295,7 +291,7 @@ public class UploadNeedyCertificateExistingUsers extends AppCompatActivity {
 
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
         if (SDK_INT > 8) {
-            mDatabaseRef.child("Admin").addListenerForSingleValueEvent(new ValueEventListener() {
+            mDatabaseRef.child(getString(R.string.database_admin_parent_reference)).addListenerForSingleValueEvent(new ValueEventListener() {
                 @TargetApi(Build.VERSION_CODES.KITKAT)
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

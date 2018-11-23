@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,8 +18,10 @@ import com.ourapps.scribefinder.needy.NeedyMainPage;
 import com.ourapps.scribefinder.volunteer.VolunteerMainPage;
 
 public class SplashScreenNew extends AppCompatActivity {
+
     boolean doubleBackToExitPressedOnce = false;
 
+    private static final String TAG = SplashScreenNew.class.getSimpleName();
 
     Button loginButton, registerButton;
     Animation fadeAnimation;
@@ -56,7 +59,7 @@ public class SplashScreenNew extends AppCompatActivity {
                         destPage = new Intent(SplashScreenNew.this, VolunteerMainPage.class);
                         break;
                     default:
-                        System.out.println("Account Type is null");
+                        Log.e(TAG, "Account Type is null");
                 }
             }
         } else {
@@ -89,15 +92,25 @@ public class SplashScreenNew extends AppCompatActivity {
         startActivity(new Intent(this, Login.class));
         finish();
     }
+
     @Override
     public void onBackPressed() {
-
+        if (doubleBackToExitPressedOnce) {
             finish();
-
+            super.onBackPressed();
             return;
         }
 
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
 
     public void onRegisterButtonClicked(View view) {
         startActivity(new Intent(this, Intro.class));

@@ -13,6 +13,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -38,10 +39,11 @@ import com.ourapps.scribefinder.R;
 import com.ourapps.scribefinder.Users;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class VolunteerProfileEdit extends AppCompatActivity implements View.OnClickListener{
+
+    private static final String TAG = VolunteerProfileEdit.class.getSimpleName();
 
     private EditText etName, etEmail, etMobileNumber, etdob, etAddress, etPincode;
     private TextInputLayout etNameLayout, etMobileNumberLayout, etdobLayout, etAddressLayout, etPincodeLayout;
@@ -2596,7 +2598,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        DatabaseReference idReference = databaseReference.child("Volunteer").child(currentUserId);
+        DatabaseReference idReference = databaseReference.child(getString(R.string.database_volunteer_parent_reference)).child(currentUserId);
         idReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -2610,7 +2612,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.e(TAG, "The read failed: " + databaseError.getCode());
             }
         });
     }
@@ -2745,8 +2747,8 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
             progressDialog.show();
             progressDialog.setCancelable(false);
 
-            final DatabaseReference volunteerReference = databaseReference.child("Volunteer").child(currentUserId);
-            final DatabaseReference usersReference = databaseReference.child(getString(R.string.databaseUsersParentReference)).child(currentUserId);
+            final DatabaseReference volunteerReference = databaseReference.child(getString(R.string.database_volunteer_parent_reference)).child(currentUserId);
+            final DatabaseReference usersReference = databaseReference.child(getString(R.string.database_users_parent_reference)).child(currentUserId);
 
             VolunteerData newVolunteerData = new VolunteerData(currentUserId, name, email, mobileNumber, password, gender, dob, address, pincode, city, cityPosition, district, districtPosition, state, statePosition, english, kannada, telugu, hindi, tamil, "Volunteer", filterAddress, languages, photoUrl);
 
@@ -2759,7 +2761,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    System.out.println("Successfully Updated");
+                                    Log.d(TAG, "Successfully Updated");
                                     SharedPreferences sp = getSharedPreferences("Login", MODE_PRIVATE);
                                     SharedPreferences.Editor Ed= sp.edit();
                                     Ed.putString("name", name);
@@ -2847,11 +2849,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                         int date = Integer.parseInt(dateValues[0]);
                         int month = Integer.parseInt(dateValues[1]);
                         int year = Integer.parseInt(dateValues[2]);
-                        if(date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004) {
-                            isDateValid = true;
-                        }else{
-                            isDateValid = false;
-                        }
+                        isDateValid = date > 0 && date < 32 && month > 0 && month < 13 && year > 1940 && year < 2004;
                     }
                 }
             }
@@ -2936,7 +2934,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                     languagesKnownToWrite.add("English");
                 else{
                     if(languagesKnownToWrite.contains("English")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("English"));
+                        languagesKnownToWrite.remove("English");
                     }
                 }
                 break;
@@ -2945,7 +2943,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                     languagesKnownToWrite.add("Hindi");
                 else{
                     if(languagesKnownToWrite.contains("Hindi")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Hindi"));
+                        languagesKnownToWrite.remove("Hindi");
                     }
                 }
                 break;
@@ -2954,7 +2952,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                     languagesKnownToWrite.add("Kannada");
                 else{
                     if(languagesKnownToWrite.contains("Kannada")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Kannada"));
+                        languagesKnownToWrite.remove("Kannada");
                     }
                 }
                 break;
@@ -2963,7 +2961,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                     languagesKnownToWrite.add("Tamil");
                 else{
                     if(languagesKnownToWrite.contains("Tamil")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Tamil"));
+                        languagesKnownToWrite.remove("Tamil");
                     }
                 }
                 break;
@@ -2972,7 +2970,7 @@ public class VolunteerProfileEdit extends AppCompatActivity implements View.OnCl
                     languagesKnownToWrite.add("Telugu");
                 else{
                     if(languagesKnownToWrite.contains("Telugu")){
-                        languagesKnownToWrite.remove(languagesKnownToWrite.indexOf("Telugu"));
+                        languagesKnownToWrite.remove("Telugu");
                     }
                 }
                 break;

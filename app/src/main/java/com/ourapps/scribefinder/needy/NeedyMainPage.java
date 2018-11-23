@@ -24,6 +24,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +67,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     private TextView needyName, needyEmail;
     private ProgressDialog progressDialog;
 
-    public static final int RESULT_LOAD_IMAGE = 1;
+    private static final int RESULT_LOAD_IMAGE = 1;
+    private static final String TAG = NeedyMainPage.class.getSimpleName();
 
     private DatabaseReference mDatabaseRef;
     private StorageReference mStorageRef;
@@ -125,7 +127,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
         progressDialog.show();
         progressDialog.setCancelable(false);
 
-        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
 
             @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
@@ -230,8 +232,8 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                                 progressDialog.setCancelable(false);
 
                                 String uid = mCurrentUser.getUid();
-                                final Query needyDataRef = mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(uid);
-                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.databaseUsersParentReference)).child(uid);
+                                final Query needyDataRef = mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(uid);
+                                final Query usersDataRef = mDatabaseRef.child(getString(R.string.database_users_parent_reference)).child(uid);
 
                                 mCurrentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -309,14 +311,14 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
     public void searchForScribe(View view) {
         progressDialog.setMessage("Please wait a moment..");
         progressDialog.show();
-        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     progressDialog.dismiss();
                     NeedyData needyData = dataSnapshot.getValue(NeedyData.class);
                     if (needyData != null) {
-                        System.out.println(needyData.getCertificateUrl());
+                        Log.i(TAG, needyData.getCertificateUrl());
                         if (needyData.getCertificateUrl() == null) {
                             //Certificate not uploaded.
                             android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(NeedyMainPage.this);
@@ -358,13 +360,13 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                         }
                     }
                 } else {
-                    System.out.println("Needy data not there");
+                    Log.e(TAG, "Needy data not there");
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
+                Log.e(TAG, "The read failed: " + databaseError.getCode());
             }
         });
 
@@ -378,7 +380,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
             Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         }else{
-            System.out.println("Not Okay...... ");
+            Log.e(TAG, "Not Okay...... ");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
     }
@@ -416,7 +418,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         //downloadUri[0] = taskSnapshot.getDownloadUrl();
-                        mDatabaseRef.child(getString(R.string.databaseNeedyParentReference)).child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabaseRef.child(getString(R.string.database_needy_parent_reference)).child(currentUserId).child("photoUrl").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 String picture = null;
@@ -438,7 +440,7 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressDialog.dismiss();
-                        System.out.println("Failed to upload......");
+                        Log.e(TAG, "Failed to upload......");
                     }
                 })
                 ;
@@ -497,11 +499,11 @@ public class NeedyMainPage extends AppCompatActivity implements NavigationView.O
                     onDPClickNeedy(null);
                 } else {
                     // permission denied
-                    System.out.println("Permission not given.....");
+                    Log.e(TAG, "Permission not given.....");
                 }
             }
             default:
-                System.out.println("Default code---------"+requestCode);
+                Log.e(TAG, "Default code---------" + requestCode);
         }
     }
 

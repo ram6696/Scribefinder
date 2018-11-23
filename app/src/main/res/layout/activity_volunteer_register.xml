@@ -82,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/email"
+                    android:hint="@string/email_address"
                     android:inputType="textEmailAddress" />
 
             </android.support.design.widget.TextInputLayout>
@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/mobileNumber"
+                    android:hint="@string/mobile_number"
                     android:inputType="phone" />
 
             </android.support.design.widget.TextInputLayout>
@@ -251,7 +251,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/pincode"
+                    android:hint="@string/pin_code"
                     android:inputType="number" />
 
             </android.support.design.widget.TextInputLayout>

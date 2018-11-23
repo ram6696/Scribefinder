@@ -21,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ import java.util.Locale;
 
 public class DisplaySearchedVolunteers extends AppCompatActivity {
 
-    private Button btnFindMore;
+    private static final String TAG = DisplaySearchedVolunteers.class.getSimpleName();
 
     List<String> volunteersName = new ArrayList<>();
     List<String> volunteersCity = new ArrayList<>();
@@ -75,7 +76,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
         final String curLocType = getIntent().getStringExtra("locType");
 
-        btnFindMore = findViewById(R.id.btnFindMore);
+        Button btnFindMore = findViewById(R.id.btnFindMore);
         btnFindMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +119,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
         });
 
         for(int i = 0; i < filteredIds.size(); i++){
-            DatabaseReference idReference = rootRef.child("Volunteer").child(filteredIds.get(i));
+            DatabaseReference idReference = rootRef.child(getString(R.string.database_volunteer_parent_reference)).child(filteredIds.get(i));
             final int finalI = i;
             idReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -142,7 +143,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    System.out.println("The read failed: " + databaseError.getCode());
+                    Log.e(TAG, "The read failed: " + databaseError.getCode());
                 }
             });
         }
@@ -168,15 +169,15 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
                         if(searchLocation.contentEquals("district")){
                             locName = addresses.get(0).getSubAdminArea();
                             locType = "district";
-                            //System.out.println(locName);
+                            //Log.i(TAG,locName);
                         }else if(searchLocation.contentEquals("state")){
                             locName = addresses.get(0).getAdminArea();
                             locType = "state";
-                            //System.out.println(locName);
+                            //Log.i(TAG,locName);
                         }else if(searchLocation.contentEquals("country")){
                             locName = addresses.get(0).getCountryName();
                             locType = "country";
-                            //System.out.println(locName);
+                            //Log.i(TAG,locName);
                         }
                     }
                 } catch (IOException e) {
@@ -245,7 +246,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
             }
         };
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Volunteer");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(getString(R.string.database_volunteer_parent_reference));
         Query query = reference.orderByChild(locType).equalTo(filterString);
         query.addValueEventListener(valueEventListener);
     }
@@ -253,7 +254,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
     private void showErrorDialog(final String oldLoc, final String newLoc, String filterString) {
 
         String dialogTitle = "", dialogMessage = "", dialogOkTitle = "", dialogCancelTitle = "";
-        System.out.println(oldLoc);
+        Log.i(TAG, oldLoc);
         if(oldLoc.contentEquals("district")){
             dialogTitle = "Unable to find Scribes";
             dialogMessage = "There are no scribes registered in "+filterString+", Would you like to search in your whole State..?";
@@ -404,7 +405,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
         private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 30000; // 10 meters
 
         // The minimum time between updates in milliseconds
-        private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+        private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
 
         // Declaring a Location Manager
         protected LocationManager locationManager;
@@ -414,7 +415,7 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
             getLocation();
         }
 
-        public Location getLocation() {
+        public void getLocation() {
 
             try {
                 locationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
@@ -464,16 +465,15 @@ public class DisplaySearchedVolunteers extends AppCompatActivity {
                             }
                         }
                     } else {
-                        System.out.println("Location access not there");
+                        Log.e(TAG, "Location access not there");
                     }
                 } else {
-                    System.out.println("000000000000000000000000000000000000000000000000");
+                    Log.e(TAG, "Both GPS and Network not enabled");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            return location;
         }
 
         /**
